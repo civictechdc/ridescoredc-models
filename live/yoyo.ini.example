@@ -1,0 +1,16 @@
+[DEFAULT]
+# Ordered, ledgered migrations live here. yoyo records applied versions in the
+# _yoyo_migration table and takes a lock, so each migration runs once per DB.
+sources = %(here)s/migrations
+
+# Apply without the interactive prompt (for CI). Remove for manual, step-through use.
+batch_mode = on
+verbosity = 1
+
+# The database is supplied at apply time, never stored in the repo:
+#   yoyo apply    --database "$DATABASE_URL"
+#   yoyo rollback --database "$DATABASE_URL"
+#   yoyo list     --database "$DATABASE_URL"
+#
+# Copy this file to yoyo.ini (gitignored) and adjust locally as needed —
+# e.g. comment out batch_mode for interactive, step-through manual applies.

@@ -1,0 +1,115 @@
+name: CI
+
+# This repo ships DATA, not code, so CI is migration-focused: structure/naming
+# checks, an append-only guard, and a real apply against a throwaway Postgres.
+# CI does NOT deploy. In these early phases, migrations are applied to staging and
+# prod MANUALLY (git pull + yoyo apply on the server) — see
+# docs-4-ai/database-migrations.md. Re-add SSH deploy jobs here when we're ready
+# to automate.
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  # 1. Fast, no DB: migration file naming + unique NNNN ordering.
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/check_migrations.py
+
+  # 2. Lint the migration + script Python.
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check live/ scripts/
+
+  # 3. Applied migrations are immutable — you ADD a new one, never edit history.
+  #    (post-apply.py and functions/ are repeatable and exempt.)
+  append-only:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: no edits/deletes to existing NNNN_ migrations
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          CHANGED=$(git diff --diff-filter=MD --name-only \
+            "origin/${{ github.base_ref }}...HEAD" -- \
+            'live/migrations/[0-9]*.py' 'live/migrations/[0-9]*.sql' || true)
+          if [ -n "$CHANGED" ]; then
+            echo "Modified/deleted already-committed migrations (add a new one instead):"
+            echo "$CHANGED"; exit 1
+          fi
+          echo "OK: migrations are append-only"
+
+  # 4. The real gate: apply against a throwaway PostGIS, assert the data landed,
+  #    then prove rollback + re-apply work (repeatability).
+  smoke-apply:
+    runs-on: ubuntu-latest
+    needs: [structure, lint]
+    services:
+      postgres:
+        image: postgis/postgis:17-3.5
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: db
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 15
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/db
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r live/requirements.txt
+
+      # yoyo talks to Postgres through psycopg 3, which it selects from the URL
+      # scheme. Rewrite the plain DATABASE_URL (used by psql below + Martin) to
+      # the postgresql+psycopg:// scheme just for yoyo.
+      - name: derive psycopg3 URL for yoyo
+        run: echo "YOYO_DATABASE_URL=postgresql+psycopg://${DATABASE_URL#postgres*://}" >> "$GITHUB_ENV"
+
+      - name: apply
+        run: yoyo apply --batch --database "$YOYO_DATABASE_URL" live/migrations
+
+      - name: assert data landed (tables non-empty, geometry valid, function present)
+        run: |
+          q() { psql "$DATABASE_URL" -tAc "$1" | tr -d '[:space:]'; }
+          # 0001 is a full pg_dump, so the data ships inside the baseline itself —
+          # assert the model tables came back non-empty rather than diffing CSVs.
+          for t in ridescoredc crashes_dc; do
+            got=$(q "SELECT count(*) FROM $t")
+            echo "$t: $got rows"
+            [ "$got" -gt 0 ] || { echo "FAIL: $t is empty after baseline load"; exit 1; }
+          done
+          [ "$(q "SELECT ST_SRID(wkb_geometry) FROM ridescoredc LIMIT 1")" = "4326" ] \
+            || { echo "FAIL: unexpected SRID"; exit 1; }
+          [ "$(q "SELECT count(*) FROM pg_proc WHERE proname='update_score'")" = "1" ] \
+            || { echo "FAIL: update_score not created"; exit 1; }
+          echo "OK: data + geometry + function verified"
+
+      - name: assert rollback then re-apply (repeatability)
+        run: |
+          yoyo rollback --batch --database "$YOYO_DATABASE_URL" live/migrations
+          gone=$(psql "$DATABASE_URL" -tAc "SELECT to_regclass('public.ridescoredc') IS NULL")
+          echo "$gone" | grep -q t || { echo "FAIL: rollback did not drop table"; exit 1; }
+          yoyo apply --batch --database "$YOYO_DATABASE_URL" live/migrations
+          echo "OK: rollback + re-apply clean"

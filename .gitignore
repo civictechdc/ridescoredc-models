@@ -1,0 +1,5 @@
+# Local yoyo config — copy live/yoyo.ini.example to live/yoyo.ini and customize.
+# Kept out of git so local/manual settings (e.g. batch_mode, a database line)
+# never get committed.
+live/yoyo.ini
+__pycache__/
