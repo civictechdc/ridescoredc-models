@@ -2,9 +2,9 @@
 -- 0001_baseline.sql — AUTHORITATIVE kickoff baseline for yoyo.
 --
 -- Full plain-format pg_dump of the source database (was project-root
--- dev_backup.sql). Loaded verbatim by migrations/0001_baseline.py THROUGH psql:
--- a pg_dump contains \restrict meta-commands and COPY ... FROM stdin data that
--- psycopg's execute() cannot run.
+-- dev_backup.sql). Replayed by migrations/0001_baseline.py over yoyo's OWN
+-- connection: plain SQL through the cursor, each COPY ... FROM stdin block via
+-- psycopg 3's cursor.copy(). The \restrict psql lines are skipped.
 --
 -- Contents: PostGIS extensions, tiger/topology framework schemas, model tables
 -- public.crashes_dc + public.ridescoredc (with data), and update_score().

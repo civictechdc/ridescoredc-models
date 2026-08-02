@@ -17,7 +17,7 @@ being folded into a real migration. Nothing applies it automatically yet.
 ```
 live/
   migrations/            # ordered, ledgered migrations (yoyo-migrations)
-    0001_baseline.py       # loads the schema/0001_baseline.sql pg_dump via psql
+    0001_baseline.py       # replays schema/0001_baseline.sql over yoyo's conn
     post-apply.py          # re-applies functions/*.sql after every run
   schema/                # SQL read by migrations (kept out of migrations/ so
     0001_baseline.sql      #   yoyo doesn't treat it as its own migration).
