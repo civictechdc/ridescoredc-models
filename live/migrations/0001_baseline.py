@@ -33,12 +33,17 @@ DUMP_SQL = os.path.join(LIVE_DIR, "schema", "0001_baseline.sql")
 def _skip(line):
     """Lines from the dump that are not safe/valid to run over yoyo's session."""
     s = line.lstrip()
-    # Backslash lines are psql meta-commands (\restrict), not SQL. And we must NOT
-    # let the dump reset this session's search_path to '' -- that would break
-    # yoyo's own bookkeeping right after this step. Every object in the dump is
-    # schema-qualified, so dropping that one statement is safe.
-    return s.startswith("\\") or s.startswith(
-        "SELECT pg_catalog.set_config('search_path'"
+    return (
+        # psql meta-commands (\restrict / \unrestrict) -- not SQL.
+        s.startswith("\\")
+        # Would reset THIS session's search_path to '' and break yoyo's own
+        # bookkeeping after the step. Every object in the dump is schema-
+        # qualified, so dropping this one statement is safe.
+        or s.startswith("SELECT pg_catalog.set_config('search_path'")
+        # transaction_timeout is a PostgreSQL 17+ setting; skip it so a dump taken
+        # from PG 17 still loads on an older server that doesn't recognize it.
+        # It's restore boilerplate -- no effect on the schema or data.
+        or s.startswith("SET transaction_timeout")
     )
 
 
