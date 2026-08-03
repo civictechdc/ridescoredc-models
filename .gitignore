@@ -3,3 +3,14 @@
 # never get committed.
 live/yoyo.ini
 __pycache__/
+
+# Python / uv
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Pipeline working directories -- dated source snapshots and build artifacts.
+# Never committed: the cache is per-machine, and outputs belong in a package.
+raw/
+out/
