@@ -24,16 +24,28 @@ jobs:
           python-version: "3.12"
       - run: python scripts/check_migrations.py
 
-  # 2. Lint the migration + script Python.
+  # 2. Lint everything Python: the pipeline package, its tests, the migrations
+  #    and the helper scripts.
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v5
         with:
-          python-version: "3.12"
-      - run: pip install ruff
-      - run: ruff check live/ scripts/
+          enable-cache: true
+      - run: uv run ruff check src/ tests/ live/ scripts/
+
+  # 2b. The pipeline's own tests. No test reaches the network, so this needs no
+  #     services and no fixtures beyond what is committed.
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync --group dev --frozen
+      - run: uv run pytest -q
 
   # 3. Applied migrations are immutable — you ADD a new one, never edit history.
   #    (post-apply.py and functions/ are repeatable and exempt.)
