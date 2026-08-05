@@ -136,6 +136,15 @@ be treated.
 
 ---
 
+## How it compares with what is deployed
+
+`docs/parity-with-the-deployed-database.md`. The short version: every column
+that should match does, and `lts_level` does not — because the deployed database
+was built by an earlier version of the stress rules than the notebook now
+contains. That needs a decision from a person before this output is deployed.
+
+---
+
 ## What this does not do
 
 It writes files. It does not load a database, generate SQL, or know anything
