@@ -22,14 +22,14 @@ repositories.
 
 **1. Get the two branches.** Side by side, in one directory:
 
-    git clone -b demo/parquet-to-map https://github.com/fkloosterman/ridescoredc-models.git models
-    git clone -b demo/manifest-map   https://github.com/fkloosterman/ridescoredc-website.git website
+    git clone -b demo/parquet-to-map https://github.com/bright-fakl/ridescoredc-models.git models
+    git clone -b demo/manifest-map   https://github.com/bright-fakl/ridescoredc-website.git website
 
 **2. Get the data package** — 3 MB, the pipeline's output, so you do not have to
 fetch several hundred megabytes of source data or hold a local BNA export:
 
     mkdir -p models/out && curl -sL \
-      https://github.com/fkloosterman/ridescoredc-models/releases/download/demo-data-2026-08-06/ridescore-demo-data.tar.gz \
+      https://github.com/bright-fakl/ridescoredc-models/releases/download/demo-data-2026-08-06/ridescore-demo-data.tar.gz \
       | tar xz -C models/out
 
 **3. Start the containers.** The website's own stack — Postgres, Martin, Nginx,

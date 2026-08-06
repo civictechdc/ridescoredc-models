@@ -1,0 +1,141 @@
+1
+00:00:01,000 --> 00:00:06,000
+RideScore DC — running on one laptop, from public data
+
+2
+00:00:06,500 --> 00:00:11,500
+Every street coloured by how comfortable it is to cycle on
+
+3
+00:00:12,000 --> 00:00:18,000
+Underneath: census blocks scored by PeopleForBikes' BNA —
+what each block can reach without high-stress streets
+
+4
+00:00:18,500 --> 00:00:24,500
+Two models. Two geometries. Two producers. One map.
+
+5
+00:00:25,500 --> 00:00:30,000
+Hover: what is this?
+
+6
+00:00:30,500 --> 00:00:35,000
+Click: everything about it
+
+7
+00:00:35,500 --> 00:00:41,000
+One click, one answer — the street, then the block beneath it
+
+8
+00:00:41,500 --> 00:00:48,500
+Every label and unit comes from the pipeline.
+Nothing here was typed into the website.
+
+9
+00:00:50,000 --> 00:00:56,000
+RideScore and traffic stress: two layers, one road network
+
+10
+00:00:56,500 --> 00:01:03,000
+Geometry fetched once — and one at a time,
+because both colour the same lines
+
+11
+00:01:05,500 --> 00:01:10,000
+This file is what the website was told
+
+12
+00:01:10,500 --> 00:01:15,500
+Geographies — what is scored, and how one is identified
+
+13
+00:01:16,000 --> 00:01:20,000
+Sources — where the geometry comes from
+
+14
+00:01:20,500 --> 00:01:24,500
+Layers — one value, drawn one way
+
+15
+00:01:25,000 --> 00:01:30,000
+A colour scale, a domain, fields with labels and units
+
+16
+00:01:30,500 --> 00:01:35,500
+Half of it: the presentation — what this deployment publishes
+
+17
+00:01:36,000 --> 00:01:41,500
+Half of it: the dataset descriptions, written beside the code
+that produces each dataset
+
+18
+00:01:42,500 --> 00:01:48,000
+This is everything the frontend knows about the data
+
+19
+00:01:48,500 --> 00:01:54,000
+Three ways to draw. Two ways to deliver. One kind of scale.
+
+20
+00:01:54,500 --> 00:02:00,000
+No "RideScore". No "BNA". No table or column names.
+
+21
+00:02:00,500 --> 00:02:05,500
+Read the manifest, add each source once, draw each layer
+
+22
+00:02:06,500 --> 00:02:11,000
+BNA publishes more scores than this map draws
+
+23
+00:02:11,500 --> 00:02:16,000
+Ten lines of presentation: recreation
+
+24
+00:02:16,500 --> 00:02:21,000
+Regenerate the manifest — 0.8 seconds
+
+25
+00:02:21,500 --> 00:02:27,000
+Title, legend, popup, and a 0–1 scale
+taken from the attribute's description
+
+26
+00:02:27,500 --> 00:02:33,000
+No frontend change. No rebuild. No deploy.
+
+27
+00:02:33,500 --> 00:02:39,000
+Now publish something this page cannot draw
+
+28
+00:02:39,500 --> 00:02:45,000
+Dropped — and everything else still draws
+
+29
+00:02:45,500 --> 00:02:50,000
+So the pipeline and the website can be released separately
+
+30
+00:02:50,500 --> 00:02:56,000
+Descriptions are checked against the data
+
+31
+00:02:56,500 --> 00:03:03,000
+The first run found three places where the pipeline
+was not producing what it claimed
+
+32
+00:03:04,000 --> 00:03:09,000
+Not here yet: the weight sliders, and the query endpoint
+
+33
+00:03:09,500 --> 00:03:14,500
+Neither needs the frontend to change
+
+34
+00:03:15,000 --> 00:03:20,000
+All of it: one laptop, a 3 MB download

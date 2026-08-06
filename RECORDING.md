@@ -1,10 +1,16 @@
 # The screen recording
 
-A ~2:45 walkthrough: the map first, then the manifest that produced it, then the
+A 3:20 walkthrough: the map first, then the manifest that produced it, then the
 code that draws it. The order is deliberate — nobody cares what the manifest is
 until they have seen what it does.
 
-Narration is in **bold**. Everything else is what is on screen.
+**Captions, not a voice-over.** `captions.srt` carries the on-screen text with
+its timings; the bold lines below are the longer form the captions are cut down
+from, kept because they say what each shot is *for*. Captions read with the
+sound off, which is how most of the team will watch it in Slack, and they are
+edited by changing a text file rather than re-recording.
+
+Everything not in bold is what is on screen.
 
 Two windows, arranged before recording starts: a browser on
 `http://localhost:8081/demo.html?watch`, and an editor with `presentation.yaml`
@@ -124,6 +130,30 @@ Cut to the browser, which reloads itself.*
 > download.**
 
 ---
+
+## Captions
+
+`captions.srt` has 34 cues over 3:20, timed to the shots above. Each is at least
+two seconds, at most two lines, and under twenty characters a second, which is
+about the limit for reading while also watching a map.
+
+**Record first, then fit the captions to what you actually did** — the timings
+here are a plan, not a metronome. Any subtitle editor will nudge them; so will
+editing the file by hand.
+
+The map's own furniture is top-left and top-right, so captions sit along the
+bottom and cover nothing:
+
+    ffmpeg -i recording.mp4 -vf "subtitles=captions.srt:force_style=\
+    'FontName=DejaVu Sans,FontSize=20,PrimaryColour=&H00FFFFFF&,\
+    BackColour=&HB0000000&,BorderStyle=4,Alignment=2,MarginV=36'" \
+    -c:a copy recording-captioned.mp4
+
+Burning them in rather than shipping a subtitle track is deliberate: Slack,
+GitHub and most players show an mp4 inline and ignore a sidecar `.srt`.
+
+A voice-over can be added later without redoing any of this — the bold lines are
+the script, and `captions.srt` doubles as the timing sheet.
 
 ## Before you record
 
