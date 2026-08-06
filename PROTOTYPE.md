@@ -111,12 +111,29 @@ grouping.
 
 ## What a click does
 
-A click is one question, so it gets one answer: a single popup, with a section
-per layer under the cursor. Sections are ordered **smallest target first** —
-point, then line, then polygon — so clicking near a road reads as the road, with
-the block it sits on underneath as context. The click is tested against a small
-box rather than a point, because a thin line is hard to hit exactly, and several
+Three levels of detail, each answering a different question:
+
+| | Question | Where | What |
+|---|---|---|---|
+| **Hover** | what is this? | a box at the cursor | one line: the layer's title and the value it is coloured by |
+| **Click** | tell me about this | the sidebar | every layer under the cursor, all fields, actions |
+| **Selection** | work from this one | the left panel | persists until cleared or replaced |
+
+A click is one question, so it gets one answer: one sidebar, with a section per
+layer under the cursor. Sections are ordered **smallest target first** — point,
+then line, then polygon — so clicking near a road reads as the road, with the
+block it sits on underneath as context. The click is tested against a small box
+rather than a point, because a thin line is hard to hit exactly, and several
 features from one layer collapse to a `+n more here` note.
+
+It is a sidebar rather than a popup because a popup is the one container that
+has to fit near the click while the thing it describes is underneath it. With
+four layers it needs a scrollbar over its own subject. The sidebar also has room
+for what a query layer will return. On a narrow screen it becomes a bottom
+sheet, which is a media query rather than a second implementation.
+
+Hover and selection are separate feature states, so the outline under the cursor
+and the outline of what other layers are working from do not look the same.
 
 None of that needs a new manifest field: every geography already declares its
 `shape`.
@@ -130,9 +147,12 @@ in GEOID order, described as their `tile_key`.
 
 **The available actions come from the manifest.** Any layer declaring a
 selection parameter over a geography offers itself as a button on that
-geography's popup section. Publish such a layer and the button appears; nothing
-in the page knows what the layer is for. The "Pin this census block" button
-exists so selection is visible before any layer consumes one.
+geography's section. Publish such a layer and the button appears; nothing in the
+page knows what the layer is for.
+
+The "Pin this census block" button is scaffolding — it makes selection visible
+while nothing consumes one, and it disappears for any geography that has a real
+action, because pinning for its own sake is noise.
 
 ## Adding a selection-driven layer
 
