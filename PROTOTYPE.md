@@ -92,7 +92,11 @@ Then:
 
     uv run ridescore manifest --to ../website/api/static/manifest.json   # 0.8s
 
-and reload the page. New layer, with its title, legend and popup labels. No
+and reload the page. **Open `demo.html?watch` and it reloads itself** when the
+manifest's `generated` changes — the page polls every two seconds, which is
+worth it while demonstrating and wrong for a deployed site, hence the flag.
+
+New layer, with its title, legend and popup labels. No
 frontend change, no rebuild, no database write, no container restart, no
 redeploy. Note it needs no `domain`: the scale takes the attribute's declared
 range from the description, so `recreation_score` gets `[0, 1]` and not the
