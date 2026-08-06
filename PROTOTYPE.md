@@ -40,6 +40,11 @@ Then open **http://localhost:8081/demo.html**.
 Martin only needs restarting when a table first appears; reloading data does not
 change what it publishes.
 
+`ridescore manifest` rewrites `manifest.json` in place, so a regenerated
+manifest is served immediately — reload the page and that is all. An editor that
+replaces `demo.html` rather than rewriting it gives the container a stale inode;
+`docker compose restart fastapi` clears it.
+
 ## What is where
 
 | | |
