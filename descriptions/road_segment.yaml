@@ -1,0 +1,97 @@
+# What the road network stage produces. Owned by the stage that writes it:
+# one dataset, one producing stage, one description.
+dataset: road_segment
+title: DC road segments
+description: >
+  Every roadway block in DC, normalised into the attributes the models score on.
+  Derived from DDOT's published roadway block layer.
+geography: road_segment
+key: segment_id
+shape: line
+crs: EPSG:4326
+
+attributes:
+  segment_id:
+    type: string
+    label: Segment
+    description: The source block's BLOCKKEY. Identifies a block, not a route.
+  tile_id:
+    type: integer
+    label: Tile id
+    description: Dense integer id, lifted into the tile's feature id.
+  route_id:
+    type: string
+    label: Route
+    description: DDOT route identifier. Shared by many blocks of the same street.
+  route_name:
+    type: string
+    label: Street
+    description: The street name as published.
+  function:
+    type: string
+    label: Road type
+    description: Functional class -- local, collector, arterial, freeway.
+  num_lanes:
+    type: integer
+    label: Lanes
+    unit: lanes
+    description: Lanes of motor traffic, with the source's unknowns filled in.
+  num_lanes_raw:
+    type: integer
+    label: Lanes, as published
+    unit: lanes
+    description: Before filling. -1 is the source's "unknown".
+  speed_limit:
+    type: integer
+    label: Speed limit
+    unit: mph
+    description: Posted speed limit, with the source's unknowns filled in.
+  speed_limit_raw:
+    type: number
+    label: Speed limit, as published
+    unit: mph
+    description: Before filling. Missing where the source recorded none.
+  bike_facility_type:
+    type: string
+    label: Bike facility
+    description: Whether there is a lane, a path, or nothing.
+  parking_presence:
+    type: integer
+    label: Parking
+    range: [0, 1]
+    description: Whether on-street parking is recorded on this block.
+  road_width:
+    type: number
+    label: Road width
+    unit: ft
+    description: Curb-to-curb width where published.
+  slow_street:
+    type: string
+    label: Slow street
+    description: >
+      The Slow Streets note carried by the source. Free text, not a flag --
+      absent on most blocks.
+  pavement_condition:
+    type: string
+    label: Pavement
+    description: Published surface condition rating.
+  len:
+    type: number
+    label: Length
+    unit: m
+    description: Length of the street, measured before any simplification.
+  crash_count_5yr:
+    type: integer
+    label: Crashes, 5 yr
+    description: Cyclist crashes joined to this block over the crash window.
+  serious_injury_count_5yr:
+    type: integer
+    label: Serious injuries, 5 yr
+    description: Of those crashes, ones with a major cyclist injury.
+  fatal_count_5yr:
+    type: integer
+    label: Deaths, 5 yr
+    description: Of those crashes, ones in which a cyclist died.
+  geometry:
+    type: geometry
+    description: The block's centreline.

@@ -167,5 +167,137 @@ def inspect(
         typer.echo(changed.to_string())
 
 
+# ==========================================================================
+# prototype: a second geography, a loader, descriptions, a manifest
+#
+# Everything below is the demo. It is grouped here rather than spread through
+# the file so that it is obvious what is prototype and what is pipeline.
+# ==========================================================================
+
+DEFAULT_DSN = "postgres://postgres:localdev@localhost:5433/db"
+DEFAULT_DESCRIPTIONS = Path("descriptions")
+DEFAULT_PRESENTATION = Path("presentation.yaml")
+
+Dsn = Annotated[str, typer.Option(envvar="RIDESCORE_DSN", help="Where to load.")]
+Descriptions = Annotated[Path, typer.Option(help="Where the dataset descriptions live.")]
+
+DEMO_DATASETS = ["road_segment", "ridescore_v1_scores", "crashes", "bna_census_block"]
+
+
+@app.command("build-bna")
+def build_bna(
+    export_dir: Annotated[Path, typer.Option(help="A bikescore export for one city.")],
+    out: Out = DEFAULT_OUT,
+) -> None:
+    """Wrap the BNA export as a dataset. Reads no network, scores nothing."""
+    from ridescore.demo import bna
+
+    try:
+        blocks = bna.build(export_dir)
+    except FileNotFoundError as error:
+        _fail(str(error))
+
+    path = bna.write(blocks, out)
+    typer.secho(f"Wrote {path}", fg=typer.colors.GREEN)
+    typer.echo(f"  {len(blocks):,} census blocks")
+
+
+@app.command()
+def describe(
+    out: Out = DEFAULT_OUT,
+    descriptions: Descriptions = DEFAULT_DESCRIPTIONS,
+) -> None:
+    """Check each dataset against the description its stage published."""
+    from ridescore.demo import descriptions as desc
+    from ridescore.demo import load as loader
+
+    failed = False
+    for dataset in DEMO_DATASETS:
+        path = out / f"{dataset}.parquet"
+        if not path.exists():
+            typer.secho(f"  {dataset:<22} not built", fg=typer.colors.YELLOW)
+            continue
+
+        problems = desc.check(desc.load(dataset, descriptions), loader.read(path))
+        if problems:
+            failed = True
+            typer.secho(f"  {dataset:<22} {len(problems)} problem(s)", fg=typer.colors.RED)
+            for problem in problems:
+                typer.echo(f"      {problem}")
+        else:
+            described = desc.load(dataset, descriptions)
+            typer.secho(
+                f"  {dataset:<22} {len(described.attributes):>3} attributes, agrees",
+                fg=typer.colors.GREEN,
+            )
+
+    if failed:
+        raise typer.Exit(1)
+
+
+@app.command()
+def load(
+    out: Out = DEFAULT_OUT,
+    dsn: Dsn = DEFAULT_DSN,
+    descriptions: Descriptions = DEFAULT_DESCRIPTIONS,
+) -> None:
+    """Write the datasets into PostGIS, with the table shape taken from the data."""
+    import psycopg
+
+    from ridescore.demo import descriptions as desc
+    from ridescore.demo import load as loader
+
+    try:
+        loaded = loader.load(out, dsn, DEMO_DATASETS)
+    except FileNotFoundError as error:
+        _fail(f"Nothing to load: {error}")
+    except desc.DescriptionError as error:
+        _fail(str(error))
+    except psycopg.OperationalError as error:
+        _fail(f"Cannot reach the database at {dsn}:\n  {error}")
+
+    with psycopg.connect(dsn) as connection:
+        loader.create_join_view(
+            connection,
+            view="road_segment_scored",
+            geometry="road_segment",
+            scores="ridescore_v1_scores",
+            key="segment_id",
+        )
+        connection.commit()
+
+    typer.secho("Loaded", fg=typer.colors.GREEN)
+    for dataset, rows in loaded.items():
+        typer.echo(f"  {dataset:<22} {rows:>8,} rows")
+    typer.echo("  road_segment_scored    (view)")
+
+
+@app.command()
+def manifest(
+    to: Annotated[Path, typer.Option(help="Where to write manifest.json.")],
+    presentation: Annotated[Path, typer.Option(help="This deployment's presentation.")] = (
+        DEFAULT_PRESENTATION
+    ),
+    descriptions: Descriptions = DEFAULT_DESCRIPTIONS,
+) -> None:
+    """Resolve the presentation against the descriptions into a manifest."""
+    import json
+
+    from ridescore.demo import manifest as manifest_stage
+
+    try:
+        resolved = manifest_stage.generate(presentation, descriptions)
+    except (KeyError, ValueError) as error:
+        _fail(f"Cannot resolve the presentation: {error}")
+
+    to.parent.mkdir(parents=True, exist_ok=True)
+    to.write_text(json.dumps(resolved, indent=2) + "\n")
+
+    typer.secho(f"Wrote {to}", fg=typer.colors.GREEN)
+    for layer in resolved["layers"]:
+        visible = "shown" if layer["default_visible"] else "hidden"
+        typer.echo(f"  {layer['id']:<16} {layer['render']['template']:<12} {visible}")
+
+
 if __name__ == "__main__":
     app()

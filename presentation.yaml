@@ -1,0 +1,94 @@
+# The presentation: one per deployment, not one per model.
+#
+# It says which layers this map publishes, how they are drawn, and which
+# attributes a popup shows. It does not say what an attribute means -- that
+# comes from the dataset's description, and is merged in by `ridescore
+# manifest`. Fields are named `<dataset>.<attribute>` so the merge has
+# something to look up.
+
+map:
+  center: [-77.0369, 38.9072]
+  zoom: 12
+
+# Each source is one relation the tile server publishes. Several layers may
+# share one, and then the geometry is fetched once.
+sources:
+  roads:
+    relation: road_segment_scored
+    geometry_from: road_segment
+    joins: [ridescore_v1_scores]
+    minzoom: 1
+    maxzoom: 14
+  crashes:
+    relation: crashes
+    geometry_from: crashes
+    minzoom: 10
+    maxzoom: 14
+  blocks:
+    relation: bna_census_block
+    geometry_from: bna_census_block
+    minzoom: 6
+    maxzoom: 14
+
+layers:
+  - id: bna_overall
+    source: blocks
+    value: bna_census_block.overall_score
+    render:
+      template: choropleth
+      scale: {type: sequential, scheme: viridis, domain: [0, 40]}
+      opacity: 0.55
+    popup:
+      - bna_census_block.area_id
+      - bna_census_block.overall_score
+      - bna_census_block.core_services_score
+      - bna_census_block.pop20
+    default_visible: true
+
+  - id: ridescore_v1
+    source: roads
+    value: ridescore_v1_scores.ridescore_v1
+    render:
+      template: line
+      scale: {type: sequential, scheme: rdylgn, domain: [0, 100]}
+      width: {zoom_stops: [[10, 1.5], [16, 6]]}
+      null_value: {label: no data, color: "#999999"}
+    popup:
+      - road_segment.route_name
+      - ridescore_v1_scores.ridescore_v1
+      - ridescore_v1_scores.lts_level
+      - road_segment.speed_limit
+      - road_segment.bike_facility_type
+      - road_segment.crash_count_5yr
+    default_visible: true
+
+  # A second layer over the same source: no second geometry fetch, and nothing
+  # in the frontend knows this one is different from the one above.
+  - id: lts
+    source: roads
+    title: Traffic stress
+    value: ridescore_v1_scores.lts_level
+    render:
+      template: line
+      scale: {type: sequential, scheme: rdylgn, domain: [4, 1]}
+      width: {zoom_stops: [[10, 1.5], [16, 6]]}
+    popup:
+      - road_segment.route_name
+      - ridescore_v1_scores.lts_level
+      - road_segment.function
+      - road_segment.num_lanes
+    default_visible: false
+
+  - id: crashes
+    source: crashes
+    value: crashes.fatal_bicyclist
+    render:
+      template: point
+      scale: {type: sequential, scheme: rdylgn, domain: [1, 0]}
+      radius: {zoom_stops: [[10, 2], [16, 7]]}
+    popup:
+      - crashes.report_date
+      - crashes.address
+      - crashes.major_injuries_bicyclist
+      - crashes.fatal_bicyclist
+    default_visible: false
