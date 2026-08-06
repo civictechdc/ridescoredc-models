@@ -7,6 +7,7 @@ description: >
   Derived from DDOT's published roadway block layer.
 geography: road_segment
 key: segment_id
+tile_key: tile_id
 shape: line
 crs: EPSG:4326
 

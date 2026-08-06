@@ -38,6 +38,10 @@ class Description:
     description: str
     geography: str
     key: str | None
+    # What identifies a feature inside a tile. A tile's feature id must be a
+    # number, so a geography whose published key is a string carries a dense
+    # integer alongside it.
+    tile_key: str | None
     shape: str | None
     attributes: dict[str, dict]
 
@@ -60,6 +64,7 @@ def load(dataset: str, root: Path = DESCRIPTIONS_DIR) -> Description:
         description=" ".join(raw["description"].split()),
         geography=raw["geography"],
         key=raw.get("key"),
+        tile_key=raw.get("tile_key") or raw.get("key"),
         shape=raw.get("shape"),
         attributes=raw["attributes"],
     )

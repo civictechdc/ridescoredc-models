@@ -62,6 +62,7 @@ def build(presentation: dict, known: dict[str, desc.Description]) -> dict[str, A
 
         geographies[owner.geography] = {
             "key": owner.key,
+            "tile_key": owner.tile_key,
             "shape": owner.shape,
             "title": owner.title,
         }
@@ -74,8 +75,11 @@ def build(presentation: dict, known: dict[str, desc.Description]) -> dict[str, A
             "minzoom": source.get("minzoom", 1),
             "maxzoom": source.get("maxzoom", 14),
         }
-        if owner.key:
-            sources[source_id]["promote_id"] = owner.key
+        # Only a numeric key can become a tile's feature id. A geography whose
+        # only identifier is a string (BNA's census GEOID) is published without
+        # one rather than with one that warns on every tile.
+        if owner.tile_key and owner.attributes.get(owner.tile_key, {}).get("type") == "integer":
+            sources[source_id]["promote_id"] = owner.tile_key
 
     layers = []
     for layer in presentation["layers"]:
