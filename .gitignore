@@ -12,5 +12,8 @@ __pycache__/
 
 # Pipeline working directories -- dated source snapshots and build artifacts.
 # Never committed: the cache is per-machine, and outputs belong in a package.
-raw/
-out/
+# Matched without a trailing slash so that a *symlink* named raw or out --
+# how a scratch checkout points at an existing snapshot -- is ignored too.
+# `raw/` matches only a directory, which is how both got committed once.
+/raw
+/out
