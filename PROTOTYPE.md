@@ -14,28 +14,45 @@ migrations, and anything about deployment.
 
 ## Running it
 
-Two repositories, in worktrees so nothing touches the real checkouts:
+You need **Docker** (with Compose) and **uv**. Nothing else, no credentials, and
+no data from anyone. About ten minutes, most of it Docker pulling images.
 
-    demo/models     ridescoredc-models   on demo/parquet-to-map
-    demo/website    ridescoredc-website  on demo/manifest-map
+Both branches live on forks, so nothing here touches the `civictechdc`
+repositories.
 
-The containers are the website's own stack, shifted to ports 8081 and 5433 so
-they cannot collide with anything already running:
+**1. Get the two branches.** Side by side, in one directory:
 
-    cd demo/website && docker compose up -d
+    git clone -b demo/parquet-to-map https://github.com/fkloosterman/ridescoredc-models.git models
+    git clone -b demo/manifest-map   https://github.com/fkloosterman/ridescoredc-website.git website
 
-The pipeline runs on the host — no container needed:
+**2. Get the data package** — 3 MB, the pipeline's output, so you do not have to
+fetch several hundred megabytes of source data or hold a local BNA export:
 
-    cd demo/models
-    uv sync
-    uv run ridescore run                            # fetch + build, if out/ is empty
-    uv run ridescore build-bna --export-dir ../../BNA/bikescore-data/washington-district-of-columbia/export
+    mkdir -p models/out && curl -sL \
+      https://github.com/fkloosterman/ridescoredc-models/releases/download/demo-data-2026-08-06/ridescore-demo-data.tar.gz \
+      | tar xz -C models/out
+
+**3. Start the containers.** The website's own stack — Postgres, Martin, Nginx,
+FastAPI — on ports 8081 and 5433, so it cannot collide with anything you already
+run:
+
+    cd website && cp api/.env.example api/.env && docker compose up -d
+
+**4. Load, and publish the manifest:**
+
+    cd ../models && uv sync
     uv run ridescore describe                       # each dataset against its description
     uv run ridescore load                           # parquet -> PostGIS
     uv run ridescore manifest --to ../website/api/static/manifest.json
-    docker compose -f ../website/docker-compose.yml restart martin   # only after new tables
+    docker compose -f ../website/docker-compose.yml restart martin   # once, so it sees the tables
 
 Then open **http://localhost:8081/demo.html**.
+
+To rebuild the data yourself instead of downloading it, you need the source data
+and a BNA export for DC:
+
+    uv run ridescore run                            # fetch + build; several hundred MB
+    uv run ridescore build-bna --export-dir <a bikescore export directory>
 
 Martin only needs restarting when a table first appears; reloading data does not
 change what it publishes.
@@ -58,8 +75,9 @@ replaces `demo.html` rather than rewriting it gives the container a stale inode;
 
 ## The four things to show
 
-**1. Add a layer without touching the frontend.** BNA publishes several scores
-this map does not draw. Add to `presentation.yaml`:
+**1. Add a layer without touching the frontend.** Two edits and a reload, about
+fifteen seconds. BNA publishes several scores this map does not draw. Add to
+`presentation.yaml`:
 
     - id: bna_recreation
       source: blocks
@@ -70,10 +88,22 @@ this map does not draw. Add to `presentation.yaml`:
         opacity: 0.55
       popup: [bna_census_block.area_id, bna_census_block.recreation_score]
 
-Re-run `ridescore manifest`, reload the page. New layer, with its title, legend
-and popup labels. No frontend change, no rebuild, no database write, no
+Then:
+
+    uv run ridescore manifest --to ../website/api/static/manifest.json   # 0.8s
+
+and reload the page. New layer, with its title, legend and popup labels. No
+frontend change, no rebuild, no database write, no container restart, no
 redeploy. Note it needs no `domain`: the scale takes the attribute's declared
-range from the description.
+range from the description, so `recreation_score` gets `[0, 1]` and not the
+`[0, 100]` of the score above it.
+
+**Where the boundary is**, because it is the whole point: this works without
+touching the pipeline because `recreation_score` is already a column in the
+table, so it is already in every tile — Martin publishes a table's columns, and
+the manifest decides which ones mean something. A layer over an attribute the
+pipeline does not yet produce is a different job: build, load, and a Martin
+restart so it sees the new shape.
 
 **2. The description is the only place a field is explained.** Change
 `recreation_score`'s label in `descriptions/bna_census_block.yaml`, regenerate,
