@@ -100,6 +100,13 @@ def build(presentation: dict, known: dict[str, desc.Description]) -> dict[str, A
             "default_visible": layer.get("default_visible", False),
         }
 
+        # Layers writing the same visual channel over the same source cover each
+        # other, and the frontend derives that. An author who wants two such
+        # layers drawn together -- different widths, an offset -- names a group
+        # of their own, and the derived rule stops applying.
+        if "group" in layer:
+            resolved["group"] = layer["group"]
+
         # A scale with no domain of its own takes the attribute's declared range.
         scale = resolved["render"].get("scale", {})
         if "domain" not in scale and "range" in value:

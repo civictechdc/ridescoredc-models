@@ -87,6 +87,23 @@ string and written as 0/1, `slow_street` described as a flag and written as free
 text, `speed_limit_raw` described as an integer and written as a float with
 missing values.
 
+## Layers that cannot be shown together
+
+RideScore and traffic stress draw the same lines from the same source — one
+tile request, one copy of the geometry — and both paint `line-color`. Ticking
+both would just have the later one cover the earlier, so the panel offers them
+as radio buttons with a "none".
+
+The rule is **same source and same visual channel**, not same geometry: crash
+points share the map with both and conflict with neither, and two layers over
+the BNA blocks would collide on the fill but not if one drew the fill and the
+other an outline. Each render template declares the channel it writes, so the
+frontend derives the grouping and the manifest needs no new field.
+
+A presentation that genuinely wants two such layers drawn together — different
+widths, an offset — sets `group:` on the layer, which overrides the derived
+grouping.
+
 ## Things worth saying out loud
 
 - **The map will not match production.** Deploying the ported pipeline's output
