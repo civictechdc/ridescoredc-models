@@ -31,8 +31,16 @@ def _split(reference: str) -> tuple[str, str]:
     return dataset, attribute
 
 
-def _field(reference: str, known: dict[str, desc.Description]) -> dict[str, Any]:
-    """One field, described. Label, unit and range come from the description."""
+def _field(reference: str | dict, known: dict[str, desc.Description]) -> dict[str, Any]:
+    """One field, described. Label, unit and range come from the description.
+
+    A value produced by a query endpoint belongs to no dataset, so it is
+    described inline instead. Everything drawn from a tile names its dataset and
+    is described once, where the stage that writes it says what it means.
+    """
+    if isinstance(reference, dict):
+        return reference
+
     dataset, attribute = _split(reference)
     if dataset not in known:
         raise KeyError(f"{reference}: no description for dataset {dataset!r}")
@@ -65,6 +73,7 @@ def build(presentation: dict, known: dict[str, desc.Description]) -> dict[str, A
             "tile_key": owner.tile_key,
             "shape": owner.shape,
             "title": owner.title,
+            "noun": owner.noun,
         }
 
         sources[source_id] = {
@@ -84,15 +93,16 @@ def build(presentation: dict, known: dict[str, desc.Description]) -> dict[str, A
     layers = []
     for layer in presentation["layers"]:
         value = _field(layer["value"], known)
-        dataset, _ = _split(layer["value"])
+        inline = isinstance(layer["value"], dict)
+        dataset = None if inline else _split(layer["value"])[0]
 
         resolved: dict[str, Any] = {
             "id": layer["id"],
             "title": layer.get("title") or value["label"],
             "description": layer.get("description") or value.get("description", ""),
-            "attribution": known[dataset].title,
+            "attribution": known[dataset].title if dataset else layer.get("attribution", ""),
             "source": layer["source"],
-            "delivery": {"mode": "tiles"},
+            "delivery": layer.get("delivery", {"mode": "tiles"}),
             "value": value,
             "render": layer["render"],
             "popup": [_field(reference, known) for reference in layer.get("popup", [])],
@@ -106,6 +116,11 @@ def build(presentation: dict, known: dict[str, desc.Description]) -> dict[str, A
         # of their own, and the derived rule stops applying.
         if "group" in layer:
             resolved["group"] = layer["group"]
+
+        # A parameter the user supplies by picking a feature. The frontend turns
+        # each one into an action on that geography's popup.
+        if "params" in layer:
+            resolved["params"] = layer["params"]
 
         # A scale with no domain of its own takes the attribute's declared range.
         scale = resolved["render"].get("scale", {})

@@ -42,6 +42,9 @@ class Description:
     # number, so a geography whose published key is a string carries a dense
     # integer alongside it.
     tile_key: str | None
+    # What one feature of this geography is called, for anything addressing a
+    # single one of them. "road segment", not "DC road segments".
+    noun: str
     shape: str | None
     attributes: dict[str, dict]
 
@@ -65,6 +68,7 @@ def load(dataset: str, root: Path = DESCRIPTIONS_DIR) -> Description:
         geography=raw["geography"],
         key=raw.get("key"),
         tile_key=raw.get("tile_key") or raw.get("key"),
+        noun=raw.get("noun") or raw["title"],
         shape=raw.get("shape"),
         attributes=raw["attributes"],
     )

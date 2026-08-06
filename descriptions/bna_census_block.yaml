@@ -8,6 +8,8 @@ description: >
   Computed elsewhere; this pipeline only wraps the export.
 geography: census_block_2020
 key: area_id
+tile_key: tile_id
+noun: census block
 shape: polygon
 crs: EPSG:4326
 
@@ -16,6 +18,12 @@ attributes:
     type: string
     label: Block
     description: 2020 census block GEOID. Published, and stable across a rebuild.
+  tile_id:
+    type: integer
+    label: Tile id
+    description: >
+      Dense integer id, assigned in GEOID order, lifted into the tile's feature
+      id. A tile's feature id must be a number; the GEOID is a string.
   pop20:
     type: integer
     label: Population

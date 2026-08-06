@@ -5,6 +5,7 @@ description: >
   five years back from the run date.
 geography: crash_report
 key: null
+noun: crash
 shape: point
 crs: EPSG:4326
 

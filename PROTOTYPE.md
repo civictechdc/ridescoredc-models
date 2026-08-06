@@ -109,6 +109,48 @@ A presentation that genuinely wants two such layers drawn together — different
 widths, an offset — sets `group:` on the layer, which overrides the derived
 grouping.
 
+## What a click does
+
+A click is one question, so it gets one answer: a single popup, with a section
+per layer under the cursor. Sections are ordered **smallest target first** —
+point, then line, then polygon — so clicking near a road reads as the road, with
+the block it sits on underneath as context. The click is tested against a small
+box rather than a point, because a thin line is hard to hit exactly, and several
+features from one layer collapse to a `+n more here` note.
+
+None of that needs a new manifest field: every geography already declares its
+`shape`.
+
+A click can also **select**, which is a different thing from inspecting.
+Selection is held per *geography*, not per layer, because several layers can
+consume "the block the user picked" and only one block is picked. The selected
+feature is highlighted through feature state, which is why a geography needs a
+numeric key — BNA blocks now carry `tile_id` beside their string GEOID, assigned
+in GEOID order, described as their `tile_key`.
+
+**The available actions come from the manifest.** Any layer declaring a
+selection parameter over a geography offers itself as a button on that
+geography's popup section. Publish such a layer and the button appears; nothing
+in the page knows what the layer is for. The "Pin this census block" button
+exists so selection is visible before any layer consumes one.
+
+## Adding a selection-driven layer
+
+`presentation.yaml` carries a commented `bna_reachable_from` stanza — the
+worked example's reachability layer. Uncommenting it publishes a layer that:
+
+- offers "Reachable from selected block" when a block is clicked,
+- becomes visible when that action is taken,
+- calls `/api/layers/bna_reachable_from?origin=<GEOID>`,
+- applies the returned values as feature state keyed by `tile_id`, so it
+  restyles instantly with no tile refetch.
+
+All of that works today except the endpoint, which does not exist yet. That is
+the only thing standing between the prototype and a working reachability layer,
+and it is prototype v2 along with dynamic weighting. The layer's value comes from
+the endpoint rather than a dataset, so it is described inline; everything drawn
+from a tile is described once, by the stage that writes it.
+
 ## Things worth saying out loud
 
 - **The map will not match production.** Deploying the ported pipeline's output

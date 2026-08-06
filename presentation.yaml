@@ -79,6 +79,39 @@ layers:
       - road_segment.num_lanes
     default_visible: false
 
+  # Selection-driven, and the shape the next layer takes. Uncomment once an
+  # endpoint answers: clicking a block offers "Reachable from selected block",
+  # the layer becomes visible, and the returned values are applied as feature
+  # state keyed by the block's tile_id. No frontend change.
+  #
+  # Its value comes from the endpoint rather than from a dataset, so it is
+  # described inline -- nothing else in this file is, because everything else is
+  # described once by the stage that writes it.
+  #
+  # - id: bna_reachable_from
+  #   source: blocks
+  #   title: Reachable from selected block
+  #   description: Travel time from the block you select, low-stress streets only.
+  #   attribution: BNA block scores
+  #   delivery:
+  #     mode: query
+  #     endpoint: /api/layers/bna_reachable_from
+  #     join_on: tile_id
+  #   params:
+  #     - name: origin
+  #       source: selection
+  #       geography: census_block_2020
+  #       required: true
+  #       prompt: Select a block to see what it reaches
+  #   value: {field: minutes, label: Travel time, type: number, unit: min, range: [0, 45]}
+  #   render:
+  #     template: choropleth
+  #     scale: {type: sequential, scheme: viridis, domain: [45, 0]}
+  #     opacity: 0.75
+  #     null_value: {label: not reachable, color: "rgba(0,0,0,0)"}
+  #   popup: [bna_census_block.area_id]
+  #   default_visible: false
+
   - id: crashes
     source: crashes
     value: crashes.fatal_bicyclist

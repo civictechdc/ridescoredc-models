@@ -8,6 +8,7 @@ description: >
 geography: road_segment
 key: segment_id
 tile_key: tile_id
+noun: road segment
 shape: line
 crs: EPSG:4326
 

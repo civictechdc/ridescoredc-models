@@ -23,6 +23,7 @@ SOURCE_FILE = "neighborhood_census_blocks.geojson"
 # the four published scores plus what a popup needs to say which block it is.
 COLUMNS = (
     "area_id",
+    "tile_id",
     "pop20",
     "overall_score",
     "opportunity_score",
@@ -45,6 +46,12 @@ def build(export_dir: Path) -> gpd.GeoDataFrame:
     # `geoid20` is the 2020 census block GEOID -- published, stable across a
     # rebuild, and the reason this geography has no identity problem.
     blocks = blocks.rename(columns={"geoid20": "area_id"})
+
+    # A tile's feature id must be a number, and the GEOID is a string. Selecting
+    # a block, or attaching values fetched per selection, needs the numeric one,
+    # so the stage that publishes the geography publishes it.
+    blocks = blocks.sort_values("area_id").reset_index(drop=True)
+    blocks["tile_id"] = blocks.index + 1
 
     return blocks[list(COLUMNS)].to_crs("EPSG:4326")
 
