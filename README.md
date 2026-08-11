@@ -1,22 +1,124 @@
-# Interactive DC Bike Safety Map
+# RideScore DC — models
 
-This project creates a preliminary interactive bike safety map for the streets of Washington DC. You can explore it [here](http://161.35.142.176/). It does the following:
-* pulls [road](https://opendata.dc.gov/datasets/DCGIS::roadway-block/about) and [crash](https://opendata.dc.gov/datasets/crashes-in-dc/about) data from the Open Data DC portal.
-* process them and create bike safety factors and a default ridescore
-* setups of the database and map tiling backend
-* Displays a map with: the default safety score, the ability for the user to re-weigh factors to create their own safety score, overhead imagery toggle, 5 years of bike accident history toggle, and the ability to click on a road segment to see it's attributes.
+This repository holds the **data processing and safety scoring** behind the
+interactive DC bike safety map. It pulls
+[road](https://opendata.dc.gov/datasets/DCGIS::roadway-block/about) and
+[crash](https://opendata.dc.gov/datasets/crashes-in-dc/about) data from the Open
+Data DC portal, turns them into safety factors and a RideScore, and loads the
+result into the PostGIS database the map serves from. You can explore the map
+[here](http://161.35.142.176/).
 
 ![screenshots of map](docs/combined_screenshots.png)
 
-## Data Processing
+---
 
-The map uses [road](https://opendata.dc.gov/datasets/DCGIS::roadway-block/about) and [crash](https://opendata.dc.gov/datasets/crashes-in-dc/about) data from the Open Data DC portal. The road data are simplified and cleaned up (see jupyter notebook for details). For the crash data, we only use crashes that resulted in a bicyclist fatality or injury from the last 5 years.
+## Three ways to work here
 
-## Safety score and interactive factors
+Contributions come in three levels, each demanding more than the last. **Start
+at level 1.** You do not need to reach level 3 for your work to matter — most
+good ideas are proven and discussed long before anything touches production.
 
-The LTS and ridescore build on 01_lts_osm_elia_v2.ipynb.
+| | You are doing | You need | Guide |
+|---|---|---|---|
+| **1** | Modelling in notebooks | Python | [getting-started-as-a-modeler.md](docs/getting-started-as-a-modeler.md) |
+| **2** | Showing it on a map | Docker | [demonstrating-your-model.md](docs/demonstrating-your-model.md) |
+| **3** | Running it as a pipeline | Kestra, group approval | [ongoing-data-pipeline.md](docs/ongoing-data-pipeline.md) |
 
-We use our own, modified level of traffic stress (LTS) calculator.
+---
+
+### Level 1 — Model the data in a notebook
+
+**For beginners, especially anyone in a data science role.** This is where the
+actual thinking happens. Everything is tables and dataframes — no maps, no
+database, no containers. You are working out the key computations of a safety
+model and showing they hold up.
+
+Start here:
+
+1. Read **[docs/getting-started-as-a-modeler.md](docs/getting-started-as-a-modeler.md)**.
+2. Look through **[`notebooks/`](notebooks/)** — that folder is for you. Every
+   model in the project lives there, one folder each.
+3. **Say hello on the `#ridescore-dc` channel in the CivicTechDC Slack.**
+   Ideally before you start, so you hear about related work and nobody
+   duplicates your effort — but at the very least when you open your proposal.
+4. Start from **[`notebooks/model-template.ipynb`](notebooks/model-template.ipynb)**,
+   or copy a similar existing model and work from that.
+
+Then open a pull request into this repository adding **a new folder under
+`notebooks/` with your model inside it.** Give the folder a good, descriptive
+name — it is how people will refer to your model from then on.
+
+All work goes on a feature branch, never straight onto `develop`:
+
+```bash
+git checkout -b feature/new-model-name-here
+```
+
+---
+
+### Level 2 — Show it on a map
+
+Once a model computes something interesting, the next question is always *what
+does it look like?* Level 2 answers that end to end on your own machine, and
+demonstrates how the model **would** behave on the staging server if the group
+adopts it.
+
+1. Get the full stack running locally with Docker by following the developer
+   spinup guide in the
+   **[ridescoredc-website](https://github.com/civictechdc/ridescoredc-website)**
+   repository — that repo owns the containers, so follow its guide rather than
+   any copy of it.
+2. Load your model's output into that local Postgres database.
+3. Modify the frontend `index.html` to render *your* scores instead of the
+   published ones.
+
+You will end up changing both the database and the frontend, which is the
+point: it shows the whole path a proposal would have to travel.
+
+Details and the exact steps are in
+**[docs/demonstrating-your-model.md](docs/demonstrating-your-model.md)**.
+
+---
+
+### Level 3 — Make it an ongoing data pipeline
+
+**Only after the group has approved a model.** If a model has traction and is
+going to be maintained rather than demonstrated once, it needs to run on a
+schedule, from version-controlled definitions, into the production database.
+That is what [`kestra/`](kestra/) is for.
+
+Start with **[docs/ongoing-data-pipeline.md](docs/ongoing-data-pipeline.md)**.
+
+---
+
+## Repository layout
+
+```
+notebooks/              level 1 — one folder per model, plus the template
+  BaseData/               the shared road network every model starts from
+  LTS/ RideScore/ BNA/ Bikeability/
+tools/ridescore-cli/    the one implementation: `ridescore` CLI + library
+kestra/                 level 3 — flow definitions, authoritative for the pipeline
+schema/                 database schema, migrations, and the tile function
+docs/                   the three guides above
+```
+
+The single most important rule: **`tools/ridescore-cli/` is the only
+implementation of the published model.** Notebooks, your laptop, and Kestra are
+three different *runners* over that one package. A model that exists only in a
+notebook will drift from what the map serves.
+
+---
+
+## The safety score
+
+The road data are simplified and cleaned up (see the notebooks for details). For
+crashes, we use only those that resulted in a bicyclist fatality or injury in the
+last five years.
+
+### Level of traffic stress
+
+We use our own modified LTS calculator, 1 (calm) to 4 (hostile):
 
 <table>
   <tbody>
@@ -68,70 +170,30 @@ We use our own, modified level of traffic stress (LTS) calculator.
   </tbody>
 </table>
 
-We then use it to create our own road safety score (the default on the website). It has 3 components:
+> **Known discrepancy.** This table documents the no-facility local-street rule
+> as ≤ 25 mph; the implemented rule is ≤ 20 mph. The code is the current
+> behaviour — see `LTS_NO_FACILITY_SPEED_2` in
+> [config.py](tools/ridescore-cli/src/ridescore/config.py) for why it has not
+> been silently "fixed".
 
-1) LTS levels are translated into the score using the following dictionary: {1:100, 2:75, 3:40, 4:10, none = 10}
-2) Type of bike lane is translated into a score using the following: {"protected_track":10, "buffered_lane":5, "painted_lane":3, "none":0}
-3) In short, the number of crashes is normalized to 100 \* (1- num_crash/95th_percentile of crashes).
+### RideScore v1
 
-They are then combined with the weighted sum: LTS\*0.6 + Crash\*0.3 + bike_lane\*0.1.
+The published score has three components:
 
-The users can also create their own weighing the following factors:
-* Speed limit
-* Number of lanes
-* Bike lane type
-* Road type
-* Road width
-* Pavement condition
+1. **LTS**, mapped `{1: 100, 2: 75, 3: 40, 4: 10, missing: 10}`
+2. **Bike lane type**, mapped `{protected_track: 10, buffered_lane: 5, painted_lane: 3, none: 0}`
+3. **Crashes**, normalised as `100 × (1 − crashes / 95th percentile of crashes)`
 
-See data_processing jupyter notebook for more details on translation from raw factors to 0-100 score. They are then combined with the following postgres function:
+Combined as `LTS×0.6 + Crash×0.3 + bike_lane×0.1`.
 
-``` SQL
-CREATE OR REPLACE FUNCTION update_score(z integer, x integer, y integer, query_params json)
-RETURNS bytea AS $$
-DECLARE
-  mvt bytea;
-  bounds geometry;
-BEGIN
-  -- Tile bounds in 3857
-  bounds := ST_TileEnvelope(z, x, y);
+Users of the map can also build their own score by re-weighting speed limit,
+number of lanes, bike lane type, road type, road width, and pavement condition.
+Those weights are applied at tile-render time by the `update_score` PostGIS
+function, which lives in [`schema/`](schema/).
 
-  SELECT INTO mvt
-  ST_AsMVT(tile, 'update_score', 4096, 'geom')
-  FROM (
-    SELECT
-      ST_AsMVTGeom(
-        ST_Transform(wkb_geometry, 3857),
-        bounds,
-        4096,
-        64,
-        true
-      ) AS geom,
-      (ridescore_v1*(query_params->>'i_ridescore')::int + speedlimit_score*(query_params->>'i_speedlimit')::int +
-num_lanes_score*(query_params->>'i_numlanes')::int+ facility_score*(query_params->>'i_facility')::int+ function_score*(query_params->>'i_function')::int+ road_width_score*(query_params->>'i_roadwidth')::int+ pavement_condition_score*(query_params->>'i_pavement')::int) / ((query_params->>'i_ridescore')::int + (query_params->>'i_speedlimit')::int+ (query_params->>'i_numlanes')::int+ (query_params->>'i_facility')::int+ (query_params->>'i_function')::int+ (query_params->>'i_roadwidth')::int+ (query_params->>'i_pavement')::int) AS user_score,
-	route_name,
-	bike_facility_type,
-	function,
-	lts_level,
-	num_lanes_raw,
-	parking_presence,
-	pavement_condition,
-	ridescore_v1,
-	road_width,
-	speed_limit_raw	
-    FROM ridescoredc
-    WHERE wkb_geometry &&
-          ST_Transform(bounds, 4326)
-  ) AS tile
-  WHERE geom IS NOT NULL;
+---
 
-  RETURN mvt;
-END
-$$ LANGUAGE plpgsql STABLE STRICT PARALLEL SAFE;
-
-```
 ## Related repos
 
 - [ridescoredc](https://github.com/civictechdc/ridescoredc) — parent repo and project overview
-- [ridescoredc-website](https://github.com/civictechdc/ridescoredc-website) — serves the interactive map and survey tool from the data and PostGIS database this pipeline produces; see that repo for frontend and API setup instructions.
-
+- [ridescoredc-website](https://github.com/civictechdc/ridescoredc-website) — serves the interactive map and survey tool from the database this pipeline produces

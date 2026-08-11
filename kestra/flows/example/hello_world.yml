@@ -1,0 +1,21 @@
+id: hello_world
+namespace: prod.example
+
+description: |
+  Proves the loop works end to end: a change on `main`, through the webhook,
+  through sync_git_flows, into a flow you can execute.
+
+  Edit the message below, push to `main`, and watch it change here. If it does
+  not, the problem is the sync, not your pipeline flow -- which is exactly what
+  this flow is for.
+
+labels:
+  pipeline: infrastructure
+  stage: example
+
+tasks:
+  - id: greet
+    type: io.kestra.plugin.core.log.Log
+    message: |
+      RideScore DC — flows are syncing from git.
+      revision {{ flow.revision }}, executed {{ execution.startDate }}

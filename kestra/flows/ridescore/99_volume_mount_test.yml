@@ -1,0 +1,58 @@
+id: volume_mount_test
+namespace: prod.ridescore
+
+description: |
+  Run this FIRST, before any pipeline flow. It proves the Tier 2 host mount
+  actually works, in two executions:
+
+    1. mode=write  — creates a marker under /data/raw
+    2. mode=read   — reads that marker back in a NEW execution
+
+  Two executions is the whole point. One execution proves only that a container
+  can write to its own filesystem; the second proves the data outlived the
+  execution, which is the property the dated snapshot cache depends on.
+
+  If write succeeds and read fails, the mount is missing in one of the three
+  places it has to exist — see kestra/README.md, "The three-layer mount".
+
+labels:
+  pipeline: ridescore
+  stage: diagnostic
+
+inputs:
+  - id: mode
+    type: SELECT
+    values: [write, read]
+    defaults: write
+
+  - id: cache_path
+    type: STRING
+    defaults: /data/raw
+
+tasks:
+  - id: probe
+    type: io.kestra.plugin.scripts.shell.Commands
+    containerImage: alpine:3.20
+    taskRunner:
+      type: io.kestra.plugin.scripts.runner.docker.Docker
+      volumes:
+        - /var/lib/kestra/ridescore/raw:/data/raw:rw
+    commands:
+      - |
+        MARKER="{{ inputs.cache_path }}/.kestra_volume_test"
+        if [ "{{ inputs.mode }}" = "write" ]; then
+          echo "written by execution {{ execution.id }}" > "$MARKER"
+          echo "OK wrote $MARKER"
+          cat "$MARKER"
+        else
+          if [ ! -f "$MARKER" ]; then
+            echo "FAIL: $MARKER is missing."
+            echo "The mount did not persist. Check all three layers:"
+            echo "  1. the bind on the kestra service in docker-compose.yml"
+            echo "  2. volume-enabled: true for the Docker task runner"
+            echo "  3. taskRunner.volumes on THIS task"
+            exit 1
+          fi
+          echo "OK read back across executions:"
+          cat "$MARKER"
+        fi

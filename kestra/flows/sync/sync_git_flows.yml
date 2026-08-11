@@ -1,0 +1,42 @@
+id: sync_git_flows
+namespace: prod.sync
+
+description: |
+  Makes git the definition of every prod.* flow.
+
+  This is the one flow you deploy by hand. Everything under kestra/flows/ in
+  the repository is pushed into Kestra by this flow, so once it exists, no
+  other flow is ever edited in the UI as the last word -- the UI is a draft,
+  `main` is the truth, and this flow is what makes that true.
+
+  Conflict rule: whichever lands last wins. If you edit a flow through the API
+  or the UI and do not push it to `main`, the next run of this flow REVERTS
+  your edit.
+
+labels:
+  pipeline: infrastructure
+  stage: sync
+
+tasks:
+  - id: sync
+    type: io.kestra.plugin.git.SyncFlows
+    url: https://github.com/civictechdc/ridescoredc-models
+    # `main` is production. The repository follows Gitflow, so `develop` is
+    # staging -- see kestra/README.md for the dev.* variant of this flow.
+    branch: main
+    gitDirectory: kestra/flows
+    targetNamespace: prod
+    # Maps folders to child namespaces: flows/ridescore/ -> prod.ridescore,
+    # flows/example/ -> prod.example, flows/sync/ -> prod.sync.
+    includeChildNamespaces: true
+    # One malformed file should not stop every other flow from updating. Broken
+    # YAML is caught in CI on the pull request, not here.
+    ignoreInvalidFlows: true
+    dryRun: false
+
+triggers:
+  # Fired by a GitHub webhook on push to main. This uses the key in the URL
+  # path, NOT the UI login -- the two are separate. See kestra/README.md.
+  - id: on_push_to_main
+    type: io.kestra.plugin.core.trigger.Webhook
+    key: "{{ secret('WEBHOOK_KEY') }}"

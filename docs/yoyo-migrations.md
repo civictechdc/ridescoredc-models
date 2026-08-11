@@ -6,14 +6,21 @@ model tables' baseline data, and tile functions — with
 quick reference for running migrations against a database you control (such as
 your local dev database).
 
+> **Expected to retire.** As the Kestra pipeline takes over
+> ([level 3](ongoing-data-pipeline.md)), loading *rows* becomes the pipeline's
+> job and this tool's remaining responsibility is DDL. What has to survive the
+> transition is not yoyo but the properties it provides — an ordered, reviewed,
+> exactly-once record of schema changes, and a CI gate that applies them to a
+> throwaway database first. See [`../schema/README.md`](../schema/README.md).
+
 ## Where migrations live
 
 ```
-ridescoredc-models/live/
+ridescoredc-models/schema/
   migrations/          # ordered, ledgered migrations yoyo runs
-    0001_baseline.py     # loads schema/0001_baseline.sql (the baseline pg_dump)
+    0001_baseline.py     # loads sql/0001_baseline.sql (the baseline pg_dump)
     post-apply.py        # re-applies functions/*.sql after every run (repeatable)
-  schema/              # SQL the migrations read (e.g. the baseline dump)
+  sql/                 # SQL the migrations read (e.g. the baseline dump)
   functions/           # CREATE OR REPLACE tile functions (repeatable objects)
   requirements.txt
 ```
@@ -25,7 +32,7 @@ re-running is safe.
 ## Running it
 
 ```bash
-cd ridescoredc-models/live
+cd ridescoredc-models/schema
 pip install -r requirements.txt
 
 # yoyo selects its Postgres driver from the URL *scheme*: it uses psycopg 3 via

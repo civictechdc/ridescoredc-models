@@ -1,0 +1,74 @@
+id: load_database
+namespace: prod.ridescore
+
+description: |
+  Phase C — load the built artifacts into the warehouse.
+
+  Ownership boundary, and the reason this flow is small:
+
+    schema/  owns DDL   — tables, columns, indexes, the update_score tile
+                          function. Ordered, reviewed, applied deliberately.
+    kestra/  owns DML   — the rows of ridescoredc and crashes_dc.
+
+  So this flow REPLACES ROWS. It does not create, alter or drop tables, and it
+  must never touch the survey tables: those hold live user submissions written
+  by ridescoredc-website, and nothing in this pipeline produces them.
+
+  `dry_run` defaults to true. A flow that writes to production on its first
+  execution is a flow nobody can safely test.
+
+labels:
+  pipeline: ridescore
+  stage: load
+
+inputs:
+  - id: git_branch
+    type: STRING
+    defaults: main
+
+  - id: out_path
+    type: STRING
+    defaults: /data/out
+    description: The artifacts built by build_scores.
+
+  - id: dry_run
+    type: BOOLEAN
+    defaults: true
+    description: |
+      True reports what would change and writes nothing. Set false only once
+      the summary from build_scores looks right.
+
+tasks:
+  - id: workspace
+    type: io.kestra.plugin.core.flow.WorkingDirectory
+    tasks:
+      - id: clone
+        type: io.kestra.plugin.git.Clone
+        url: https://github.com/civictechdc/ridescoredc-models
+        branch: "{{ inputs.git_branch }}"
+        directory: repo
+
+      - id: load
+        type: io.kestra.plugin.scripts.python.Commands
+        containerImage: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+        taskRunner:
+          type: io.kestra.plugin.scripts.runner.docker.Docker
+          volumes:
+            - /var/lib/kestra/ridescore/out:/data/out:ro
+        timeout: PT1H
+        env:
+          # Secrets, never inline values. Add them with the encoding recipe in
+          # kestra/README.md; the names are listed in secrets.example.env.
+          PGHOST: "{{ secret('PG_HOST') }}"
+          PGPORT: "{{ secret('PG_PORT') }}"
+          PGDATABASE: "{{ secret('PG_DATABASE') }}"
+          PGUSER: "{{ secret('PG_USER') }}"
+          PGPASSWORD: "{{ secret('PG_PASSWORD') }}"
+        commands:
+          - cd repo
+          # A folded scalar, because the ternary below contains ": " and YAML
+          # would otherwise read this line as a mapping.
+          - >-
+            uv run --frozen --extra db ridescore load
+            --out "{{ inputs.out_path }}"
+            {{ inputs.dry_run ? '--dry-run' : '--no-dry-run' }}

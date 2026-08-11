@@ -1,0 +1,74 @@
+id: refresh_all
+namespace: prod.ridescore
+
+description: |
+  The whole pipeline: fetch, build, load. Each phase is its own flow, so a
+  failure at load is re-run on its own without repeating the download.
+
+  The schedule below is DISABLED. Turn it on once the pipeline has run
+  end to end by hand and the segment counts look right — a schedule that fires
+  into production before anything has been validated writes bad data on a timer
+  and does it while nobody is watching.
+
+labels:
+  pipeline: ridescore
+  stage: orchestrate
+
+inputs:
+  - id: git_branch
+    type: STRING
+    defaults: main
+
+  - id: area
+    type: STRING
+    required: false
+
+  - id: dry_run
+    type: BOOLEAN
+    defaults: true
+
+variables:
+  # Resolved once here and passed down, so all three phases build, score and
+  # load the SAME snapshot even if the execution spans midnight.
+  run_date: "{{ execution.startDate | date('yyyy-MM-dd') }}"
+
+tasks:
+  - id: fetch
+    type: io.kestra.plugin.core.flow.Subflow
+    namespace: prod.ridescore
+    flowId: fetch_sources
+    wait: true
+    transmitFailed: true
+    inputs:
+      git_branch: "{{ inputs.git_branch }}"
+      run_date: "{{ vars.run_date }}"
+
+  - id: build
+    type: io.kestra.plugin.core.flow.Subflow
+    namespace: prod.ridescore
+    flowId: build_scores
+    wait: true
+    transmitFailed: true
+    inputs:
+      git_branch: "{{ inputs.git_branch }}"
+      run_date: "{{ vars.run_date }}"
+      area: "{{ inputs.area }}"
+
+  - id: load
+    type: io.kestra.plugin.core.flow.Subflow
+    namespace: prod.ridescore
+    flowId: load_database
+    wait: true
+    transmitFailed: true
+    inputs:
+      git_branch: "{{ inputs.git_branch }}"
+      dry_run: "{{ inputs.dry_run }}"
+
+triggers:
+  - id: monthly
+    type: io.kestra.plugin.core.trigger.Schedule
+    # 06:00 on the first of the month. Crash data updates continuously, road
+    # attributes rarely; monthly keeps the five-year window moving without
+    # rewriting the map every night.
+    cron: "0 6 1 * *"
+    disabled: true

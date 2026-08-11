@@ -1,0 +1,47 @@
+# The distribution is named `ridescore` and imports as `ridescore`, while the
+# folder is named ridescore-cli. That is deliberate -- see README.md.
+
+[project]
+name = "ridescore"
+version = "0.1.0"
+description = "RideScore DC — the bike safety scoring pipeline"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+
+dependencies = [
+    "geopandas>=1.0",
+    "shapely>=2.0",
+    "pyarrow>=17.0",
+    "pandas>=2.2",
+    "requests>=2.32",
+    "typer>=0.12",
+]
+
+[project.scripts]
+ridescore = "ridescore.cli:app"
+
+[project.optional-dependencies]
+# Only what the tool itself needs to write to Postgres. Applying schema is
+# schema/'s job, so yoyo is declared in schema/requirements.txt, not here.
+db = ["psycopg[binary]>=3.2"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ridescore"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# tests/ mirrors src/, so two modules will eventually share a basename in
+# different folders. importlib import mode makes that work without scattering
+# __init__.py files through the test tree.
+addopts = "--strict-markers --import-mode=importlib"
+markers = [
+    "slow: end-to-end over the committed extract",
+    # No test may reach the network. conftest.py enforces this rather than
+    # trusting it; a test that genuinely needs egress declares itself here.
+    "network: needs the network, and says why in its docstring",
+]

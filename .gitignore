@@ -1,7 +1,8 @@
-# Local yoyo config — copy live/yoyo.ini.example to live/yoyo.ini and customize.
-# Kept out of git so local/manual settings (e.g. batch_mode, a database line)
-# never get committed.
-live/yoyo.ini
+# Local yoyo config — copy schema/yoyo.ini.example to schema/yoyo.ini and
+# customize. Kept out of git so local/manual settings (e.g. batch_mode, a
+# database line) never get committed.
+schema/yoyo.ini
+
 __pycache__/
 
 # Python / uv
@@ -10,7 +11,23 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 
+docs-for-ai/
+
 # Pipeline working directories -- dated source snapshots and build artifacts.
 # Never committed: the cache is per-machine, and outputs belong in a package.
-raw/
-out/
+# Globbed, not root-anchored: the CLI resolves these relative to the working
+# directory, so they appear wherever it is run from -- a notebook folder, the
+# repository root, a Kestra working directory.
+**/raw/
+**/out/
+
+# Personal working files inside a model folder. Anything you want reviewed
+# belongs in the folder itself, not in scratch/.
+**/scratch/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model runs: <root>/<model>/{data,outputs}/<date>/. Machine-local, and the
+# fetched sources are large. Never committed.
+runs/

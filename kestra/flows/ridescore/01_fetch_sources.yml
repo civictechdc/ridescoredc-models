@@ -1,0 +1,79 @@
+id: fetch_sources
+namespace: prod.ridescore
+
+description: |
+  Phase A — download the public sources into the dated snapshot cache, and stop.
+
+  Roadway blocks, bicyclist-injury crashes and the DC boundary land in
+  `<cache>/<run_date>/`. Nothing is scored here, and no database is touched.
+
+  Kept separate from the build because building is the part you re-run: a
+  scoring change should be judged against yesterday's inputs, not against a
+  fresh download that changed underneath you.
+
+  The cache MUST be a Tier 2 host mount, not the working directory. See
+  kestra/README.md — a WorkingDirectory is reclaimed when the execution ends,
+  so a snapshot written there is gone before you can compare anything to it.
+
+labels:
+  pipeline: ridescore
+  stage: fetch
+
+inputs:
+  - id: git_branch
+    type: STRING
+    defaults: main
+    description: Which branch to run the pipeline code from.
+
+  - id: run_date
+    type: STRING
+    required: false
+    description: |
+      YYYY-MM-DD. Names the snapshot and bounds the five-year crash window.
+      Left empty, the execution's own start date is used.
+
+  - id: cache_path
+    type: STRING
+    defaults: /data/raw
+    description: Tier 2 host mount. Snapshots here survive the execution.
+
+variables:
+  # Resolved once, here, so every task agrees on the date and nothing re-reads
+  # the clock mid-run. The pipeline treats the run date as an input, never as
+  # "now" -- otherwise a run spanning midnight fetches two different windows.
+  run_date: "{{ inputs.run_date ?? (execution.startDate | date('yyyy-MM-dd')) }}"
+
+tasks:
+  - id: workspace
+    type: io.kestra.plugin.core.flow.WorkingDirectory
+    description: |
+      Clone and script share one filesystem. Without this wrapper they run in
+      separate containers and the script cannot see the clone.
+    tasks:
+      - id: clone
+        type: io.kestra.plugin.git.Clone
+        url: https://github.com/civictechdc/ridescoredc-models
+        branch: "{{ inputs.git_branch }}"
+        directory: repo
+
+      - id: fetch
+        type: io.kestra.plugin.scripts.python.Commands
+        # uv is pre-baked into this image, so there is no pip install per run.
+        containerImage: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+        taskRunner:
+          type: io.kestra.plugin.scripts.runner.docker.Docker
+          # Mounting on the Kestra service is NOT enough. Script tasks run in
+          # sibling containers, so each one repeats the bind. See README §Tiers.
+          volumes:
+            - /var/lib/kestra/ridescore/raw:/data/raw:rw
+        timeout: PT1H
+        retry:
+          type: constant
+          maxAttempt: 3
+          interval: PT2M
+        commands:
+          - cd repo
+          - >-
+            uv run --frozen ridescore fetch
+            --cache "{{ inputs.cache_path }}"
+            --run-date "{{ vars.run_date }}"

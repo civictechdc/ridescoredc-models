@@ -1,0 +1,87 @@
+id: build_scores
+namespace: prod.ridescore
+
+description: |
+  Phase B — normalise the snapshot, score it, write the artifacts.
+
+  Reads `<cache>/<run_date>/`, writes `<out>/`. Touches no network and no
+  database, so it is safe to re-run as often as you like: this is the task you
+  iterate on when a weight or a threshold changes.
+
+  Pass `area` to score a few hundred segments instead of all of DC. Most
+  scoring changes can be judged on a neighbourhood in seconds rather than on
+  the whole city in minutes.
+
+labels:
+  pipeline: ridescore
+  stage: build
+
+inputs:
+  - id: git_branch
+    type: STRING
+    defaults: main
+
+  - id: run_date
+    type: STRING
+    required: false
+    description: Which snapshot to build from. Empty means the execution's date.
+
+  - id: area
+    type: STRING
+    required: false
+    description: A bounding box or neighbourhood name. Empty scores all of DC.
+
+  - id: cache_path
+    type: STRING
+    defaults: /data/raw
+
+  - id: out_path
+    type: STRING
+    defaults: /data/out
+
+variables:
+  run_date: "{{ inputs.run_date ?? (execution.startDate | date('yyyy-MM-dd')) }}"
+  area_arg: "{{ inputs.area ? '--area ' ~ inputs.area : '' }}"
+
+tasks:
+  - id: workspace
+    type: io.kestra.plugin.core.flow.WorkingDirectory
+    tasks:
+      - id: clone
+        type: io.kestra.plugin.git.Clone
+        url: https://github.com/civictechdc/ridescoredc-models
+        branch: "{{ inputs.git_branch }}"
+        directory: repo
+
+      - id: build
+        type: io.kestra.plugin.scripts.python.Commands
+        containerImage: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+        taskRunner:
+          type: io.kestra.plugin.scripts.runner.docker.Docker
+          volumes:
+            - /var/lib/kestra/ridescore/raw:/data/raw:ro
+            - /var/lib/kestra/ridescore/out:/data/out:rw
+        timeout: PT2H
+        commands:
+          - cd repo
+          - >-
+            uv run --frozen ridescore build
+            --cache "{{ inputs.cache_path }}"
+            --out "{{ inputs.out_path }}"
+            --run-date "{{ vars.run_date }}"
+            {{ vars.area_arg }}
+
+      - id: summarise
+        type: io.kestra.plugin.scripts.python.Commands
+        description: |
+          What the run produced, in the execution log. A build that succeeds but
+          halves the segment count is a failure you want to see in the Gantt,
+          not one you discover on the map a week later.
+        containerImage: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+        taskRunner:
+          type: io.kestra.plugin.scripts.runner.docker.Docker
+          volumes:
+            - /var/lib/kestra/ridescore/out:/data/out:ro
+        commands:
+          - cd repo
+          - uv run --frozen ridescore inspect --out "{{ inputs.out_path }}"
