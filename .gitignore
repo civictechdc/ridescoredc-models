@@ -17,3 +17,5 @@ __pycache__/
 # `raw/` matches only a directory, which is how both got committed once.
 /raw
 /out
+
+docs-for-ai/
