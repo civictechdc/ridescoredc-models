@@ -1,0 +1,63 @@
+# A second geography, and a second producer. Nothing in the manifest, the
+# loader or the frontend treats it as a special case.
+dataset: bna_census_block
+title: BNA block scores
+description: >
+  PeopleForBikes' Bicycle Network Analysis, as exported for DC. Scores each
+  2020 census block on what it can reach without using high-stress streets.
+  Computed elsewhere; this pipeline only wraps the export.
+geography: census_block_2020
+key: area_id
+tile_key: tile_id
+noun: census block
+shape: polygon
+crs: EPSG:4326
+
+attributes:
+  area_id:
+    type: string
+    label: Block
+    description: 2020 census block GEOID. Published, and stable across a rebuild.
+  tile_id:
+    type: integer
+    label: Tile id
+    description: >
+      Dense integer id, assigned in GEOID order, lifted into the tile's feature
+      id. A tile's feature id must be a number; the GEOID is a string.
+  pop20:
+    type: integer
+    label: Population
+    description: Residents recorded in the 2020 census.
+  overall_score:
+    type: number
+    label: BNA score
+    range: [0, 100]
+    description: The published overall BNA score for the block.
+  opportunity_score:
+    type: number
+    label: Opportunity
+    range: [0, 1]
+    description: Reach to jobs, schools and higher education.
+  core_services_score:
+    type: number
+    label: Core services
+    range: [0, 1]
+    description: Reach to doctors, dentists, hospitals, pharmacies and groceries.
+  recreation_score:
+    type: number
+    label: Recreation
+    range: [0, 1]
+    description: Reach to parks, trails and community centres.
+  retail_score:
+    type: number
+    label: Retail
+    range: [0, 1]
+    description: Reach to shops.
+  transit_score:
+    type: number
+    label: Transit
+    range: [0, 1]
+    description: Reach to public transport stops.
+  geometry:
+    type: geometry
+    description: The block's boundary.

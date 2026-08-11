@@ -1,0 +1,84 @@
+# A narrow score table joined to road_segment on its key -- the arrangement the
+# manifest describes rather than invents: one geometry table, several score
+# tables over it.
+dataset: ridescore_v1_scores
+title: RideScore v1
+description: >
+  How comfortable each street is to cycle on, blending traffic stress, crash
+  history and bike facilities. Scores run 0-100, higher is better.
+geography: road_segment
+key: segment_id
+shape: null
+crs: null
+
+attributes:
+  segment_id:
+    type: string
+    label: Segment
+    description: Joins to road_segment.
+  lts_level:
+    type: integer
+    label: Traffic stress
+    range: [1, 4]
+    description: >
+      Level of Traffic Stress. 1 is comfortable for most people, 4 is
+      tolerable only to confident riders.
+  lts_score:
+    type: number
+    label: Traffic stress score
+    range: [0, 100]
+    description: The stress level rescaled so that higher is better.
+  s_lts:
+    type: number
+    label: Stress component
+    range: [0, 100]
+    description: The stress term as it enters the blend.
+  s_crash:
+    type: number
+    label: Crash component
+    range: [0, 100]
+    description: >
+      Crash history, normalised against this run's own data. Not comparable
+      between runs.
+  s_facility:
+    type: number
+    label: Facility component
+    range: [0, 100]
+    description: Credit for a lane, a path, or a protected facility.
+  speedlimit_score:
+    type: number
+    label: Speed
+    range: [0, 100]
+    description: Posted speed limit, scored.
+  num_lanes_score:
+    type: number
+    label: Lanes
+    range: [0, 100]
+    description: Lanes of motor traffic to cross or share, scored.
+  facility_score:
+    type: number
+    label: Facility
+    range: [0, 100]
+    description: Bike facility, scored.
+  function_score:
+    type: number
+    label: Road type
+    range: [0, 100]
+    description: Functional class, scored.
+  road_width_score:
+    type: number
+    label: Width
+    range: [0, 100]
+    description: Road width, scored.
+  pavement_condition_score:
+    type: number
+    label: Pavement
+    range: [0, 100]
+    description: Surface condition, scored.
+  ridescore_v1:
+    type: number
+    label: RideScore
+    range: [0, 100]
+    description: >
+      The published blend. A missing component is dropped and the rest
+      renormalised, so a street is scored on what is known about it.

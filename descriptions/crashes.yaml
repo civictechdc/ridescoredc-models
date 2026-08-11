@@ -1,0 +1,55 @@
+dataset: crashes
+title: Reported cyclist crashes
+description: >
+  Crashes involving a cyclist reported to police within the crash window --
+  five years back from the run date.
+geography: crash_report
+key: null
+noun: crash
+shape: point
+crs: EPSG:4326
+
+attributes:
+  report_date:
+    type: datetime
+    label: Date
+    description: When the crash was reported.
+  address:
+    type: string
+    label: Location
+    description: Nearest address as recorded by the reporting officer.
+  major_injuries_bicyclist:
+    type: integer
+    label: Major injuries
+    description: Cyclists seriously injured.
+  minor_injuries_bicyclist:
+    type: integer
+    label: Minor injuries
+    description: Cyclists slightly injured.
+  unknown_injuries_bicyclist:
+    type: integer
+    label: Injuries, severity unknown
+    description: Cyclists injured to an unrecorded degree.
+  fatal_bicyclist:
+    type: integer
+    label: Deaths
+    description: Cyclists killed.
+  total_bicycles:
+    type: integer
+    label: Cyclists involved
+    description: Bicycles recorded in the crash.
+  bicyclists_impaired:
+    type: integer
+    label: Cyclists impaired
+    description: Cyclists recorded as impaired.
+  total_vehicles:
+    type: integer
+    label: Vehicles involved
+    description: Motor vehicles recorded in the crash.
+  total_pedestrians:
+    type: integer
+    label: Pedestrians involved
+    description: Pedestrians recorded in the crash.
+  geometry:
+    type: geometry
+    description: Where the crash was recorded.

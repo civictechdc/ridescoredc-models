@@ -12,7 +12,10 @@ dependencies = [
     "pyarrow>=17.0",
     "pandas>=2.2",
     "requests>=2.32",
+    "python-dateutil>=2.9",
     "typer>=0.12",
+    "pyyaml>=6.0",
+    "psycopg[binary]>=3.2",
 ]
 
 [project.scripts]
@@ -20,6 +23,8 @@ ridescore = "ridescore.cli:app"
 
 [project.optional-dependencies]
 db = ["psycopg[binary]>=3.2", "yoyo-migrations>=9.0"]
+# Only the notebook draws anything; the pipeline itself needs no plotting.
+notebook = ["matplotlib>=3.8", "jupyterlab>=4.0"]
 
 [dependency-groups]
 dev = ["pytest>=8.0", "pytest-cov>=5.0", "ruff>=0.6"]
