@@ -147,14 +147,23 @@ def _road_segment(segments: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
 
 
 def write(built: Built, out: Path) -> dict[str, Path]:
-    """Write one file per dataset. Geoparquet carries its own CRS and extent."""
+    """Write one file per dataset. Geoparquet carries its own CRS and extent.
+
+    Geometry is written as WKB explicitly rather than by relying on geopandas'
+    default, because the loader that reads these files does so with pyarrow and
+    has no geometry library to fall back on.
+    """
     out.mkdir(parents=True, exist_ok=True)
     written = {}
 
-    built.road_segment.to_parquet(out / FILENAMES["road_segment"], index=False)
+    built.road_segment.to_parquet(
+        out / FILENAMES["road_segment"], index=False, geometry_encoding="WKB"
+    )
     written["road_segment"] = out / FILENAMES["road_segment"]
 
-    built.crashes.to_parquet(out / FILENAMES["crashes"], index=False)
+    built.crashes.to_parquet(
+        out / FILENAMES["crashes"], index=False, geometry_encoding="WKB"
+    )
     written["crashes"] = out / FILENAMES["crashes"]
 
     built.ridescore_v1_scores.to_parquet(out / FILENAMES["ridescore_v1_scores"], index=False)
