@@ -1,9 +1,10 @@
 # Ported defects
 
 The port reproduces the notebook, including the parts of it that are wrong. Each
-one is marked `DEFECT` in `config.py` beside the value it concerns, and each has
-a test asserting the defective behaviour — so fixing one shows up as a failing
-test rather than as a score that quietly moved.
+one is marked `DEFECT` in `config.py` beside the value it concerns. Some of them
+also have a test asserting the defective behaviour, so that fixing one shows up
+as a failing test rather than as a score that quietly moved; the rest do not, and
+changing those values breaks no test today.
 
 They are listed here because a reader of the output deserves to know, and
 because each fix is its own change: every one of these moves published numbers
