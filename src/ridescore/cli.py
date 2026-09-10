@@ -107,7 +107,7 @@ def build(
         _fail(str(error))
 
     written = build_stage.write(built, out)
-    run_record.write(run_record.record(built, snapshot, when, root=Path.cwd()), out)
+    run_record.write(run_record.record(built, snapshot, when), out)
 
     typer.secho(f"Wrote {out}", fg=typer.colors.GREEN)
     for dataset, path in written.items():
