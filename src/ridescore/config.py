@@ -221,8 +221,8 @@ PAVEMENT_TO_SCORE = {"Excellent": 100, "Good": 75, "Fair": 50, "Poor": 25, "Very
 PAVEMENT_TO_SCORE_DEFAULT = 50
 
 # DEFECT (fix after the port): unbounded. 100 - 2*speed goes negative above
-# 50 mph; 100 - width goes negative on a wide road, and a *missing* width
-# scores 100 -- the best possible.
+# 50 mph, and 100 - width goes negative on a wide road. A *missing* width
+# produces no score at all, because 100 - NaN is NaN.
 SPEED_LIMIT_SCORE_INTERCEPT = 100
 SPEED_LIMIT_SCORE_SLOPE = 2
 ROAD_WIDTH_SCORE_INTERCEPT = 100

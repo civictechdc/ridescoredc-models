@@ -61,8 +61,8 @@ class TestComponentScores:
         """DEFECT, ported: unbounded on a wide road."""
         assert scores.road_width_to_score(118) == -18
 
-    def test_a_missing_width_scores_best(self):
-        """DEFECT, ported: a street nobody measured scores 100."""
+    def test_a_missing_width_produces_no_score(self):
+        """DEFECT, ported: 100 - NaN is NaN, so a street nobody measured gets no score."""
         assert math.isnan(scores.road_width_to_score(float("nan")))
 
     def test_lanes_are_scored_on_the_raw_count(self):

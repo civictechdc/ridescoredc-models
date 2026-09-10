@@ -90,8 +90,9 @@ def function_to_score(road_function: str) -> int:
 
 
 def road_width_to_score(width: float) -> float:
-    """DEFECT (fix after the port): unbounded, and a *missing* width scores 100
-    -- the best possible. See `config.ROAD_WIDTH_SCORE_INTERCEPT`."""
+    """DEFECT (fix after the port): unbounded, and a *missing* width produces no
+    score at all, because 100 - NaN is NaN. See
+    `config.ROAD_WIDTH_SCORE_INTERCEPT`."""
     return config.ROAD_WIDTH_SCORE_INTERCEPT - width
 
 

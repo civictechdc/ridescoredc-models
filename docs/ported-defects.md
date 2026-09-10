@@ -40,9 +40,17 @@ street. The same street is simultaneously assumed calm and scored hostile.
 **The speed score is unbounded.** `100 - 2 × speed` goes negative above 50 mph.
 `config.SPEED_LIMIT_SCORE_SLOPE`.
 
-**The width score is unbounded, and a missing width scores best of all.**
-`100 - width` goes negative on a wide road, and a street nobody measured comes
-out at 100. `config.ROAD_WIDTH_SCORE_INTERCEPT`.
+**The width score is unbounded, and a missing width produces no score at all.**
+`100 - width` goes negative on a wide road, and `100 - NaN` is `NaN`, so a street
+nobody measured comes out with no score rather than with a good one.
+`config.ROAD_WIDTH_SCORE_INTERCEPT`.
+
+Nothing fills in a missing width: `road_width` is copied straight from
+`TOTALCROSSSECTIONWIDTH`. A missing width score does not change `ridescore_v1`,
+which blends stress, crashes and facility only. A missing width score does null
+that segment's user-adjustable score in the tile function, which has no
+`COALESCE` on the columns it reads. Neither the deployed data nor the test
+fixture contains a segment with a missing width, so nothing shows this today.
 
 ---
 
