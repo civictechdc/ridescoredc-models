@@ -27,10 +27,45 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import tarfile
+import tempfile
+import urllib.request
 from pathlib import Path
 
 import psycopg
 import pyarrow.parquet as pq
+
+
+def resolve(source: str, workdir: Path) -> Path:
+    """A local directory, or an https URL to a .tar.gz that is fetched and unpacked.
+
+    Accepting a URL keeps the distribution channel out of the instructions: a
+    consumer runs one command whether the artifact sits on disk, on a release, or
+    somewhere else later. It also means nobody needs a registry client installed
+    to get a database.
+    """
+    if not source.startswith(("http://", "https://")):
+        return Path(source)
+
+    print(f"fetching {source}")
+    workdir.mkdir(parents=True, exist_ok=True)
+    archive = workdir / "download.tar.gz"
+    with urllib.request.urlopen(source) as response, archive.open("wb") as out:
+        while chunk := response.read(1 << 20):
+            out.write(chunk)
+
+    unpacked = workdir / source.rstrip("/").rsplit("/", 1)[-1].split(".")[0]
+    unpacked.mkdir(parents=True, exist_ok=True)
+    with tarfile.open(archive) as tar:
+        # filter="data" refuses absolute paths, parent traversal and device
+        # files: an archive fetched over the network is not trusted input.
+        tar.extractall(unpacked, filter="data")
+
+    roots = [p for p in unpacked.iterdir() if p.is_dir()]
+    if len(roots) == 1:
+        return roots[0]
+    return unpacked
+
 
 SQL_TYPES = {
     "int8": "smallint", "int16": "smallint", "int32": "integer", "int64": "bigint",
@@ -102,13 +137,17 @@ def load_dataset(conn, dataset: str, path: Path) -> int:
 
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--package", type=Path, required=True)
-    p.add_argument("--bundle", type=Path, required=True)
+    p.add_argument("--package", required=True, help="a directory, or an https URL to a .tar.gz")
+    p.add_argument("--bundle", required=True, help="a directory, or an https URL to a .tar.gz")
     p.add_argument("--database", required=True)
     args = p.parse_args()
 
-    package = json.loads((args.package / "datapackage.json").read_text())
-    bundle = json.loads((args.bundle / "bundle.json").read_text())
+    workdir = tempfile.TemporaryDirectory(prefix="ridescore-load-")
+    package_dir = resolve(args.package, Path(workdir.name) / "package")
+    bundle_dir = resolve(args.bundle, Path(workdir.name) / "bundle")
+
+    package = json.loads((package_dir / "datapackage.json").read_text())
+    bundle = json.loads((bundle_dir / "bundle.json").read_text())
 
     # Proposal 0006 §4.1: a bundle declares which packages it applies to, and
     # apply refuses a pair that does not match rather than half-working.
@@ -132,7 +171,7 @@ def main() -> int:
         print(f"package {package['name']}-{package['version']}")
         stamp = f"{package['name']}@{package['version']}"
         for resource in package["resources"]:
-            rows = load_dataset(conn, resource["name"], args.package / resource["path"])
+            rows = load_dataset(conn, resource["name"], package_dir / resource["path"])
             with conn.cursor() as cur:
                 cur.execute(
                     "INSERT INTO data.load_record VALUES (%s,%s,%s,%s,%s)",
@@ -144,7 +183,7 @@ def main() -> int:
         print(f"bundle {bundle['name']}-{bundle['version']}")
         for name in bundle["serving"]:
             with conn.cursor() as cur:
-                cur.execute((args.bundle / "serving" / name).read_text())
+                cur.execute((bundle_dir / "serving" / name).read_text())
             print(f"  applied {name}")
 
         # Proposal 0005 §4.4: feedback references geometry by value, with no
@@ -163,6 +202,7 @@ def main() -> int:
 
         conn.commit()
 
+    workdir.cleanup()
     print(f"\nThis database now holds {stamp}.")
     return 0
 
