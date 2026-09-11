@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import tarfile
 import tempfile
@@ -36,7 +37,7 @@ import psycopg
 import pyarrow.parquet as pq
 
 
-def resolve(source: str, workdir: Path) -> Path:
+def resolve(source: str, workdir: Path) -> tuple[Path, str | None]:
     """A local directory, or an https URL to a .tar.gz that is fetched and unpacked.
 
     Accepting a URL keeps the distribution channel out of the instructions: a
@@ -45,7 +46,7 @@ def resolve(source: str, workdir: Path) -> Path:
     to get a database.
     """
     if not source.startswith(("http://", "https://")):
-        return Path(source)
+        return Path(source), None
 
     print(f"fetching {source}")
     workdir.mkdir(parents=True, exist_ok=True)
@@ -61,10 +62,14 @@ def resolve(source: str, workdir: Path) -> Path:
         # files: an archive fetched over the network is not trusted input.
         tar.extractall(unpacked, filter="data")
 
+    # The bytes that arrived, recorded against the load. A release asset can be
+    # replaced under the same name, so a version string alone cannot say which
+    # data a database holds. When this moves to a registry the digest goes here
+    # instead, and nothing else changes.
+    digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+
     roots = [p for p in unpacked.iterdir() if p.is_dir()]
-    if len(roots) == 1:
-        return roots[0]
-    return unpacked
+    return (roots[0] if len(roots) == 1 else unpacked), digest
 
 
 SQL_TYPES = {
@@ -143,8 +148,8 @@ def main() -> int:
     args = p.parse_args()
 
     workdir = tempfile.TemporaryDirectory(prefix="ridescore-load-")
-    package_dir = resolve(args.package, Path(workdir.name) / "package")
-    bundle_dir = resolve(args.bundle, Path(workdir.name) / "bundle")
+    package_dir, package_sha = resolve(args.package, Path(workdir.name) / "package")
+    bundle_dir, bundle_sha = resolve(args.bundle, Path(workdir.name) / "bundle")
 
     package = json.loads((package_dir / "datapackage.json").read_text())
     bundle = json.loads((bundle_dir / "bundle.json").read_text())
@@ -163,8 +168,8 @@ def main() -> int:
             cur.execute("CREATE SCHEMA IF NOT EXISTS data")
             cur.execute(
                 "CREATE TABLE IF NOT EXISTS data.load_record ("
-                " dataset text, rows bigint, package text, bundle text,"
-                " loaded_at timestamptz)"
+                " dataset text, rows bigint, package text, package_sha256 text,"
+                " bundle text, bundle_sha256 text, loaded_at timestamptz)"
             )
             cur.execute("TRUNCATE data.load_record")
 
@@ -174,9 +179,10 @@ def main() -> int:
             rows = load_dataset(conn, resource["name"], package_dir / resource["path"])
             with conn.cursor() as cur:
                 cur.execute(
-                    "INSERT INTO data.load_record VALUES (%s,%s,%s,%s,%s)",
-                    (resource["name"], rows, stamp,
-                     f"{bundle['name']}@{bundle['version']}", dt.datetime.now(dt.UTC)),
+                    "INSERT INTO data.load_record VALUES (%s,%s,%s,%s,%s,%s,%s)",
+                    (resource["name"], rows, stamp, package_sha,
+                     f"{bundle['name']}@{bundle['version']}", bundle_sha,
+                     dt.datetime.now(dt.UTC)),
                 )
             print(f"  data.{resource['name']:<24} {rows:>8,} rows")
 
@@ -204,6 +210,8 @@ def main() -> int:
 
     workdir.cleanup()
     print(f"\nThis database now holds {stamp}.")
+    if package_sha:
+        print(f"  package sha256 {package_sha}")
     return 0
 
 
