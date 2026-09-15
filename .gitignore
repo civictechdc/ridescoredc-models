@@ -14,3 +14,6 @@ __pycache__/
 # Never committed: the cache is per-machine, and outputs belong in a package.
 raw/
 out/
+
+# assembled packages and bundles
+dist/
