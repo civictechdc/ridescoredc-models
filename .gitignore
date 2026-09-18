@@ -14,3 +14,7 @@ __pycache__/
 # Never committed: the cache is per-machine, and outputs belong in a package.
 raw/
 out/
+
+# Jupyter notebooks -- local cache and checkpoint clutter, not repo content.
+notebooks/**/cache/
+.ipynb_checkpoints/
