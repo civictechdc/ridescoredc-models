@@ -27,6 +27,20 @@ notebook = ["matplotlib>=3.8", "jupyterlab>=4.0"]
 [dependency-groups]
 dev = ["pytest>=8.0", "pytest-cov>=5.0", "ruff>=0.6"]
 
+
+# dependencies for Jupyter notebooks
+notebooks = [
+    "jupyterlab>=4.2",
+    "ipykernel>=6.29",
+    "osmnx>=2.0",
+    "folium>=0.17",
+    "mapclassify>=2.6",
+    "matplotlib>=3.9",
+    "seaborn>=0.13",
+    "numpy>=1.26",
+    "python-dateutil>=2.9",
+]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
