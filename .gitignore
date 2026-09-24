@@ -18,3 +18,5 @@ out/
 # Jupyter notebooks -- local cache and checkpoint clutter, not repo content.
 notebooks/**/cache/
 .ipynb_checkpoints/
+# assembled packages and bundles
+dist/

@@ -26,6 +26,13 @@ notebook's output before anything moves.
 
 CRS = "EPSG:4326"
 
+# ArcGIS answers 202 with a short JSON body while it generates the file, and
+# only then 200 with the data. The notebook tested `r.ok`, which is true for
+# 202, so it parsed the placeholder as if it were the dataset.
+FETCH_TIMEOUT_S = 120
+FETCH_ATTEMPTS = 8
+FETCH_RETRY_WAIT_S = 5
+
 # ==========================================================================
 # network: sources
 # ==========================================================================
@@ -50,6 +57,10 @@ BOUNDARY_URL = "https://opendata.arcgis.com/datasets/DCGIS::washington-dc-bounda
 DEFAULT_NUM_LANES = 1
 DEFAULT_SPEED_LIMIT = 25
 
+# A lane count of -1 is the source's "unknown". Zero is a real answer and is
+# kept: an alley with no marked travel lane scores 100, which is deliberate.
+NUM_LANES_MIN_VALID = -1
+
 # DEFECT (fix after the port): the test is "> 1", not "> 0", so a recorded
 # speed limit of exactly 1 mph is discarded and replaced by the default.
 SPEED_LIMIT_MIN_VALID = 1
@@ -57,6 +68,17 @@ SPEED_LIMIT_MIN_VALID = 1
 # DEFECT (fix after the port): only the outbound speed limit is read.
 # SPEEDLIMITS_IB is ignored, and the two can differ.
 SPEED_LIMIT_FIELD = "SPEEDLIMITS_OB"
+
+# The key a score hangs off. ROUTEID names a *route* -- Eastern Ave NW is one
+# ROUTEID over 40-odd blocks -- so it cannot key a per-block score. BLOCKKEY is
+# the source's own identifier for the block itself, and is unique across all
+# 13,833 of them. OBJECTID is unique too but is a serial the publisher reassigns,
+# which is the same trap as keying feedback to `ogc_fid`.
+#
+# This is not a claim that a block keeps its BLOCKKEY across DDOT republications.
+# Segment identity across rebuilds is a separate piece of work; this is the best
+# the source offers today and it beats a row number.
+SEGMENT_ID_FIELD = "BLOCKKEY"
 
 FUNCTION_CLASS_NAMES = {
     11: "Interstate",
@@ -83,6 +105,43 @@ BIKELANE_PRESENT_CODES = frozenset({"IB", "OB", "BD"})
 CRASH_YEARS_BACK = 5
 
 CRASH_BUFFER_M = 10
+
+# The crash record's own fields. A crash is "serious" or "fatal" by what it did
+# to a cyclist, not to everyone involved -- the query already restricts to
+# crashes that hurt one.
+CRASH_DATE_FIELD = "REPORTDATE"
+CRASH_TIMEZONE = "America/New_York"
+CRASH_SERIOUS_FIELD = "major_injuries_bicyclist"
+CRASH_FATAL_FIELD = "fatal_bicyclist"
+
+# Carried through to `crashes`. The source has some ninety columns; these are
+# the ones the notebook kept.
+CRASH_KEEP_COLUMNS = (
+    "report_date",
+    "address",
+    "major_injuries_bicyclist",
+    "minor_injuries_bicyclist",
+    "unknown_injuries_bicyclist",
+    "fatal_bicyclist",
+    "total_bicycles",
+    "bicyclists_impaired",
+    "total_vehicles",
+    "total_pedestrians",
+)
+
+# Source field -> the name it is given in `crashes`.
+CRASH_FIELD_NAMES = {
+    "REPORTDATE_": "report_date",
+    "ADDRESS": "address",
+    "MAJORINJURIES_BICYCLIST": "major_injuries_bicyclist",
+    "MINORINJURIES_BICYCLIST": "minor_injuries_bicyclist",
+    "UNKNOWNINJURIES_BICYCLIST": "unknown_injuries_bicyclist",
+    "FATAL_BICYCLIST": "fatal_bicyclist",
+    "TOTAL_BICYCLES": "total_bicycles",
+    "BICYCLISTSIMPAIRED": "bicyclists_impaired",
+    "TOTAL_VEHICLES": "total_vehicles",
+    "TOTAL_PEDESTRIANS": "total_pedestrians",
+}
 
 # DEFECT (fix after the port): the buffer is applied in Web Mercator, where a
 # unit at DC's latitude is about 0.78 of a real metre -- so this is roughly
@@ -162,8 +221,9 @@ PAVEMENT_TO_SCORE = {"Excellent": 100, "Good": 75, "Fair": 50, "Poor": 25, "Very
 PAVEMENT_TO_SCORE_DEFAULT = 50
 
 # DEFECT (fix after the port): unbounded. 100 - 2*speed goes negative above
-# 50 mph; 100 - width goes negative on a wide road, and a *missing* width
-# scores 100 -- the best possible.
+# 50 mph, and 100 - width goes negative on a wide road. A *missing* width
+# produces no score at all, because 100 - NaN is NaN.
+SPEED_LIMIT_SCORE_INTERCEPT = 100
 SPEED_LIMIT_SCORE_SLOPE = 2
 ROAD_WIDTH_SCORE_INTERCEPT = 100
 
@@ -173,8 +233,12 @@ CRASH_NORMALISATION_QUANTILE = 0.95
 
 # ==========================================================================
 # model ridescore_v1: the published blend
+#
+# The three weights are not here. They are the definition of what RideScore is,
+# rather than machinery of the calculation, and a change to one should be a
+# one-line diff reviewable without reading any Python. They live in
+# `models/ridescore_v1/weights.toml`.
 # ==========================================================================
 
-W_LTS = 0.6
-W_CRASH = 0.3
-W_FACILITY = 0.1
+# The blend is rounded to this many decimals, as the notebook did.
+BLEND_DECIMALS = 1

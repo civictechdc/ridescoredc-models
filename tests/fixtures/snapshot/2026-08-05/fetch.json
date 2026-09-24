@@ -1,0 +1,20 @@
+{
+  "crashes.json": {
+    "bytes": 87112,
+    "fetched_at": "2026-08-05T00:00:00+00:00",
+    "sha256": "c4241edfa28cac7276fcd54a33428dc2324cc813c06c1e66a34fe2f7a7ba0c5b",
+    "url": "fixture: an extract of raw/2026-08-05"
+  },
+  "dc_boundary.geojson": {
+    "bytes": 338,
+    "fetched_at": "2026-08-05T00:00:00+00:00",
+    "sha256": "6189d330cb9aeb3a4bf6b532cdd6b975050f596f7621ce0e28cb998b4c93a804",
+    "url": "fixture: an extract of raw/2026-08-05"
+  },
+  "roadway_block.geojson": {
+    "bytes": 124391,
+    "fetched_at": "2026-08-05T00:00:00+00:00",
+    "sha256": "e47fd79c05f1b59990bdbed72b902634aaaca39592765b88c6eb0eb3490eceec",
+    "url": "fixture: an extract of raw/2026-08-05"
+  }
+}

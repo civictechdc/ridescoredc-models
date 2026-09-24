@@ -8,15 +8,40 @@ This project creates a preliminary interactive bike safety map for the streets o
 
 ![screenshots of map](docs/combined_screenshots.png)
 
+## Running the pipeline
+
+The safety scores are calculated by the `ridescore` package in this repository. Running the
+package requires [uv](https://docs.astral.sh/uv/), which installs Python and the required
+libraries. The pipeline downloads public data published by Open Data DC, so running the
+pipeline does not require a database, a server, or a password from anyone.
+
+    uv sync
+    uv run ridescore run        # download the public source data, then calculate
+    uv run ridescore inspect    # report what the run produced
+
+`docs/running-the-pipeline.md` explains each command, the files each command writes, and why
+the run date is supplied as an argument rather than read from the clock.
+
+`notebooks/plot_run_output.ipynb` draws the results of a run as charts and a map.
+
 ## Data Processing
 
-The map uses [road](https://opendata.dc.gov/datasets/DCGIS::roadway-block/about) and [crash](https://opendata.dc.gov/datasets/crashes-in-dc/about) data from the Open Data DC portal. The road data are simplified and cleaned up (see jupyter notebook for details). For the crash data, we only use crashes that resulted in a bicyclist fatality or injury from the last 5 years.
+The map uses [road](https://opendata.dc.gov/datasets/DCGIS::roadway-block/about) and [crash](https://opendata.dc.gov/datasets/crashes-in-dc/about) data from the Open Data DC portal. The road data are simplified and cleaned up; `docs/running-the-pipeline.md` describes the simplification and cleanup steps. For the crash data, we only use crashes that resulted in a bicyclist fatality or injury from the last 5 years.
 
 ## Safety score and interactive factors
 
-The LTS and ridescore build on 01_lts_osm_elia_v2.ipynb.
+The stress level and the RideScore are calculated by `src/ridescore/models/ridescore_v1/`. Both were originally worked out in `notebooks/data_processing.ipynb`, which is kept as a historical record and is no longer run.
 
 We use our own, modified level of traffic stress (LTS) calculator.
+
+> **These rules are under review, and the numbers below will change.** The calculation in
+> this repository reproduces what the original notebook did. The scores that this
+> calculation produces differ from the data currently behind the live map: the stress level
+> differs on 2,420 of 13,821 street segments, and the RideScore differs on 2,789. The
+> deployed data was produced by an earlier version of these rules.
+> `docs/parity-with-the-deployed-database.md` sets out the three questions that this
+> difference raises. Answering those questions is separate work. Nothing in this repository
+> waits on the answers.
 
 <table>
   <tbody>
@@ -84,7 +109,7 @@ The users can also create their own weighing the following factors:
 * Road width
 * Pavement condition
 
-See data_processing jupyter notebook for more details on translation from raw factors to 0-100 score. They are then combined with the following postgres function:
+`src/ridescore/models/ridescore_v1/scores.py` contains the translation from raw factors to a 0-100 score. `docs/ported-defects.md` lists the places where the translation is known to be wrong, and reproduced anyway so that each mistake can be corrected on its own. The seven factor scores are combined into one score by the following Postgres function:
 
 ``` SQL
 CREATE OR REPLACE FUNCTION update_score(z integer, x integer, y integer, query_params json)
