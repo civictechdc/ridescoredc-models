@@ -39,6 +39,7 @@ notebooks = [
     "seaborn>=0.13",
     "numpy>=1.26",
     "python-dateutil>=2.9",
+    "networkx>=3.7",
 ]
 
 [build-system]
