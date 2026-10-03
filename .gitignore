@@ -14,6 +14,8 @@ __pycache__/
 # Never committed: the cache is per-machine, and outputs belong in a package.
 raw/
 out/
+raw-osm/
+out-osm/
 
 # Jupyter notebooks -- local cache and checkpoint clutter, not repo content.
 notebooks/**/cache/

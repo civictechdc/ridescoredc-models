@@ -52,6 +52,10 @@ ROAD_SEGMENT_COLUMNS = (
     "geometry",
 )
 
+# Where the street network comes from. Nothing built from one is comparable
+# with anything built from the other: segment identity differs.
+SOURCES = ("ddot", "osm")
+
 FILENAMES = {
     "road_segment": "road_segment.parquet",
     "crashes": "crashes.parquet",
@@ -71,6 +75,7 @@ class Built:
     crashes: gpd.GeoDataFrame
     ridescore_v1_scores: pd.DataFrame
     derived: dict
+    source: str = "ddot"
 
     def counts(self) -> dict[str, int]:
         return {
@@ -80,10 +85,31 @@ class Built:
         }
 
 
-def build(snapshot: Snapshot, run_date: dt.date) -> Built:
+def street_network(snapshot: Snapshot, source: str) -> gpd.GeoDataFrame:
+    """One normalised row per segment, from whichever source was asked for."""
+    if source == "ddot":
+        return normalise.normalise(roads.load(snapshot))
+    if source == "osm":
+        # Imported here so the DDOT pipeline runs without the `osm` extra.
+        try:
+            from ridescore.network import osm_normalise, osm_segments
+        except ImportError as error:
+            raise BuildError(
+                f"--source osm needs the `osm` extra ({error.name} is missing). "
+                "Install it with `uv sync --extra osm`."
+            ) from error
+        from ridescore.sources import osm
+
+        segments = osm_segments.segments_from_xml(osm.path(snapshot))
+        if segments.empty:
+            raise BuildError(f"{osm.path(snapshot)} holds no street segments.")
+        return osm_normalise.normalise(segments)
+    raise BuildError(f"Unknown source {source!r}; expected one of {', '.join(SOURCES)}.")
+
+
+def build(snapshot: Snapshot, run_date: dt.date, source: str = "ddot") -> Built:
     """Everything between a fetched snapshot and the files on disk."""
-    segments = normalise.normalise(roads.load(snapshot))
-    segments = normalise.add_length(segments)
+    segments = normalise.add_length(street_network(snapshot, source))
 
     published_crashes = crashes.prepare(crashes.load(snapshot), boundary.load(snapshot))
     segments = crash_join.count_crashes_near_segments(segments, published_crashes)
@@ -109,6 +135,7 @@ def build(snapshot: Snapshot, run_date: dt.date) -> Built:
             "weights": weights.as_dict(),
             "crash_window": [d.isoformat() for d in crashes.window(run_date)],
         },
+        source=source,
     )
 
 
@@ -180,4 +207,4 @@ def read(out: Path, dataset: str) -> pd.DataFrame:
     return gpd.read_parquet(path)
 
 
-__all__ = ["FILENAMES", "BuildError", "Built", "build", "config", "read", "write"]
+__all__ = ["FILENAMES", "SOURCES", "BuildError", "Built", "build", "config", "read", "write"]

@@ -20,14 +20,33 @@ import json
 import shutil
 from pathlib import Path
 
-NAME = "ridescoredc-data-preview"
+# One name per street network, both `-preview` and versioned 0.x on purpose.
+#
+# The DDOT package is built on the Open Data DC roadway network, which is being
+# replaced by OpenStreetMap. The OSM package is built on a network whose
+# segmentation and preprocessing are still open questions. Segment identity
+# differs between the two and will move again as those questions settle, so
+# nothing in either is comparable with the other or with what comes after, and
+# `geometry_source` on a feedback row reads e.g.
+# "ridescoredc-data-osm-preview@0.1" -- unmistakably disposable.
+NAMES = {
+    "ddot": "ridescoredc-data-preview",
+    "osm": "ridescoredc-data-osm-preview",
+}
 
-# Named `-preview` and versioned 0.x on purpose. This data is built on the Open
-# Data DC roadway network, which is being replaced by OpenStreetMap. That switch
-# changes segment identity, so nothing built now is comparable with what comes
-# after it. Keeping the name and 1.0 free means the first OSM package can claim
-# them, and it means `geometry_source` on a feedback row reads
-# "ridescoredc-data-preview@0.1" -- unmistakably disposable.
+NOTES = {
+    "ddot": (
+        "Preview package built on the Open Data DC roadway network. "
+        "Segment identity does not survive the move to OpenStreetMap, "
+        "so anything keyed to it here is disposable."
+    ),
+    "osm": (
+        "Preview package built on OpenStreetMap. Segments run intersection to "
+        "intersection and are keyed on their end nodes; lanes, speed limits and "
+        "widths OSM does not record are filled in from the highway type. Not "
+        "comparable with packages built on DDOT roadway blocks."
+    ),
+}
 
 DATASETS = ("road_segment", "crashes", "ridescore_v1_scores")
 
@@ -49,12 +68,17 @@ def main() -> int:
         raise SystemExit(f"{args.out}/run.json is missing. Run `ridescore build` first.")
 
     run = json.loads((args.out / "run.json").read_text())
+    # A run.json from before `network_source` existed was built on DDOT blocks.
+    source = run.get("network_source", "ddot")
+    if source not in NAMES:
+        raise SystemExit(f"{args.out}/run.json names an unknown network source {source!r}.")
+    name = NAMES[source]
     commit = (run.get("code") or {}).get("commit") or ""
     if commit.endswith("-dirty"):
         print(f"WARNING: built from a modified tree ({commit}).")
         print("         A published package should come from a clean checkout.")
 
-    target = args.into / f"{NAME}-{args.version}"
+    target = args.into / f"{name}-{args.version}"
     if target.exists():
         shutil.rmtree(target)
     target.mkdir(parents=True)
@@ -69,7 +93,8 @@ def main() -> int:
     (target / "datapackage.json").write_text(
         json.dumps(
             {
-                "name": NAME,
+                "name": name,
+                "network_source": source,
                 "version": args.version,
                 "created": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
                 "licenses": [{"name": args.licence}],
@@ -79,11 +104,7 @@ def main() -> int:
                     {"name": d, "path": f"{d}.parquet", "format": "geoparquet"}
                     for d in DATASETS
                 ],
-                "notes": (
-                    "Preview package built on the Open Data DC roadway network. "
-                    "Segment identity does not survive the move to OpenStreetMap, "
-                    "so anything keyed to it here is disposable."
-                ),
+                "notes": NOTES[source],
             },
             indent=2,
         )

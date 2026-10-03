@@ -123,6 +123,14 @@ loads of the same data.
 
 ---
 
+## The OpenStreetMap source
+
+`--source osm` builds the street network from OpenStreetMap instead, into its
+own `raw-osm/` and `out-osm/`. It needs the `osm` extra. See
+`docs/osm-source.md`.
+
+---
+
 ## Tests
 
 ```

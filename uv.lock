@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.12"
 resolution-markers = [
     "python_full_version >= '3.14' and sys_platform == 'win32'",
@@ -2160,11 +2160,15 @@ notebook = [
     { name = "jupyterlab" },
     { name = "matplotlib" },
 ]
+osm = [
+    { name = "osmnx" },
+]
 
 [package.dev-dependencies]
 dev = [
     { name = "pytest" },
     { name = "pytest-cov" },
+    { name = "ridescore", extra = ["osm"] },
     { name = "ruff" },
 ]
 notebooks = [
@@ -2184,6 +2188,7 @@ requires-dist = [
     { name = "geopandas", specifier = ">=1.0" },
     { name = "jupyterlab", marker = "extra == 'notebook'", specifier = ">=4.0" },
     { name = "matplotlib", marker = "extra == 'notebook'", specifier = ">=3.8" },
+    { name = "osmnx", marker = "extra == 'osm'", specifier = ">=2.0" },
     { name = "pandas", specifier = ">=2.2" },
     { name = "psycopg", extras = ["binary"], marker = "extra == 'db'", specifier = ">=3.2" },
     { name = "pyarrow", specifier = ">=17.0" },
@@ -2193,12 +2198,13 @@ requires-dist = [
     { name = "typer", specifier = ">=0.12" },
     { name = "yoyo-migrations", marker = "extra == 'db'", specifier = ">=9.0" },
 ]
-provides-extras = ["db", "notebook"]
+provides-extras = ["db", "notebook", "osm"]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "pytest", specifier = ">=8.0" },
     { name = "pytest-cov", specifier = ">=5.0" },
+    { name = "ridescore", extras = ["osm"] },
     { name = "ruff", specifier = ">=0.6" },
 ]
 notebooks = [
