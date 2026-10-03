@@ -20,5 +20,3 @@ notebooks/**/cache/
 .ipynb_checkpoints/
 # assembled packages and bundles
 dist/
-
-/notebooks/low-stress-fragmentation/results.parquet
