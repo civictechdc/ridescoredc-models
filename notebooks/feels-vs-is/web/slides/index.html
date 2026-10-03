@@ -1,0 +1,131 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Feels vs. Is slides</title>
+<style>
+  :root{--bg:#0f1115;--ink:#f1eee6;--muted:#a8a59c;--line:#2a2d35;--accent:#ffb347;--hd:#ff4d6d;--ff:#ff9f1c;--sq:#6c8cff;--calm:#3ddc97;--font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  html,body{margin:0;background:#000;font-family:var(--font);color:var(--ink)}
+  .slide{width:1400px;height:788px;position:relative;overflow:hidden;background:var(--bg);display:none}
+  .slide.on{display:block}
+  .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,21,.96) 0%,rgba(15,17,21,.86) 42%,rgba(15,17,21,.15) 75%,rgba(15,17,21,0) 100%)}
+  .kicker{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  h1{font-size:76px;line-height:1;margin:14px 0 18px;letter-spacing:-.02em}
+  h2{font-size:44px;line-height:1.1;margin:10px 0 22px;letter-spacing:-.015em}
+  .lede{font-size:26px;line-height:1.35;color:var(--ink);max-width:620px}
+  .foot{position:absolute;left:64px;right:64px;bottom:32px;display:flex;justify-content:space-between;font-size:15px;color:var(--muted)}
+  .foot b{color:var(--ink)}
+  .pad{position:absolute;left:64px;top:56px;right:64px;bottom:80px}
+  .col{position:absolute;top:56px;bottom:80px}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+  .kpi{background:#171a21;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .kpi b{display:block;font-size:40px;letter-spacing:-.02em}.kpi span{font-size:15px;color:var(--muted);line-height:1.3;display:block;margin-top:4px}
+  .cat{display:flex;align-items:center;gap:12px;font-size:20px;margin:9px 0}.sw{width:34px;height:9px;border-radius:5px;flex:none}
+  .cat b{font-weight:700}.cat span{color:var(--muted)}
+  .img{position:absolute;border-radius:16px;overflow:hidden;border:1px solid #3a3f4b;box-shadow:0 20px 60px rgba(0,0,0,.6);background:#000}
+  .img img{width:100%;height:100%;object-fit:cover;display:block}
+  .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;background:linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,0));font-size:15px}
+  .cap b{color:#fff}.cap span{color:#d8d5cd}
+  .bars{margin-top:14px}
+  .bar{display:grid;grid-template-columns:330px 1fr 70px;align-items:center;gap:14px;margin:12px 0;font-size:19px}
+  .bar i{display:block;height:28px;border-radius:7px;background:#4b5566}
+  .bar.hot i{background:linear-gradient(90deg,#ff9f1c,#ff4d6d)}
+  .bar b{font-size:24px;text-align:right}
+  .bar small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+  .note{font-size:17px;color:var(--muted);margin-top:16px;line-height:1.4}
+  ul{margin:8px 0 0;padding-left:22px;font-size:20px;line-height:1.45}
+  li{margin:6px 0}li b{color:var(--ink)}
+  .pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:14px;font-weight:700;margin-left:8px;vertical-align:middle}
+</style></head><body>
+
+<section class="slide" id="s1">
+  <div class="bg" style="background-image:url(https://bryceob13.github.io/ridescoredc-models/shots/gap.jpg)"></div><div class="shade"></div>
+  <div class="col" style="left:64px;width:700px">
+    <div class="kicker">Models track · RideScore DC Hackathon 2026</div>
+    <h1>Feels vs. Is</h1>
+    <div class="lede">LTS tells you how a street <b>feels</b>. Crashes tell you what <b>happens</b> on it. We scored both for every DC street and intersection, and mapped where they disagree.</div>
+    <div style="margin-top:34px" class="cat"><span class="sw" style="background:var(--hd)"></span><div><b>Hidden danger</b> <span>feels safe, people get hurt</span></div></div>
+    <div class="cat"><span class="sw" style="background:var(--ff)"></span><div><b>Fix first</b> <span>bad on both counts</span></div></div>
+    <div class="cat"><span class="sw" style="background:var(--sq)"></span><div><b>Scary but quiet</b> <span>hostile, few crashes, riders avoid it</span></div></div>
+    <div class="cat"><span class="sw" style="background:var(--calm)"></span><div><b>Calm</b> <span>fine on both</span></div></div>
+  </div>
+  <div class="foot"><span><b>Bryce Bailey</b> · bryceob13.github.io/ridescoredc-models</span><span>PR civictechdc/ridescoredc-models#14</span></div>
+</section>
+
+<section class="slide" id="s2">
+  <div class="pad">
+    <div class="kicker">The problem, and what we built</div>
+    <h2>A stress map rates a street by its design. Riders get hurt on streets the design says are safe.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+      <div>
+        <div class="cat"><span class="sw" style="background:#79b64a"></span><div><b>Feels</b> <span>Furth Level of Traffic Stress, 0 to 100, from facility, speed, lanes, volume, parking, pavement</span></div></div>
+        <div class="cat"><span class="sw" style="background:#b1152a"></span><div><b>Is</b> <span>five years of bicyclist injury crashes on DDOT blocks and intersection clusters, smoothed with Empirical Bayes against a design-only model</span></div></div>
+        <div class="cat"><span class="sw" style="background:var(--hd)"></span><div><b>Gap</b> <span>where the two disagree, with a plain-language reason per block</span></div></div>
+        <div class="note">Snapshot 2026-09-29 (OSM + DDOT). DC GIS crash layer 24. Ward and neighborhood stay out of the model, so expectations come from design, not from where a street is.</div>
+      </div>
+      <div class="kpis" style="grid-template-columns:1fr 1fr">
+        <div class="kpi"><b>28,978</b><span>street segments scored</span></div>
+        <div class="kpi"><b>7,672</b><span>intersection clusters scored</span></div>
+        <div class="kpi"><b>2,297</b><span>injury crashes since Oct 2021 · 202 serious · 9 fatal</span></div>
+        <div class="kpi"><b>546</b><span>crashes in 2026 so far, against 559 in all of 2025</span></div>
+        <div class="kpi" style="grid-column:1/-1;border-color:var(--hd)"><b style="color:var(--hd)">104 km hidden danger</b><span>890 blocks, 4.8% of the network. A third of it is separated track or protected lane: the facilities a stress map rates safest.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><b>Feels vs. Is</b> · Models track</span><span>Code, notebook and results in the PR</span></div>
+</section>
+
+<section class="slide" id="s3">
+  <div class="col" style="left:64px;width:560px">
+    <div class="kicker">Hidden danger</div>
+    <h2>The safest-looking streets on the stress map carry some of the worst crash records.</h2>
+    <ul>
+      <li><b>14th St NW protected lane</b>, LTS 1, comfort 93: 9 injury crashes on one block, 1 serious.</li>
+      <li><b>9th St NW two-way track at Rhode Island Ave</b>: 7 injury crashes at the junction against 0.5 expected for its design. Worst intersection in the city.</li>
+      <li><b>15th St NW track</b>: 55 injury crashes, 4.5× the citywide midblock rate, crossed by up to 50 streets per km.</li>
+      <li><b>21st and I St NW</b>, two blocks from this room: 3 injury crashes within 120 m. The July 2022 truck death is not recorded as a bicyclist fatality in the layer.</li>
+    </ul>
+  </div>
+  <div class="img" style="left:680px;top:56px;width:656px;height:318px"><img src="https://bryceob13.github.io/ridescoredc-models/shots/14th.jpg"><div class="cap"><b>14th &amp; U St NW</b> <span>· Gap layer, red is hidden danger</span></div></div>
+  <div class="img" style="left:680px;top:392px;width:656px;height:318px"><img src="https://bryceob13.github.io/ridescoredc-models/shots/9th.jpg"><div class="cap"><b>9th St NW &amp; Rhode Island Ave</b> <span>· Is layer, dots are intersection crashes</span></div></div>
+  <div class="foot"><span><b>Feels vs. Is</b> · Models track</span><span>Reasons per block are in the popup and the results parquet</span></div>
+</section>
+
+<section class="slide" id="s4">
+  <div class="pad">
+    <div class="kicker">Does it find next year's crashes?</div>
+    <h2>Train on crashes before 2025, test on 2025 to 2026. Share of test-period injury crashes caught by the worst 10% of block length.</h2>
+    <div class="bars">
+      <div class="bar"><div>LTS v1 <small>design only, the current RideScore</small></div><i style="width:13%"></i><b>13%</b></div>
+      <div class="bar"><div>Feels comfort score <small>design only</small></div><i style="width:21%"></i><b>21%</b></div>
+      <div class="bar"><div>Harm model expectation <small>design only, negative binomial</small></div><i style="width:37%"></i><b>37%</b></div>
+      <div class="bar hot"><div>Empirical Bayes <small>design plus crash history</small></div><i style="width:44%"></i><b>44%</b></div>
+    </div>
+    <div class="kpis" style="margin-top:26px">
+      <div class="kpi"><b>13 → 43%</b><span>same test at intersections, LTS v1 to Empirical Bayes</span></div>
+      <div class="kpi"><b>1,105</b><span>test-period injury crashes, 100 serious</span></div>
+      <div class="kpi"><b>3.4×</b><span>more crashes caught than the current model, same 10% of streets</span></div>
+    </div>
+    <div class="note">Streets that hurt people keep hurting people. The first three rankings use only the street's design; the fourth adds the crash record and measures persistence.</div>
+  </div>
+  <div class="foot"><span><b>Feels vs. Is</b> · Models track</span><span>Capture curves and the full scoreboard are in the notebook</span></div>
+</section>
+
+<section class="slide" id="s5">
+  <div class="col" style="left:64px;width:600px">
+    <div class="kicker">Reports, trend, and changes on the ground</div>
+    <h2>Search any street or ward for a report: trend since 2025, worst blocks, and what DDOT built there.</h2>
+    <ul>
+      <li><b>Trend</b> relative to the citywide 1.7× rise in recorded injuries. 15th St: flat at 1.0×. 9th St: 1.5× the city, just under the rising line.</li>
+      <li><b>DDOT ProTrack projects</b> matched to blocks, with crash rates before and after completion. 340 projects, 205 km.</li>
+      <li><b>9th St NW track, completed Jan 2023:</b> 4.8 → 12.6 injury crashes a year. No exposure data, so part of that is more riders.</li>
+      <li><b>What it can't tell you:</b> bicycle exposure. Low harm can mean few riders.</li>
+      <li><b>Next:</b> Bikeshare trips as exposure, signals and bike phases at intersections, a second layer in RideScore beside LTS.</li>
+    </ul>
+  </div>
+  <div class="img" style="left:700px;top:56px;width:636px;height:654px"><img src="https://bryceob13.github.io/ridescoredc-models/shots/report.jpg" style="object-position:left top"><div class="cap"><b>15th Street NW report</b> <span>· live at bryceob13.github.io/ridescoredc-models</span></div></div>
+  <div class="foot"><span><b>Feels vs. Is</b> · Models track · Bryce Bailey</span><span>PR civictechdc/ridescoredc-models#14</span></div>
+</section>
+<script>
+  const n = parseInt((location.hash||"#1").slice(1))||1;
+  document.querySelectorAll(".slide").forEach((s,i)=>s.classList.toggle("on", i===n-1));
+  window.addEventListener("hashchange", ()=>location.reload());
+</script>
+</body></html>

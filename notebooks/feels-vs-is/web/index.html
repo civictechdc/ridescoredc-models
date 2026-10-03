@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feels vs. Is: DC bike safety</title>
+<script src="config.js?v=20261003155428"></script>
+<style>
+  :root { --bg:#0f1115; --panel:rgba(17,19,24,.92); --ink:#e9e6df; --muted:#9a978f; --line:#2a2d35; --accent:#ffb347;
+          --hd:#ff4d6d; --ff:#ff9f1c; --sq:#6c8cff; --calm:#3ddc97; --mid:#3a3f4b; --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--font);}
+  #map{position:absolute;inset:0;}
+  #side{position:absolute;z-index:2;top:12px;left:12px;bottom:12px;width:370px;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 30px rgba(0,0,0,.5);overflow:hidden;}
+  #side header{padding:14px 16px 10px;border-bottom:1px solid var(--line);}
+  #side h1{font-size:19px;margin:0;letter-spacing:-.01em;} #side h1 span{color:var(--muted);font-weight:400;}
+  #side .tag{font-size:12px;color:var(--muted);margin-top:2px;}
+  .search{position:relative;margin-top:10px;}
+  .search input{width:100%;box-sizing:border-box;background:#1a1d24;border:1px solid var(--line);color:var(--ink);border-radius:9px;padding:9px 34px 9px 12px;font:14px var(--font);outline:none;}
+  .search input:focus{border-color:var(--accent);}
+  .search .clr{position:absolute;right:8px;top:7px;border:0;background:transparent;color:var(--muted);font-size:16px;cursor:pointer;}
+  .sugg{position:absolute;left:0;right:0;top:40px;background:#161920;border:1px solid var(--line);border-radius:9px;max-height:260px;overflow:auto;z-index:5;display:none;}
+  .sugg div{padding:7px 12px;font-size:13px;cursor:pointer;display:flex;justify-content:space-between;gap:8px;} .sugg div:hover{background:#242833;} .sugg small{color:var(--muted);}
+  .row2{display:flex;gap:6px;margin-top:8px;} .row2 select{flex:1;background:#1a1d24;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 8px;font:12.5px var(--font);}
+  #body{flex:1;overflow:auto;padding:12px 16px 16px;}
+  .tabs{display:flex;gap:4px;background:#1a1d24;padding:4px;border-radius:9px;}
+  .tabs button{flex:1;border:0;background:transparent;color:var(--muted);font:600 12.5px var(--font);padding:7px 0;border-radius:7px;cursor:pointer;} .tabs button.on{background:#2b2f39;color:var(--ink);}
+  .blurb{font-size:12.5px;color:var(--muted);line-height:1.45;margin:8px 0 6px;}
+  .legend{font-size:12px;} .ramp{height:8px;border-radius:4px;margin:6px 0 3px;} .ramp-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;}
+  .cat{display:flex;align-items:center;gap:8px;margin:4px 0;} .sw{width:22px;height:6px;border-radius:3px;flex:none;}
+  .toggle{display:flex;align-items:center;gap:6px;font-size:12px;margin-top:8px;color:var(--muted);}
+  h4{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:14px 0 6px;}
+  .stories{display:flex;flex-direction:column;gap:5px;}
+  .stories button,.list button{text-align:left;border:1px solid var(--line);background:#171a21;color:var(--ink);border-radius:8px;padding:7px 10px;font:500 12.5px var(--font);cursor:pointer;width:100%;}
+  .stories button:hover,.list button:hover{border-color:var(--accent);} .stories small,.list small{display:block;color:var(--muted);font-weight:400;margin-top:1px;line-height:1.35;}
+  details{font-size:12.5px;color:var(--muted);margin-top:10px;} details summary{cursor:pointer;color:var(--ink);font-weight:600;} details ul{padding-left:18px;margin:6px 0;} details li{margin:3px 0;}
+  .links{margin-top:12px;font-size:11.5px;color:var(--muted);} .links a{color:var(--accent);text-decoration:none;}
+  /* report */
+  .back{border:0;background:transparent;color:var(--accent);font:600 12.5px var(--font);cursor:pointer;padding:0;margin-bottom:6px;}
+  .rtitle{font-size:18px;font-weight:700;margin:0;} .rsub{font-size:12px;color:var(--muted);margin:2px 0 10px;}
+  .kpis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;} .kpi{background:#171a21;border:1px solid var(--line);border-radius:9px;padding:8px 10px;}
+  .kpi b{display:block;font-size:18px;} .kpi span{font-size:11px;color:var(--muted);}
+  .bar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:6px 0 4px;} .bar i{display:block;height:100%;}
+  .barlab{display:flex;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--muted);} .barlab b{color:var(--ink);font-weight:600;}
+  .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;}
+  .t-rising,.t-rising\?{background:#4a1d26;color:#ff8da1;} .t-falling,.t-falling\?{background:#153a2b;color:#3ddc97;} .t-flat{background:#2b2f39;color:#cfcbc2;} .t-too\ few{background:#22252d;color:var(--muted);}
+  .years{display:flex;align-items:flex-end;gap:4px;height:54px;margin-top:6px;} .years div{flex:1;background:#4b5566;border-radius:3px 3px 0 0;position:relative;min-height:2px;} .years div.recent{background:var(--accent);}
+  .years div span{position:absolute;bottom:-16px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted);} .years div em{position:absolute;top:-14px;left:0;right:0;text-align:center;font-size:10px;font-style:normal;color:var(--ink);}
+  .list{display:flex;flex-direction:column;gap:5px;} .list .pill{float:right;font-size:10.5px;padding:1px 6px;border-radius:999px;margin-left:6px;}
+  .chg{border-left:3px solid var(--accent);padding:6px 10px;margin:5px 0;background:#171a21;border-radius:0 8px 8px 0;font-size:12px;} .chg small{color:var(--muted);display:block;line-height:1.35;}
+  .chg .ba{margin-top:3px;font-size:11.5px;} .ba b{font-weight:600;}
+  .btns{display:flex;gap:6px;margin-top:10px;} .btns button{flex:1;border:1px solid var(--line);background:#171a21;color:var(--ink);border-radius:8px;padding:7px;font:600 12px var(--font);cursor:pointer;} .btns button:hover{border-color:var(--accent);}
+  #map .maplibregl-popup-content,#map .mapboxgl-popup-content{background:#14171d!important;color:var(--ink)!important;border:1px solid var(--line);border-radius:12px;font-family:var(--font);font-size:13px;padding:12px 14px;max-width:320px;box-shadow:0 10px 36px rgba(0,0,0,.6);}
+  #map .maplibregl-popup-tip,#map .mapboxgl-popup-tip{border-top-color:#14171d!important;border-bottom-color:#14171d!important;border-left-color:#14171d!important;border-right-color:#14171d!important;}
+  #map .maplibregl-popup-close-button,#map .mapboxgl-popup-close-button{color:var(--muted)!important;font-size:18px;right:4px;top:2px;}
+  #map .mapboxgl-popup-anchor-top .mapboxgl-popup-tip{border-bottom-color:#14171d!important;}
+  .pop h3{margin:0 0 6px;font-size:14px;} .pop .row{display:flex;justify-content:space-between;gap:10px;margin:3px 0;} .pop .k{color:var(--muted);}
+  .pop .cls{display:inline-block;padding:2px 7px;border-radius:999px;font-size:11px;font-weight:600;margin:0 4px 6px 0;}
+  .pop .reasons{margin-top:6px;font-size:12px;line-height:1.35;border-top:1px solid var(--line);padding-top:6px;}
+  .pop button{margin-top:8px;width:100%;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:7px;padding:6px;font:600 12px var(--font);cursor:pointer;}
+  .hover-tip{pointer-events:none;} #map .hover-tip .maplibregl-popup-content,#map .hover-tip .mapboxgl-popup-content{padding:6px 9px!important;font-size:12px;}
+  #toast{position:absolute;z-index:3;bottom:16px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--line);padding:8px 14px;border-radius:9px;font-size:12.5px;display:none;}
+  @media (max-width:700px){#side{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:58vh;}}
+  /* street-level imagery block in popups */
+  .pop .sv{display:inline-block;margin-top:8px;color:var(--accent);text-decoration:none;font-weight:600;font-size:12px} .pop .sv:hover{text-decoration:underline}
+  .mly{margin-top:8px} .mly iframe{width:100%;height:190px;border:0;border-radius:8px;background:#000;display:block}
+  .mlyrow{display:flex;gap:6px;margin-top:6px} .mlyth{flex:1;min-width:0;cursor:pointer;border:2px solid transparent;border-radius:7px;overflow:hidden;background:#000} .mlyth.on{border-color:var(--accent)}
+  .mlyth img{width:100%;height:54px;object-fit:cover;display:block;opacity:.8} .mlyth.on img,.mlyth:hover img{opacity:1} .mlyth span{display:block;font-size:10px;color:var(--muted);text-align:center;padding:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mlycap{font-size:11px;color:var(--muted);margin-top:4px} .mlycap a{color:var(--accent);text-decoration:none;font-weight:600} .mlycap a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="side">
+  <header>
+    <h1>Feels vs. Is <span>· DC bike safety</span></h1>
+    <div class="tag" id="tag">How streets feel vs. what happens on them. 28,978 segments, 2,297 injury crashes since Oct 2021.</div>
+    <div class="search"><input id="q" placeholder="Search a street (e.g. 15th Street Northwest)" autocomplete="off"><button class="clr" id="clr" title="clear">×</button><div class="sugg" id="sugg"></div></div>
+    <div class="row2">
+      <select id="ward"><option value="">Ward report…</option></select>
+      <select id="show"><option value="all">Show: everything</option><option value="problem">Show: hidden danger + fix first</option><option value="kid">Show: kid ok (LTS 1)</option><option value="changed">Show: changed since 2019</option><option value="rising">Show: rising crash trend</option></select>
+    </div>
+  </header>
+  <div id="body"></div>
+</div>
+<div id="toast"></div>
+<script>
+const BUILD = "20261003155428";
+const TOKEN = (window.FVI_CONFIG && window.FVI_CONFIG.mapboxToken) || "";
+const USE_MAPBOX = /^pk\./.test(TOKEN);
+const GAP = { hidden_danger:["#ff4d6d","Hidden danger","feels safe, people get hurt"], fix_first:["#ff9f1c","Fix first","bad on both counts"],
+              scary_but_quiet:["#6c8cff","Scary but quiet","hostile, few crashes, riders avoid it"], calm:["#3ddc97","Calm","fine on both"], middle:["#3a3f4b","Middle",""] };
+const TREND = { rising:["#ff4d6d","Rising"], "rising?":["#ff8da1","Rising (weak)"], falling:["#3ddc97","Falling"], "falling?":["#8fe8c2","Falling (weak)"], flat:["#8a8f9c","Flat"], "too few":["#6b7280","Too few crashes"] };
+const LAYERS = {
+  feels:{title:"Feels: comfort (LTS-based)",prop:"comfort_score",ramp:["#b1152a","#e8632d","#f2c14e","#79b64a","#1f8a4c"],low:"stressful",high:"comfortable",
+         blurb:"Comfort 0 to 100 from the street's design: facility, speed, lanes, volume, parking, pavement. Furth's Level of Traffic Stress with Montgomery County amendments."},
+  is:{title:"Is: harm (crash record, smoothed)",prop:"harm_score",ramp:["#1f8a4c","#79b64a","#f2c14e","#e8632d","#b1152a"],low:"low harm",high:"high harm",
+      blurb:"Harm 0 to 100 from five years of bicyclist injury crashes, smoothed by what streets of the same design usually see (Empirical Bayes). 90 means the worst 10 percent of the network."},
+  gap:{title:"Gap: where Feels and Is disagree",blurb:"Where the stress score and the crash record disagree. Hidden danger is the short list to look at first."},
+  trend:{title:"Trend: crashes since 2025 vs before",blurb:"Each block's crash rate since Jan 2025 compared with Oct 2021 to Dec 2024, relative to the citywide change (recorded injuries rose about 1.7x across DC). Rising means at least 1.5x that with 2 or more recent crashes. Small counts stay grey."}
+};
+let map, GL, segData, reports, hoverPop, state = { layer:"gap", street:null, ward:null, show:"all" };
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt1 = v => v == null ? "n/a" : (+v).toFixed(1);
+const MLY = (window.FVI_CONFIG && window.FVI_CONFIG.mapillaryToken) || "";
+// Mapillary street-level imagery, embedded in the popup when a client token is configured.
+const mlyApp = ll => `https://www.mapillary.com/app/?lat=${ll.lat.toFixed(6)}&lng=${ll.lng.toFixed(6)}&z=18`;
+function mlyBlock(ll){ if (!MLY) return `<a class="sv" target="_blank" rel="noopener" href="${mlyApp(ll)}">Street-level imagery on Mapillary ↗</a>`; const id = "mly" + Math.random().toString(36).slice(2); setTimeout(() => fillMly(id, ll), 0); return `<div class="mly" id="${id}"><span class="k">Looking for Mapillary imagery…</span></div>`; }
+async function fillMly(id, ll){
+  const el = document.getElementById(id); if (!el) return;
+  const d = 0.0007; const bbox = [ll.lng - d, ll.lat - d, ll.lng + d, ll.lat + d].map(v => v.toFixed(6)).join(",");
+  const appAt = (img) => { const c = img.computed_geometry ? img.computed_geometry.coordinates : [ll.lng, ll.lat]; return `https://www.mapillary.com/app/?pKey=${img.id}&lat=${c[1].toFixed(6)}&lng=${c[0].toFixed(6)}&z=18&focus=photo`; };
+  const when = (img) => img.captured_at ? new Date(img.captured_at).toLocaleDateString(undefined, { year: "numeric", month: "short" }) : "";
+  try {
+    const r = await fetch(`https://graph.mapillary.com/images?access_token=${encodeURIComponent(MLY)}&fields=id,captured_at,computed_geometry,thumb_256_url&bbox=${bbox}&limit=50`);
+    const js = await r.json();
+    let imgs = (js.data || []).map(x => { const c = x.computed_geometry ? x.computed_geometry.coordinates : null; const dist = c ? Math.hypot((c[0] - ll.lng) * Math.cos(ll.lat * Math.PI / 180), c[1] - ll.lat) * 111000 : 1e9; return { ...x, dist }; })
+      .filter(x => x.dist <= 80).sort((a, b) => a.dist - b.dist);
+    // three photos: nearest overall, then the nearest from two other capture dates so the row spans time, else next nearest
+    const picked = []; const days = new Set();
+    for (const x of imgs) { const day = x.captured_at ? Math.floor(x.captured_at / 864e5) : -1; if (!days.has(day)) { picked.push(x); days.add(day); } if (picked.length === 3) break; }
+    for (const x of imgs) { if (picked.length === 3) break; if (!picked.includes(x)) picked.push(x); }
+    if (!picked.length) { el.innerHTML = `<span class="k">No Mapillary imagery within 80 m.</span> <a class="sv" target="_blank" rel="noopener" href="${mlyApp(ll)}">Look around on Mapillary ↗</a>`; return; }
+    const best = picked[0];
+    el.innerHTML = `<iframe src="https://www.mapillary.com/embed?image_key=${best.id}&style=photo" allow="fullscreen" loading="lazy" title="Mapillary street-level image"></iframe>
+      <div class="mlyrow">${picked.map((x, i) => `<div class="mlyth${i === 0 ? " on" : ""}" data-i="${i}" title="Show this photo"><img src="${x.thumb_256_url || ""}" alt=""><span>${Math.round(x.dist)} m · ${when(x) || "undated"}</span></div>`).join("")}</div>
+      <div class="mlycap">Mapillary · <span class="mlywhich">${Math.round(best.dist)} m from the click${when(best) ? " · " + when(best) : ""}</span> · <a class="mlyopen" target="_blank" rel="noopener" href="${appAt(best)}">open at this spot ↗</a></div>`;
+    el.querySelectorAll(".mlyth").forEach(t => t.onclick = () => { const x = picked[+t.dataset.i]; el.querySelector("iframe").src = `https://www.mapillary.com/embed?image_key=${x.id}&style=photo`; el.querySelector(".mlywhich").textContent = `${Math.round(x.dist)} m from the click${when(x) ? " · " + when(x) : ""}`; el.querySelector(".mlyopen").href = appAt(x); el.querySelectorAll(".mlyth").forEach(o => o.classList.toggle("on", o === t)); });
+  } catch (e) { el.innerHTML = `<span class="k">Mapillary lookup failed.</span> <a class="sv" target="_blank" rel="noopener" href="${mlyApp(ll)}">Open Mapillary here ↗</a>`; }
+}
+function toast(msg){ const t=$("toast"); t.textContent=msg; t.style.display="block"; setTimeout(()=>t.style.display="none", 2600); }
+function loadScript(src){ return new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=src; s.onload=res; s.onerror=rej; document.head.appendChild(s); }); }
+function loadCss(href){ const l=document.createElement("link"); l.rel="stylesheet"; l.href=href; document.head.appendChild(l); }
+
+function rampExpr(prop, ramp){ const e=["interpolate",["linear"],["coalesce",["get",prop],0]]; [0,25,50,75,100].forEach((s,i)=>e.push(s,ramp[i])); return e; }
+function matchExpr(prop, table, fallback){ const m=["match",["get",prop]]; for (const [k,v] of Object.entries(table)) m.push(k, v[0]); m.push(fallback); return m; }
+function showFilter(){
+  const s = state.show;
+  if (s==="problem") return ["in",["get","gap_class"],["literal",["hidden_danger","fix_first"]]];
+  if (s==="kid") return ["==",["get","kid_ok"],1];
+  if (s==="changed") return ["has","changed"];
+  if (s==="rising") return ["in",["get","trend"],["literal",["rising","rising?"]]];
+  return null;
+}
+function scopeFilter(){
+  if (state.street) return ["==",["get","street_key"],state.street];
+  if (state.ward) return ["==",["get","ward"],state.ward];
+  return null;
+}
+function applyFilters(){
+  const f = ["all"]; const a=showFilter(), b=scopeFilter(); if (a) f.push(a); if (b) f.push(b);
+  const filt = f.length>1 ? f : null;
+  map.setFilter("seg", filt); map.setFilter("seg-case", filt); map.setFilter("seg-glow", filt);
+  // context: everything else dimmed
+  map.setLayoutProperty("seg-dim","visibility", filt ? "visible" : "none");
+  map.setLayoutProperty("seg-changed","visibility", (state.show==="changed" || b) ? "visible" : "none");
+  if (b) map.setFilter("seg-changed", ["all",["has","changed"],b]); else map.setFilter("seg-changed", ["has","changed"]);
+  if (filt) map.setFilter("seg-dim", ["!", filt]);
+}
+function setLayer(key){
+  state.layer = key; const L=LAYERS[key];
+  document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on", b.dataset.layer===key));
+  const glow = c => map.setPaintProperty("seg-glow","line-color",c);
+  if (key==="gap"){ map.setPaintProperty("seg","line-color",matchExpr("gap_class",GAP,"#3a3f4b")); glow(matchExpr("gap_class",GAP,"#3a3f4b")); map.setPaintProperty("seg","line-opacity",["case",["==",["get","gap_class"],"middle"],0.35,1]); }
+  else if (key==="trend"){ map.setPaintProperty("seg","line-color",matchExpr("trend",TREND,"#3a3f4b")); glow(matchExpr("trend",TREND,"#3a3f4b")); map.setPaintProperty("seg","line-opacity",["case",["==",["get","trend"],"too few"],0.3,1]); }
+  else { map.setPaintProperty("seg","line-color",rampExpr(L.prop,L.ramp)); glow(rampExpr(L.prop,L.ramp)); map.setPaintProperty("seg","line-opacity",0.95); }
+  const lg=$("legend"); if (!lg) return;
+  $("blurb").textContent = L.blurb;
+  if (key==="gap") lg.innerHTML = `<b>${L.title}</b>` + Object.values(GAP).map(([c,t,d])=>`<div class="cat"><span class="sw" style="background:${c}"></span><span><b>${t}</b>${d?": "+d:""}</span></div>`).join("");
+  else if (key==="trend") lg.innerHTML = `<b>${L.title}</b>` + Object.values(TREND).map(([c,t])=>`<div class="cat"><span class="sw" style="background:${c}"></span>${t}</div>`).join("");
+  else lg.innerHTML = `<b>${L.title}</b><div class="ramp" style="background:linear-gradient(90deg,${L.ramp.join(",")})"></div><div class="ramp-labels"><span>0 · ${L.low}</span><span>100 · ${L.high}</span></div>`;
+  writeHash();
+}
+function writeHash(){ const p=new URLSearchParams(); p.set("layer",state.layer); if (state.street) p.set("street",state.street); if (state.ward) p.set("ward",state.ward); if (state.show!=="all") p.set("show",state.show); history.replaceState(null,"","#"+p.toString()); }
+function readHash(){ const p=new URLSearchParams(location.hash.slice(1)); return { layer:p.get("layer")||"gap", street:p.get("street"), ward:p.get("ward"), show:p.get("show")||"all" }; }
+
+/* ---------- sidebar: home ---------- */
+function renderHome(){
+  $("body").innerHTML = `
+    <div class="tabs">${Object.keys(LAYERS).map(k=>`<button data-layer="${k}">${k[0].toUpperCase()+k.slice(1)}</button>`).join("")}</div>
+    <div class="blurb" id="blurb"></div><div class="legend" id="legend"></div>
+    <label class="toggle"><input type="checkbox" id="dots" checked> intersection crashes (size = crashes, white ring = serious)</label>
+    <label class="toggle"><input type="checkbox" class="lm" data-layers="trail-line,trail-label" checked> <span class="sw" style="background:#5ad1c3"></span> trails (DDOT and NPS)</label>
+    <label class="toggle"><input type="checkbox" class="lm" data-layers="lm-bikeshare"> <span class="sw" style="background:#4cc9f0"></span> Capital Bikeshare stations (size = docks)</label>
+    <label class="toggle"><input type="checkbox" class="lm" data-layers="lm-shop,lm-shop-label"> <span class="sw" style="background:#ffd166"></span> bike shops (OSM)</label>
+    <h4>Stories</h4><div class="stories" id="stories"></div>
+    <h4>Citywide</h4><div id="citywide"></div>
+    <details><summary>How to read this map</summary><ul>
+      <li><b>Feels</b> is design only: what a cautious rider would feel. <b>Is</b> is the crash record, smoothed. <b>Gap</b> is where they disagree.</li>
+      <li>Click any street for its scores and reasons, the nearest Mapillary street-level photo, and a <b>Street report</b> for the whole corridor: crash trend, worst blocks, and what DDOT has changed or planned there.</li>
+      <li>Pick a <b>ward</b> for the same report at ward scale.</li>
+      <li><b>Show</b> narrows the map: problem stretches, the kid-ok network (LTS 1), streets changed since 2019, or blocks with a rising trend.</li>
+      <li>Low harm can mean few riders. There is no exposure data yet.</li></ul></details>
+    <details><summary>Use cases</summary><ul>
+      <li><b>ANC or community meeting</b>: open your ward, read the trend, and share the link (the URL carries the view).</li>
+      <li><b>Testimony to DDOT</b>: search the street, cite the worst blocks and the before/after on any completed project.</li>
+      <li><b>Family routing</b>: Show kid ok, then check whether a calm-looking street is hidden danger.</li>
+      <li><b>Prioritizing fixes</b>: Gap layer, Show problem stretches, Trend layer to find what is getting worse.</li></ul></details>
+    <div class="links"><a href="https://github.com/BryceOB13/ridescoredc-models/tree/feature/safety-model/notebooks/feels-vs-is#readme">README</a> · <a href="https://github.com/civictechdc/ridescoredc-models/pull/14">PR</a> · snapshot 2026-09-29 · crashes Oct 2021 to Oct 2026 · projects: DDOT ProTrack</div>`;
+  document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>setLayer(b.dataset.layer));
+  $("dots").checked = map.getLayoutProperty("int-dot","visibility")!=="none";
+  $("dots").onchange = e=>["int-ring","int-dot"].forEach(id=>map.setLayoutProperty(id,"visibility",e.target.checked?"visible":"none"));
+  document.querySelectorAll("input.lm").forEach(cb=>{ const ids=cb.dataset.layers.split(","); cb.checked = map.getLayoutProperty(ids[0],"visibility")!=="none"; cb.onchange=()=>ids.forEach(id=>map.setLayoutProperty(id,"visibility",cb.checked?"visible":"none")); });
+  const sEl=$("stories"); (window.STORIES||[]).forEach(s=>{ const b=document.createElement("button"); b.innerHTML=`${esc(s.title)}<small>${esc(s.sub)}</small>`; b.onclick=()=>{ setLayer(s.layer||"gap"); map.flyTo({center:s.center,zoom:s.zoom||16,pitch:45,bearing:-20,speed:0.9}); }; sEl.appendChild(b); });
+  if (reports){ const n=reports.network; $("citywide").innerHTML = `<div class="kpis"><div class="kpi"><b>${n.crashes}</b><span>injury crashes (${n.ksi} serious)</span></div><div class="kpi"><b>${badge(n.trend)}</b><span>${n.before_per_yr}/yr → ${n.after_per_yr}/yr</span></div><div class="kpi"><b>${n.changed_km} km</b><span>changed by DDOT since 2019</span></div></div>`; }
+  setLayer(state.layer);
+}
+function badge(t){ const c=TREND[t]||TREND["too few"]; const col = t==="too few" ? "#b3b0a8" : c[0]; return `<span class="badge t-${t}" style="background:${col}22;color:${col}">${c[1]}</span>`; }
+function stackBar(obj, colors, labelOf){
+  const tot = Object.values(obj).reduce((a,b)=>a+b,0)||1; const keys=Object.keys(colors).filter(k=>obj[k]);
+  return `<div class="bar">${keys.map(k=>`<i style="width:${obj[k]/tot*100}%;background:${colors[k]}"></i>`).join("")}</div><div class="barlab">${keys.map(k=>`<span><b style="color:${colors[k]}">■</b> ${labelOf(k)} ${(obj[k]/tot*100).toFixed(0)}%</span>`).join("")}</div>`;
+}
+/* ---------- sidebar: report ---------- */
+function renderReport(kind, key){
+  const r = kind==="street" ? reports.streets[key] : reports.wards[key];
+  if (!r){ toast("No report for " + key); return; }
+  const title = kind==="street" ? key : `Ward ${key}`;
+  const yrs = r.by_year; const ymax = Math.max(1,...Object.values(yrs));
+  const ltsCol = {1:"#1f8a4c",2:"#79b64a",3:"#e8632d",4:"#b1152a"}; const gapCol = Object.fromEntries(Object.entries(GAP).map(([k,v])=>[k,v[0]]));
+  const facLabel = {separated:"separated",protected:"protected",buffered:"buffered",painted:"painted",sharrow:"sharrow",none:"no facility"};
+  const blocks = r.worst_blocks.map((b,i)=>`<button data-i="${i}">${esc(b.name)}${b.at?` at ${esc(b.at)}`:""}<span class="pill" style="background:${GAP[b.gap][0]}22;color:${GAP[b.gap][0]}">${GAP[b.gap][1]}</span><small>LTS ${b.lts} · harm ${b.harm.toFixed(0)} · ${b.crashes} on block${b.node_crashes?`, ${b.node_crashes} at junction`:""}${b.ksi?` (${b.ksi} serious)`:""}</small></button>`).join("");
+  const ints = r.worst_intersections.map((x,i)=>`<button data-j="${i}">${esc(x.names)}<small>${x.crashes} injury crashes (${x.ksi} serious) vs ${x.expected} expected for its design</small></button>`).join("");
+  const changes = r.changes.length ? r.changes.map(c=>`<div class="chg" style="border-color:${c.status==="completed"?"var(--accent)":"#6c8cff"}"><b>${esc(c.what)}</b> · ${c.status==="completed"?"completed "+c.completed:c.status}${c.from?` · ${esc(c.from)}${c.to?" to "+esc(c.to):""}`:""}<small>${esc(c.desc||"")}${c.km?` · ${c.km} km`:""}</small>${c.before_per_yr!=null&&c.after_per_yr!=null?`<div class="ba">before <b>${c.before_per_yr}/yr</b> (${c.before} in ${c.years_before} yr) → after <b>${c.after_per_yr}/yr</b> (${c.after} in ${c.years_after} yr)</div>`:(c.status==="completed"?`<div class="ba" style="color:var(--muted)">too little time after completion to compare</div>`:"")}</div>`).join("")
+                 : `<div class="blurb">No DDOT bike or safety project recorded here in ProTrack since 2019.</div>`;
+  $("body").innerHTML = `
+    <button class="back" id="back">← Back to map</button>
+    <h2 class="rtitle">${esc(title)}</h2>
+    <div class="rsub">${r.km} km · ${r.blocks} blocks · ${r.intersections} intersections</div>
+    <div class="kpis">
+      <div class="kpi"><b>${r.crashes}</b><span>injury crashes since Oct 2021 (${r.ksi} serious${r.fatal?`, ${r.fatal} fatal`:""})</span></div>
+      <div class="kpi"><b>${r.rate_vs_network!=null?r.rate_vs_network+"×":"n/a"}</b><span>citywide midblock rate (${r.rate_per_km_yr}/km/yr)</span></div>
+      <div class="kpi"><b>${r.harm!=null?r.harm.toFixed(0):"n/a"}</b><span>harm score (citywide median 59)</span></div>
+    </div>
+    <h4>Trend ${badge(r.trend)}</h4>
+    <div class="blurb" style="margin-top:0">${r.before_per_yr} crashes/yr before 2025 → <b style="color:var(--ink)">${r.after_per_yr}/yr</b> since, which is <b style="color:var(--ink)">${r.trend_ratio!=null?r.trend_ratio+"×":"n/a"}</b> the citywide change (recorded bicyclist injuries rose ${r.base_ratio}× across DC in the same period). ${r.speeding?`Speeding recorded on ${r.speeding}.`:"No speeding recorded."}</div>
+    <div class="years">${[2021,2022,2023,2024,2025,2026].map(y=>`<div class="${y>=2025?"recent":""}" style="height:${(yrs[y]||0)/ymax*100}%"><em>${yrs[y]||0}</em><span>${y===2021?"Q4 '21":y===2026?"'26 ytd":"'"+String(y).slice(2)}</span></div>`).join("")}</div>
+    <div style="height:14px"></div>
+    <h4>Feels: comfort by length</h4>${stackBar(r.lts_km, ltsCol, k=>"LTS "+k)}
+    <h4>Gap by length</h4>${stackBar(r.gap_km, gapCol, k=>GAP[k][1])}
+    <h4>Facility by length</h4>${stackBar(r.facility_km, {separated:"#1f8a4c",protected:"#3ddc97",buffered:"#79b64a",painted:"#f2c14e",sharrow:"#e8632d",none:"#4b5566"}, k=>facLabel[k]||k)}
+    <h4>Changes on the ground (DDOT ProTrack)</h4>${changes}
+    <h4>Worst blocks</h4><div class="list" id="blist">${blocks||"<div class='blurb'>none</div>"}</div>
+    <h4>Worst intersections</h4><div class="list" id="ilist">${ints||"<div class='blurb'>none with crashes</div>"}</div>
+    <div class="btns"><button id="csv">Download CSV</button><button id="copy">Copy link</button></div>
+    <div class="links">Trend compares Jan 2025 to now against Oct 2021 to Dec 2024. Before/after on a project uses its completion date, with no control group: read it as a check, not a verdict.</div>`;
+  $("back").onclick = ()=>{ clearScope(); renderHome(); };
+  $("blist").querySelectorAll("button").forEach(b=>b.onclick=()=>{ const x=r.worst_blocks[+b.dataset.i]; map.flyTo({center:x.center,zoom:17,pitch:45,bearing:-20}); });
+  $("ilist").querySelectorAll("button").forEach(b=>b.onclick=()=>{ const x=r.worst_intersections[+b.dataset.j]; map.flyTo({center:x.center,zoom:17.5,pitch:45,bearing:-20}); });
+  $("csv").onclick = ()=>{ const rows=[["name","at","gap","lts","comfort","harm","crashes_on_block","serious","crashes_at_junction","facility","reasons","lng","lat"]].concat(r.worst_blocks.map(b=>[b.name,b.at,b.gap,b.lts,b.comfort,b.harm,b.crashes,b.ksi,b.node_crashes,b.facility,b.reasons,b.center[0],b.center[1]]));
+    const csv=rows.map(x=>x.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n"); const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"})); a.download=`feels-vs-is_${title.replace(/\W+/g,"_")}.csv`; a.click(); };
+  $("copy").onclick = ()=>{ navigator.clipboard.writeText(location.href).then(()=>toast("Link copied")); };
+}
+function pad(){ return window.innerWidth<=700 ? {left:30,top:30,right:30,bottom:Math.round(window.innerHeight*0.6)} : {left:410,top:40,right:40,bottom:40}; }
+function boundsOf(filterFn){ let b=null; for (const f of segData.features){ if (!filterFn(f.properties)) continue; const cs=f.geometry.type==="LineString"?f.geometry.coordinates:f.geometry.coordinates.flat(); for (const c of cs){ if (!b) b=[[c[0],c[1]],[c[0],c[1]]]; else { b[0][0]=Math.min(b[0][0],c[0]); b[0][1]=Math.min(b[0][1],c[1]); b[1][0]=Math.max(b[1][0],c[0]); b[1][1]=Math.max(b[1][1],c[1]); } } } return b; }
+function openStreet(key, fly=true){ state.street=key; state.ward=null; $("ward").value=""; $("q").value=key; applyFilters(); renderReport("street",key); if (fly){ const b=boundsOf(p=>p.street_key===key); if (b) map.fitBounds(b,{padding:pad(),pitch:45,bearing:-12,maxZoom:15.5}); } writeHash(); }
+function openWard(w, fly=true){ state.ward=w; state.street=null; $("q").value=""; $("ward").value=w; applyFilters(); renderReport("ward",w); if (fly){ const b=boundsOf(p=>p.ward===w); if (b) map.fitBounds(b,{padding:pad(),pitch:45,bearing:-12}); } writeHash(); }
+function clearScope(){ state.street=null; state.ward=null; $("q").value=""; $("ward").value=""; applyFilters(); writeHash(); }
+
+/* ---------- search ---------- */
+function setupSearch(){
+  const names = Object.keys(reports.streets).sort(); const q=$("q"), sg=$("sugg");
+  q.oninput = ()=>{ const v=q.value.trim().toLowerCase(); if (v.length<2){ sg.style.display="none"; return; }
+    const hits = names.filter(n=>n.toLowerCase().includes(v)).sort((a,b)=>(reports.streets[b].crashes-reports.streets[a].crashes)).slice(0,12);
+    sg.innerHTML = hits.map(n=>`<div data-n="${esc(n)}"><span>${esc(n)}</span><small>${reports.streets[n].km} km · ${reports.streets[n].crashes} crashes</small></div>`).join("") || `<div><small>no street matches</small></div>`;
+    sg.style.display="block"; sg.querySelectorAll("div[data-n]").forEach(d=>d.onclick=()=>{ sg.style.display="none"; openStreet(d.dataset.n); }); };
+  q.onkeydown = e=>{ if (e.key==="Enter"){ const first=sg.querySelector("div[data-n]"); if (first) first.click(); } if (e.key==="Escape") sg.style.display="none"; };
+  document.addEventListener("click", e=>{ if (!e.target.closest(".search")) sg.style.display="none"; });
+  $("clr").onclick = ()=>{ clearScope(); renderHome(); };
+  const ws=$("ward"); Object.keys(reports.wards).sort((a,b)=>+a-+b).forEach(w=>{ const o=document.createElement("option"); o.value=w; o.textContent=`Ward ${w} · ${reports.wards[w].crashes} crashes`; ws.appendChild(o); });
+  ws.onchange = ()=>{ if (ws.value) openWard(ws.value); else { clearScope(); renderHome(); } };
+  $("show").onchange = ()=>{ state.show=$("show").value; applyFilters(); writeHash(); };
+}
+
+/* ---------- map ---------- */
+async function init(){
+  if (USE_MAPBOX){ loadCss("https://api.mapbox.com/mapbox-gl-js/v3.32.0/mapbox-gl.css"); await loadScript("https://api.mapbox.com/mapbox-gl-js/v3.32.0/mapbox-gl.js"); GL=window.mapboxgl; GL.accessToken=TOKEN; }
+  else { loadCss("https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css"); await loadScript("https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"); GL=window.maplibregl; }
+  const h = readHash(); state.layer=h.layer; state.show=h.show; $("show").value=state.show;
+  const opts = { container:"map", center:[-77.025,38.905], zoom:12.4, pitch:45, bearing:-12, antialias:true };
+  if (USE_MAPBOX){ Object.assign(opts, { style:"mapbox://styles/mapbox/standard", config:{ basemap:{ lightPreset:"night", showPointOfInterestLabels:false, showTransitLabels:false, show3dObjects:true, theme:"monochrome" } } }); }
+  else { Object.assign(opts, { style:"https://tiles.openfreemap.org/styles/dark", attributionControl:{compact:true} }); }
+  map = new GL.Map(opts);
+  map.addControl(new GL.NavigationControl({visualizePitch:true}),"top-right");
+  map.addControl(new GL.FullscreenControl(),"top-right");
+  map.addControl(new GL.GeolocateControl({positionOptions:{enableHighAccuracy:true},trackUserLocation:false}),"top-right");
+  const mapReady = new Promise(res=>map.loaded() ? res() : map.once("load", res));
+  const [seg, ints, stories, rep] = await Promise.all([fetch("segments.geojson?v="+BUILD).then(r=>r.json()), fetch("intersections.geojson?v="+BUILD).then(r=>r.json()), fetch("stories.json?v="+BUILD).then(r=>r.json()).catch(()=>[]), fetch("reports.json?v="+BUILD).then(r=>r.json())]);
+  segData=seg; reports=rep; window.STORIES=stories;
+  await mapReady;
+  const firstSymbol = USE_MAPBOX ? undefined : (map.getStyle().layers.find(l=>l.type==="symbol")||{}).id;
+  // Mapbox Standard lights every layer with the scene's light; at night a non-emissive color goes near black
+  const EMISSIVE = { line:"line-emissive-strength", circle:"circle-emissive-strength", symbol:"text-emissive-strength", "fill-extrusion":"fill-extrusion-emissive-strength", fill:"fill-emissive-strength" };
+  const add = (layer, slot) => { if (USE_MAPBOX){ layer.slot = slot || "middle"; const k = EMISSIVE[layer.type]; if (k){ layer.paint = layer.paint || {}; layer.paint[k] = 1; } } map.addLayer(layer, USE_MAPBOX ? undefined : firstSymbol); };
+  if (!USE_MAPBOX && map.getSource("openmaptiles")) {
+    try { add({id:"bld-3d",type:"fill-extrusion",source:"openmaptiles","source-layer":"building",minzoom:14,paint:{"fill-extrusion-color":"#1e2129","fill-extrusion-height":["coalesce",["get","render_height"],12],"fill-extrusion-base":["coalesce",["get","render_min_height"],0],"fill-extrusion-opacity":0.85}}); } catch(e){}
+  }
+  map.addSource("segments",{type:"geojson",data:seg}); map.addSource("intersections",{type:"geojson",data:ints});
+  map.addSource("trails",{type:"geojson",data:"trails.geojson?v="+BUILD}); map.addSource("landmarks",{type:"geojson",data:"landmarks.geojson?v="+BUILD});
+  const width = ["interpolate",["linear"],["zoom"],11,0.9,14,2.8,17,7];
+  add({id:"seg-dim",type:"line",source:"segments",layout:{visibility:"none","line-cap":"round","line-join":"round"},paint:{"line-color":"#3a3f4b","line-opacity":0.35,"line-width":width}});
+  add({id:"seg-glow",type:"line",source:"segments",layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#888","line-opacity":0.28,"line-blur":4,"line-width":["interpolate",["linear"],["zoom"],11,3,14,8,17,18]}});
+  add({id:"seg-case",type:"line",source:"segments",layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#05060a","line-opacity":0.9,"line-width":["interpolate",["linear"],["zoom"],11,1.8,14,4.8,17,11]}});
+  add({id:"seg",type:"line",source:"segments",layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#888","line-opacity":0.95,"line-width":width}});
+  add({id:"seg-changed",type:"line",source:"segments",filter:["has","changed"],layout:{"line-cap":"butt",visibility:"none"},paint:{"line-color":"#ffffff","line-opacity":0.8,"line-width":["interpolate",["linear"],["zoom"],12,0.6,16,1.4],"line-dasharray":[1,2.5],"line-offset":["interpolate",["linear"],["zoom"],12,2,16,6]}});
+  const font = USE_MAPBOX ? ["DIN Pro Medium","Arial Unicode MS Regular"] : ["Noto Sans Regular"];
+  add({id:"trail-line",type:"line",source:"trails",layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#5ad1c3","line-opacity":0.55,"line-width":["interpolate",["linear"],["zoom"],11,1.2,15,3],"line-dasharray":[2,1.5]}});
+  add({id:"trail-label",type:"symbol",source:"trails",minzoom:12.5,filter:["!=",["get","name"],""],layout:{"symbol-placement":"line","text-field":["get","name"],"text-font":font,"text-size":11,"text-letter-spacing":0.05,"symbol-spacing":400},paint:{"text-color":"#9fe7dc","text-halo-color":"#0b0d12","text-halo-width":1.4}}, "top");
+  add({id:"lm-bikeshare",type:"circle",source:"landmarks",minzoom:12.5,filter:["==",["get","kind"],"bikeshare"],paint:{"circle-radius":["interpolate",["linear"],["zoom"],12.5,2,16,["+",3,["/",["get","capacity"],8]]],"circle-color":"#4cc9f0","circle-opacity":0.85,"circle-stroke-color":"#0b0d12","circle-stroke-width":1}}, "top");
+  add({id:"lm-shop",type:"circle",source:"landmarks",minzoom:12.5,filter:["==",["get","kind"],"shop"],paint:{"circle-radius":["interpolate",["linear"],["zoom"],12.5,3,16,6],"circle-color":"#ffd166","circle-stroke-color":"#0b0d12","circle-stroke-width":1.2}}, "top");
+  add({id:"lm-shop-label",type:"symbol",source:"landmarks",minzoom:14.5,filter:["==",["get","kind"],"shop"],layout:{"text-field":["get","name"],"text-font":font,"text-size":11,"text-offset":[0,1.1],"text-anchor":"top"},paint:{"text-color":"#ffd166","text-halo-color":"#0b0d12","text-halo-width":1.4}}, "top");
+  const rad = ["interpolate",["linear"],["zoom"],11,["*",0.9,["sqrt",["get","crashes"]]],15,["*",3.4,["sqrt",["get","crashes"]]]];
+  add({id:"int-ring",type:"circle",source:"intersections",paint:{"circle-radius":rad,"circle-color":"rgba(0,0,0,0)","circle-stroke-color":"#fff","circle-stroke-width":["case",[">",["get","ksi"],0],1.6,0.6],"circle-stroke-opacity":["case",[">",["get","ksi"],0],0.95,0.35]}}, "top");
+  add({id:"int-dot",type:"circle",source:"intersections",paint:{"circle-radius":rad,"circle-color":"#ff4d6d","circle-opacity":0.55,"circle-blur":0.25}}, "top");
+  ["lm-bikeshare","lm-shop","lm-shop-label","trail-line","trail-label"].forEach(id=>map.setLayoutProperty(id,"visibility", id.startsWith("trail") ? "visible" : "none"));
+  for (const [id,p] of Object.entries({"lm-bikeshare":"Capital Bikeshare station","lm-shop":"Bike shop"})) {
+    map.on("click",id,e=>{ const q=e.features[0].properties; new GL.Popup({maxWidth:"360px"}).setLngLat(e.lngLat).setHTML(`<div class="pop"><h3>${esc(q.name)}</h3><div class="row"><span class="k">${p}</span><span>${q.capacity?q.capacity+" docks":""}</span></div>${mlyBlock(e.lngLat)}</div>`).addTo(map); });
+    map.on("mouseenter",id,()=>map.getCanvas().style.cursor="pointer"); map.on("mouseleave",id,()=>map.getCanvas().style.cursor="");
+  }
+  renderHome(); setupSearch();
+  hoverPop = new GL.Popup({closeButton:false,closeOnClick:false,className:"hover-tip",offset:10});
+  map.on("mousemove","seg",e=>{ const p=e.features[0].properties; map.getCanvas().style.cursor="pointer"; hoverPop.setLngLat(e.lngLat).setHTML(`<b>${esc(p.name)}</b> · ${GAP[p.gap_class][1]} · harm ${p.harm_score} · LTS ${p.comfort_lts}${p.changed?` · changed ${p.changed}`:""}`).addTo(map); });
+  map.on("mouseleave","seg",()=>{ map.getCanvas().style.cursor=""; hoverPop.remove(); });
+  map.on("click","seg",e=>{ const p=e.features[0].properties; const col=GAP[p.gap_class][0]; const tc0=TREND[p.trend]||TREND["too few"]; const tc=[p.trend==="too few"?"#b3b0a8":tc0[0], tc0[1]];
+    const html=`<div class="pop"><h3>${esc(p.name)}</h3><span class="cls" style="background:${col}22;color:${col};border:1px solid ${col}66">${GAP[p.gap_class][1]}</span><span class="cls" style="background:${tc[0]}22;color:${tc[0]}">${tc[1]}: ${p.crashes_before} before, ${p.crashes_after} since 2025</span>
+      <div class="row"><span class="k">Feels (comfort)</span><span>${p.comfort_score} · LTS ${p.comfort_lts}${p.kid_ok?" · kid ok":""}</span></div>
+      <div class="row"><span class="k">Is (harm)</span><span>${p.harm_score} · ${p.harm_driver}</span></div>
+      <div class="row"><span class="k">Crashes on block</span><span>${p.crashes_5yr} (${p.ksi_5yr} serious)</span></div>
+      <div class="row"><span class="k">At worst intersection</span><span>${p.node_crashes_5yr} (${p.node_ksi_5yr} serious)</span></div>
+      <div class="row"><span class="k">Death risk if struck</span><span>${Math.round(p.death_risk_if_struck*100)}% at ${p.speed_mph} mph</span></div>
+      ${p.changed?`<div class="row"><span class="k">DDOT change</span><span>${esc(p.changed_what)} · ${p.changed}</span></div>`:""}${p.planned?`<div class="row"><span class="k">Planned</span><span>${esc(p.planned)}</span></div>`:""}
+      <div class="row"><span class="k">Confidence</span><span>${p.confidence}</span></div>
+      <div class="reasons">${esc(p.reasons||"")}</div>${mlyBlock(e.lngLat)}${reports.streets[p.street_key]?`<button id="rep-btn">Street report: ${esc(p.street_key)} →</button>`:""}</div>`;
+    const pop=new GL.Popup({closeButton:true,maxWidth:"360px"}).setLngLat(e.lngLat).setHTML(html).addTo(map);
+    const btn=document.getElementById("rep-btn"); if (btn) btn.onclick=()=>{ pop.remove(); openStreet(p.street_key); }; });
+  map.on("click","int-dot",e=>{ const p=e.features[0].properties; new GL.Popup({maxWidth:"360px"}).setLngLat(e.lngLat).setHTML(`<div class="pop"><h3>${esc(p.names||"intersection")}</h3><div class="row"><span class="k">Injury crashes since Oct 2021</span><span>${p.crashes} (${p.ksi} serious)</span></div><div class="row"><span class="k">Expected for this design</span><span>${(+p.mu).toFixed(1)}</span></div><div class="row"><span class="k">EB estimate</span><span>${(+p.eb).toFixed(1)}</span></div><div class="row"><span class="k">Approaches</span><span>${p.n_approaches}</span></div>${mlyBlock(e.lngLat)}</div>`).addTo(map); });
+  map.on("mouseenter","int-dot",()=>map.getCanvas().style.cursor="pointer"); map.on("mouseleave","int-dot",()=>map.getCanvas().style.cursor="");
+  if (h.street && reports.streets[h.street]) openStreet(h.street); else if (h.ward && reports.wards[h.ward]) openWard(h.ward); else applyFilters();
+  $("tag").textContent = USE_MAPBOX ? "Mapbox GL JS · how streets feel vs. what happens on them" : "How streets feel vs. what happens on them. 28,978 segments, 2,297 injury crashes since Oct 2021.";
+}
+init().catch(err=>{ console.error(err); toast("Map failed to load: "+err.message); });
+</script>
+</body>
+</html>
