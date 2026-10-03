@@ -22,7 +22,7 @@ import typer
 
 from ridescore import build as build_stage
 from ridescore import run_record, summary
-from ridescore.sources import boundary, crashes, roads
+from ridescore.sources import boundary, crashes, osm, roads
 from ridescore.sources import cache as source_cache
 
 app = typer.Typer(
@@ -33,13 +33,33 @@ app = typer.Typer(
 DEFAULT_CACHE = Path("raw")
 DEFAULT_OUT = Path("out")
 
-Cache = Annotated[Path, typer.Option(help="Where dated snapshots are kept.")]
-Out = Annotated[Path, typer.Option(help="Where the artifacts are written.")]
+# OSM keeps its own snapshots and artifacts, so neither source can overwrite the
+# other's output or have `build` pick up the other's newer snapshot.
+SOURCE_DIRS = {
+    "ddot": (DEFAULT_CACHE, DEFAULT_OUT),
+    "osm": (Path("raw-osm"), Path("out-osm")),
+}
+
+Cache = Annotated[
+    Path | None,
+    typer.Option(help="Where dated snapshots are kept. Default: raw/, or raw-osm/ for osm."),
+]
+Out = Annotated[
+    Path | None,
+    typer.Option(help="Where the artifacts are written. Default: out/, or out-osm/ for osm."),
+]
 RunDate = Annotated[
     dt.datetime | None,
     typer.Option(
         formats=["%Y-%m-%d"],
         help="An explicit input, recorded in run.json. Never read from the clock mid-build.",
+    ),
+]
+Source = Annotated[
+    str,
+    typer.Option(
+        help="Street network: `ddot` roadway blocks or `osm` OpenStreetMap. "
+        "The two are not comparable.",
     ),
 ]
 Refresh = Annotated[
@@ -53,6 +73,14 @@ def _run_date(given: dt.datetime | None) -> dt.date:
     return given.date() if given is not None else dt.date.today()
 
 
+def _dirs(source: str, cache: Path | None, out: Path | None) -> tuple[Path, Path]:
+    """The cache and output directories, defaulting to the source's own."""
+    if source not in SOURCE_DIRS:
+        _fail(f"Unknown source {source!r}; expected one of {', '.join(SOURCE_DIRS)}.")
+    default_cache, default_out = SOURCE_DIRS[source]
+    return cache or default_cache, out or default_out
+
+
 def _fail(message: str) -> None:
     typer.secho(message, fg=typer.colors.RED, err=True)
     raise typer.Exit(1)
@@ -60,21 +88,28 @@ def _fail(message: str) -> None:
 
 @app.command()
 def fetch(
-    cache: Cache = DEFAULT_CACHE,
+    cache: Cache = None,
     run_date: RunDate = None,
     refresh: Refresh = False,
+    source: Source = "ddot",
 ) -> None:
-    """Download the roadway blocks, crash records and city boundary.
+    """Download the street network, crash records and city boundary.
 
     Writes `raw/<date>/` and never deletes an older snapshot. Comparing a street
     against its own past self needs the older inputs re-run through today's
     model, so a cache that overwrote itself would destroy every comparison point.
     """
+    cache, _ = _dirs(source, cache, None)
     when = _run_date(run_date)
     snapshot = source_cache.open_snapshot(cache, when)
 
+    network = (
+        ("roadway blocks", lambda: roads.fetch(snapshot, refresh=refresh))
+        if source == "ddot"
+        else ("OpenStreetMap ways", lambda: osm.fetch(snapshot, refresh=refresh))
+    )
     for name, download in (
-        ("roadway blocks", lambda: roads.fetch(snapshot, refresh=refresh)),
+        network,
         ("crashes", lambda: crashes.fetch(snapshot, when, refresh=refresh)),
         ("city boundary", lambda: boundary.fetch(snapshot, refresh=refresh)),
     ):
@@ -88,11 +123,13 @@ def fetch(
 
 @app.command()
 def build(
-    cache: Cache = DEFAULT_CACHE,
-    out: Out = DEFAULT_OUT,
+    cache: Cache = None,
+    out: Out = None,
     run_date: RunDate = None,
+    source: Source = "ddot",
 ) -> None:
     """Normalise, score, and write the artifacts. Reads no network."""
+    cache, out = _dirs(source, cache, out)
     when = _run_date(run_date)
 
     try:
@@ -100,10 +137,10 @@ def build(
     except FileNotFoundError as error:
         _fail(str(error))
 
-    typer.echo(f"Reading {snapshot.path}")
+    typer.echo(f"Reading {snapshot.path} ({source})")
     try:
-        built = build_stage.build(snapshot, when)
-    except build_stage.BuildError as error:
+        built = build_stage.build(snapshot, when, source=source)
+    except (build_stage.BuildError, FileNotFoundError) as error:
         _fail(str(error))
 
     written = build_stage.write(built, out)
@@ -117,20 +154,26 @@ def build(
 
 @app.command()
 def run(
-    cache: Cache = DEFAULT_CACHE,
-    out: Out = DEFAULT_OUT,
+    cache: Cache = None,
+    out: Out = None,
     run_date: RunDate = None,
     refresh: Refresh = False,
+    source: Source = "ddot",
 ) -> None:
     """Fetch, then build."""
     when = _run_date(run_date)
-    fetch(cache=cache, run_date=dt.datetime.combine(when, dt.time()), refresh=refresh)
-    build(cache=cache, out=out, run_date=dt.datetime.combine(when, dt.time()))
+    fetch(
+        cache=cache,
+        run_date=dt.datetime.combine(when, dt.time()),
+        refresh=refresh,
+        source=source,
+    )
+    build(cache=cache, out=out, run_date=dt.datetime.combine(when, dt.time()), source=source)
 
 
 @app.command()
 def inspect(
-    out: Out = DEFAULT_OUT,
+    out: Annotated[Path, typer.Option(help="Where the artifacts were written.")] = DEFAULT_OUT,
     against: Annotated[Path | None, typer.Option(help="A previous run to compare with.")] = None,
 ) -> None:
     """Summarise what a run produced, and what changed since last time."""

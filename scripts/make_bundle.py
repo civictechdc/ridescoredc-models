@@ -32,6 +32,12 @@ def main() -> int:
     p.add_argument("--serving", type=Path, default=Path("serving"))
     p.add_argument("--version", default="0.1")
     p.add_argument("--applies-to", default="0.1", help="data package version this serves")
+    p.add_argument(
+        "--package",
+        default="ridescoredc-data-preview",
+        choices=("ridescoredc-data-preview", "ridescoredc-data-osm-preview"),
+        help="data package name this serves: the DDOT or the OSM preview",
+    )
     p.add_argument("--into", type=Path, default=Path("dist"))
     args = p.parse_args()
 
@@ -55,7 +61,7 @@ def main() -> int:
                 "created": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
                 # Proposal 0006 §4.1: a bundle declares which packages it applies
                 # to, so a mismatched pair fails loudly instead of half-working.
-                "applies_to": {"package": "ridescoredc-data-preview", "version": args.applies_to},
+                "applies_to": {"package": args.package, "version": args.applies_to},
                 "serving": [f.name for f in sql],
             },
             indent=2,

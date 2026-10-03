@@ -157,6 +157,11 @@ def main() -> int:
     # Proposal 0006 §4.1: a bundle declares which packages it applies to, and
     # apply refuses a pair that does not match rather than half-working.
     wanted = bundle.get("applies_to", {})
+    if wanted.get("package") not in (None, package.get("name")):
+        raise SystemExit(
+            f"bundle {bundle['name']}-{bundle['version']} serves package "
+            f"{wanted.get('package')}, but this package is {package.get('name')}"
+        )
     if wanted.get("version") not in (None, package.get("version")):
         raise SystemExit(
             f"bundle {bundle['name']}-{bundle['version']} serves package version "

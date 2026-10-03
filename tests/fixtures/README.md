@@ -32,3 +32,26 @@ written out by hand from the notebook.
 It is a CSV rather than a parquet so that a changed score appears in a review
 diff. Regenerate it only when a change is *meant* to move scores, and say in the
 commit message which numbers moved and why.
+
+## `osm_snapshot/2026-10-03/`
+
+An extract of a real `raw-osm/2026-10-03/` snapshot, for `--source osm`: the
+OpenStreetMap around 14th and U St NW. It has **156 segments** and the **67
+crashes** inside that box plus about 100 m. It was cut by
+`scripts/make_osm_fixture.py`, which says exactly what it keeps.
+
+The box was chosen to cover every bike facility type OSM gives us, including
+one of DC's few tagged buffered lanes. It also has four road functions, and
+streets both with and without lane and speed tags.
+
+Ways that cross the edge of the box are kept whole, but their cross streets
+beyond the edge are not. Segments near the edge are therefore cut differently
+from a full-city build.
+
+OSM data is © OpenStreetMap contributors, under the ODbL. The attribution note
+is kept in `osm.xml`.
+
+## `expected_osm_extract.csv`
+
+The golden file for that extract, treated the same way as `expected_extract.csv`
+above.

@@ -1,0 +1,3968 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="Overpass API 0.7.62.11 87bfad18">
+  <note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+  <meta osm_base="2026-10-03T16:09:21Z" areas="2026-10-03T02:09:07Z" />
+  <node id="49729847" lat="38.9191205" lon="-77.0345165">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="yes" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="49745214" lat="38.9141009" lon="-77.0319547">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="49745217" lat="38.9141932" lon="-77.0319563">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="49745225" lat="38.9148423" lon="-77.0319521" />
+  <node id="49745232" lat="38.9155878" lon="-77.0319563">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="49745235" lat="38.9162924" lon="-77.0319523" />
+  <node id="49745240" lat="38.9170085" lon="-77.0319527">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="49745243" lat="38.9181151" lon="-77.0319541">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49745247" lat="38.9191990" lon="-77.0319524">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49745256" lat="38.9199442" lon="-77.0319544">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="49745264" lat="38.9203220" lon="-77.0318660" />
+  <node id="49745266" lat="38.9204160" lon="-77.0318530" />
+  <node id="49745268" lat="38.9205110" lon="-77.0318440" />
+  <node id="49745271" lat="38.9205560" lon="-77.0318410" />
+  <node id="49745273" lat="38.9206010" lon="-77.0318400" />
+  <node id="49745275" lat="38.9206400" lon="-77.0318390" />
+  <node id="49745277" lat="38.9206800" lon="-77.0318390" />
+  <node id="49745279" lat="38.9207560" lon="-77.0318410" />
+  <node id="49745280" lat="38.9209980" lon="-77.0318650">
+    <tag k="bus" v="yes" />
+    <tag k="name" v="14th St NW at Belmont St NW" />
+    <tag k="network" v="WMATA Metrobus" />
+    <tag k="operator" v="WMATA" />
+    <tag k="public_transport" v="stop_position" />
+    <tag k="ref" v="1001782" />
+  </node>
+  <node id="49745282" lat="38.9210860" lon="-77.0318730" />
+  <node id="49745284" lat="38.9216600" lon="-77.0319300" />
+  <node id="49745287" lat="38.9224280" lon="-77.0320100">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49745289" lat="38.9226860" lon="-77.0320380">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49745291" lat="38.9230120" lon="-77.0320720" />
+  <node id="49745292" lat="38.9236816" lon="-77.0321361">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49764365" lat="38.9155892" lon="-77.0345271">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="49764371" lat="38.9162945" lon="-77.0345222" />
+  <node id="49764374" lat="38.9170106" lon="-77.0345228">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="source" v="survey" />
+  </node>
+  <node id="49764380" lat="38.9181162" lon="-77.0345107">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49764383" lat="38.9186570" lon="-77.0345281" />
+  <node id="49764389" lat="38.9193373" lon="-77.0347187" />
+  <node id="49764395" lat="38.9205125" lon="-77.0347871">
+    <tag k="crossing" v="zebra" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="49764397" lat="38.9205918" lon="-77.0347892" />
+  <node id="49764399" lat="38.9206485" lon="-77.0347956" />
+  <node id="49764401" lat="38.9206789" lon="-77.0348031" />
+  <node id="49764402" lat="38.9207054" lon="-77.0348176" />
+  <node id="49764404" lat="38.9207299" lon="-77.0348326" />
+  <node id="49764406" lat="38.9207606" lon="-77.0348581" />
+  <node id="49764408" lat="38.9207877" lon="-77.0348862" />
+  <node id="49764410" lat="38.9208139" lon="-77.0349271" />
+  <node id="49764411" lat="38.9208329" lon="-77.0349711" />
+  <node id="49764413" lat="38.9208536" lon="-77.0350200" />
+  <node id="49764416" lat="38.9208688" lon="-77.0350510" />
+  <node id="49764418" lat="38.9208844" lon="-77.0350736" />
+  <node id="49764420" lat="38.9209034" lon="-77.0350966" />
+  <node id="49764422" lat="38.9209284" lon="-77.0351181" />
+  <node id="49764423" lat="38.9209630" lon="-77.0351431" />
+  <node id="49764426" lat="38.9209972" lon="-77.0351596" />
+  <node id="49764428" lat="38.9210354" lon="-77.0351701" />
+  <node id="49764430" lat="38.9210779" lon="-77.0351746" />
+  <node id="49765120" lat="38.9181146" lon="-77.0354853">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49769213" lat="38.9237630" lon="-77.0280380" />
+  <node id="49769215" lat="38.9237650" lon="-77.0297110">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49772589" lat="38.9286350" lon="-77.0297080">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49773581" lat="38.9170066" lon="-77.0270396">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="49773590" lat="38.9181141" lon="-77.0270373">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49773595" lat="38.9191974" lon="-77.0270362">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49773597" lat="38.9207729" lon="-77.0270388">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="49773599" lat="38.9224280" lon="-77.0270360" />
+  <node id="49775998" lat="38.9141012" lon="-77.0296234">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="49780323" lat="38.9191979" lon="-77.0288313" />
+  <node id="49780326" lat="38.9195181" lon="-77.0288323" />
+  <node id="49780329" lat="38.9206653" lon="-77.0288284" />
+  <node id="49787504" lat="38.9247550" lon="-77.0297110">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49791702" lat="38.9155874" lon="-77.0280857">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49791711" lat="38.9155875" lon="-77.0296233">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="49793314" lat="38.9216230" lon="-77.0324550" />
+  <node id="49793316" lat="38.9215560" lon="-77.0335660" />
+  <node id="49793319" lat="38.9215270" lon="-77.0339880" />
+  <node id="49793320" lat="38.9214990" lon="-77.0344410" />
+  <node id="49793323" lat="38.9214750" lon="-77.0348880" />
+  <node id="49800146" lat="38.9133563" lon="-77.0296230" />
+  <node id="49800720" lat="38.9162937" lon="-77.0296240" />
+  <node id="49800725" lat="38.9162953" lon="-77.0313611" />
+  <node id="49809702" lat="38.9170087" lon="-77.0253753">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="source" v="survey" />
+  </node>
+  <node id="49809715" lat="38.9170073" lon="-77.0280840">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49809721" lat="38.9170083" lon="-77.0296200">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49813404" lat="38.9126096" lon="-77.0296232">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="49813406" lat="38.9126890" lon="-77.0296231">
+    <tag k="button_operated" v="no" />
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+    <tag k="traffic_signals:sound" v="no" />
+    <tag k="traffic_signals:vibration" v="no" />
+    <tag k="wheelchair" v="yes" />
+  </node>
+  <node id="49813441" lat="38.9181130" lon="-77.0296200">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49813443" lat="38.9191959" lon="-77.0296196">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49813454" lat="38.9201541" lon="-77.0296249" />
+  <node id="49813458" lat="38.9205077" lon="-77.0296703">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49813472" lat="38.9210830" lon="-77.0297010" />
+  <node id="49813480" lat="38.9224338" lon="-77.0297050">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49813485" lat="38.9233740" lon="-77.0297080" />
+  <node id="49813488" lat="38.9238460" lon="-77.0297110" />
+  <node id="49813489" lat="38.9238810" lon="-77.0297120" />
+  <node id="49813493" lat="38.9257480" lon="-77.0297110">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49813494" lat="38.9267420" lon="-77.0297070">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49813496" lat="38.9276370" lon="-77.0297070">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49842979" lat="38.9162990" lon="-77.0365089" />
+  <node id="49846731" lat="38.9181142" lon="-77.0259905">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49846738" lat="38.9191965" lon="-77.0259924">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49850535" lat="38.9224290" lon="-77.0270820" />
+  <node id="49850538" lat="38.9224300" lon="-77.0276270" />
+  <node id="49850539" lat="38.9224330" lon="-77.0279470" />
+  <node id="49850541" lat="38.9224330" lon="-77.0280420" />
+  <node id="49850543" lat="38.9224330" lon="-77.0281380" />
+  <node id="49850546" lat="38.9224290" lon="-77.0285900" />
+  <node id="49850558" lat="38.9224283" lon="-77.0318931">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="49852072" lat="38.9210840" lon="-77.0298300">
+    <tag k="direction" v="backward" />
+    <tag k="highway" v="stop" />
+  </node>
+  <node id="49852074" lat="38.9210830" lon="-77.0303520" />
+  <node id="49852076" lat="38.9210870" lon="-77.0309160" />
+  <node id="49852078" lat="38.9210870" lon="-77.0317190">
+    <tag k="direction" v="forward" />
+    <tag k="highway" v="stop" />
+  </node>
+  <node id="49852080" lat="38.9205910" lon="-77.0319910" />
+  <node id="49852081" lat="38.9204480" lon="-77.0344310" />
+  <node id="49852083" lat="38.9204500" lon="-77.0344620" />
+  <node id="49852085" lat="38.9204570" lon="-77.0344920" />
+  <node id="49852087" lat="38.9204680" lon="-77.0345200" />
+  <node id="49852089" lat="38.9204840" lon="-77.0345440" />
+  <node id="49852091" lat="38.9205760" lon="-77.0346440" />
+  <node id="49852092" lat="38.9205890" lon="-77.0346800">
+    <tag k="direction" v="forward" />
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="minor" />
+  </node>
+  <node id="49852094" lat="38.9205929" lon="-77.0347216">
+    <tag k="crossing" v="zebra" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="49853696" lat="38.9181130" lon="-77.0280832">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49853703" lat="38.9191973" lon="-77.0280868">
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="all" />
+  </node>
+  <node id="49853705" lat="38.9199020" lon="-77.0280860" />
+  <node id="49853710" lat="38.9207110" lon="-77.0280853" />
+  <node id="49853951" lat="38.9225220" lon="-77.0280430" />
+  <node id="49853954" lat="38.9226380" lon="-77.0280420" />
+  <node id="49853957" lat="38.9229610" lon="-77.0280470" />
+  <node id="49853959" lat="38.9233210" lon="-77.0280450" />
+  <node id="49866354" lat="38.9181145" lon="-77.0263274" />
+  <node id="49866359" lat="38.9181124" lon="-77.0275872" />
+  <node id="49866362" lat="38.9181137" lon="-77.0288326" />
+  <node id="49877844" lat="38.9191960" lon="-77.0248756">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="49877921" lat="38.9196416" lon="-77.0338888" />
+  <node id="49877923" lat="38.9196223" lon="-77.0339504" />
+  <node id="49877924" lat="38.9196099" lon="-77.0339762" />
+  <node id="49877927" lat="38.9195766" lon="-77.0340292" />
+  <node id="49877930" lat="38.9195567" lon="-77.0340533" />
+  <node id="49877931" lat="38.9195362" lon="-77.0340756" />
+  <node id="49877934" lat="38.9195130" lon="-77.0340997" />
+  <node id="49877936" lat="38.9192497" lon="-77.0343711">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="49893790" lat="38.9191994" lon="-77.0302936" />
+  <node id="626083285" lat="38.9155889" lon="-77.0346279">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="626083347" lat="38.9170105" lon="-77.0346125">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="626083404" lat="38.9162949" lon="-77.0346136" />
+  <node id="626083439" lat="38.9111406" lon="-77.0346267">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="626083459" lat="38.9118840" lon="-77.0346280" />
+  <node id="626083476" lat="38.9141001" lon="-77.0346184">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="626083513" lat="38.9126084" lon="-77.0346258">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="626083527" lat="38.9148388" lon="-77.0346269" />
+  <node id="626083551" lat="38.9096544" lon="-77.0346430">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="626083587" lat="38.9103940" lon="-77.0346315" />
+  <node id="656725922" lat="38.9181867" lon="-77.0345031">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="yes" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="684999537" lat="38.9225731" lon="-77.0346475" />
+  <node id="718564056" lat="38.9161984" lon="-77.0332434" />
+  <node id="1017379708" lat="38.9170074" lon="-77.0259932">
+    <tag k="highway" v="traffic_signals" />
+  </node>
+  <node id="1017391844" lat="38.9180773" lon="-77.0247371">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="1252835206" lat="38.9181168" lon="-77.0345999" />
+  <node id="1379443774" lat="38.9170105" lon="-77.0332503" />
+  <node id="1440867154" lat="38.9184138" lon="-77.0345030" />
+  <node id="1594013522" lat="38.9195183" lon="-77.0285175" />
+  <node id="1594013524" lat="38.9195179" lon="-77.0280866" />
+  <node id="1594013526" lat="38.9206868" lon="-77.0285118" />
+  <node id="1594017954" lat="38.9170069" lon="-77.0288256" />
+  <node id="1635884057" lat="38.9130346" lon="-77.0296225" />
+  <node id="1635884086" lat="38.9137127" lon="-77.0296229" />
+  <node id="1796371523" lat="38.9202007" lon="-77.0324523" />
+  <node id="1796371528" lat="38.9210886" lon="-77.0325486" />
+  <node id="1796371530" lat="38.9209737" lon="-77.0345516" />
+  <node id="1796371544" lat="38.9205620" lon="-77.0324856" />
+  <node id="1796371546" lat="38.9216134" lon="-77.0326147" />
+  <node id="1796371548" lat="38.9199636" lon="-77.0324415" />
+  <node id="1814318319" lat="38.9181040" lon="-77.0248394">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="1816555610" lat="38.9230852" lon="-77.0352931">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="1934650639" lat="38.9133610" lon="-77.0346321" />
+  <node id="2073919734" lat="38.9195161" lon="-77.0291501" />
+  <node id="2073919735" lat="38.9195156" lon="-77.0296206" />
+  <node id="2073919736" lat="38.9204787" lon="-77.0291503" />
+  <node id="2073919737" lat="38.9206022" lon="-77.0291700" />
+  <node id="2424866911" lat="38.9107238" lon="-77.0346404" />
+  <node id="2563393644" lat="38.9122166" lon="-77.0346375" />
+  <node id="2563393645" lat="38.9115333" lon="-77.0346375" />
+  <node id="2670838657" lat="38.9145123" lon="-77.0296244" />
+  <node id="2956274806" lat="38.9251419" lon="-77.0297110" />
+  <node id="2956274808" lat="38.9228395" lon="-77.0280472" />
+  <node id="2967361471" lat="38.9191970" lon="-77.0264937" />
+  <node id="2967361472" lat="38.9191965" lon="-77.0275827" />
+  <node id="2967361485" lat="38.9202140" lon="-77.0312343" />
+  <node id="2967361486" lat="38.9206578" lon="-77.0312426" />
+  <node id="2967361487" lat="38.9207841" lon="-77.0296922" />
+  <node id="3301501333" lat="38.9133541" lon="-77.0318740" />
+  <node id="3301501339" lat="38.9162931" lon="-77.0318730" />
+  <node id="3659231214" lat="38.9160238" lon="-77.0326893" />
+  <node id="3659231215" lat="38.9162915" lon="-77.0332439" />
+  <node id="3659231216" lat="38.9162950" lon="-77.0326923" />
+  <node id="3734945332" lat="38.9220301" lon="-77.0345999" />
+  <node id="3734945333" lat="38.9221501" lon="-77.0326054" />
+  <node id="3734945334" lat="38.9216184" lon="-77.0325308" />
+  <node id="3734945335" lat="38.9219491" lon="-77.0352221" />
+  <node id="3877481646" lat="38.9135266" lon="-77.0296233" />
+  <node id="3894578115" lat="38.9170072" lon="-77.0313631" />
+  <node id="3894578116" lat="38.9155891" lon="-77.0313596" />
+  <node id="3894578117" lat="38.9159919" lon="-77.0296244" />
+  <node id="3894578118" lat="38.9159922" lon="-77.0313618" />
+  <node id="3894578119" lat="38.9165996" lon="-77.0296219" />
+  <node id="3894578120" lat="38.9165989" lon="-77.0313619" />
+  <node id="3894578121" lat="38.9159952" lon="-77.0280868" />
+  <node id="3894578122" lat="38.9165899" lon="-77.0285714" />
+  <node id="3894578124" lat="38.9165885" lon="-77.0280864" />
+  <node id="3894578125" lat="38.9170077" lon="-77.0275833" />
+  <node id="3954008709" lat="38.9162209" lon="-77.0320370">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="3954008756" lat="38.9202727" lon="-77.0312393">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="3954008865" lat="38.9215030" lon="-77.0297022">
+    <tag k="direction" v="backward" />
+    <tag k="traffic_calming" v="rumble_strip" />
+  </node>
+  <node id="3954008866" lat="38.9215288" lon="-77.0312983" />
+  <node id="3954008867" lat="38.9210870" lon="-77.0312786" />
+  <node id="3954008872" lat="38.9215038" lon="-77.0297966" />
+  <node id="3954008873" lat="38.9233295" lon="-77.0303096" />
+  <node id="3954008874" lat="38.9230972" lon="-77.0303124" />
+  <node id="3954008875" lat="38.9231066" lon="-77.0313956" />
+  <node id="3954008876" lat="38.9224296" lon="-77.0313987" />
+  <node id="3995211767" lat="38.9177738" lon="-77.0345189" />
+  <node id="3998695808" lat="38.9170114" lon="-77.0359264" />
+  <node id="4001192126" lat="38.9168962" lon="-77.0296214">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192127" lat="38.9170076" lon="-77.0294800">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192128" lat="38.9170089" lon="-77.0297600">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192129" lat="38.9171241" lon="-77.0296206">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192130" lat="38.9180463" lon="-77.0296202">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192131" lat="38.9181130" lon="-77.0294817">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192132" lat="38.9181135" lon="-77.0297490">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192133" lat="38.9181936" lon="-77.0296199">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192134" lat="38.9191149" lon="-77.0296200">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192135" lat="38.9191976" lon="-77.0297552">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192136" lat="38.9191957" lon="-77.0294852">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192137" lat="38.9192647" lon="-77.0296201">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192138" lat="38.9203287" lon="-77.0295658" />
+  <node id="4001192139" lat="38.9204256" lon="-77.0296502">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="yes" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192140" lat="38.9204451" lon="-77.0295480">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="yes" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192141" lat="38.9204793" lon="-77.0298089">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192143" lat="38.9205392" lon="-77.0295017">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192145" lat="38.9205891" lon="-77.0296887">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192146" lat="38.9237055" lon="-77.0297105">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192149" lat="38.9238374" lon="-77.0297110">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192150" lat="38.9247018" lon="-77.0297111">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4001192153" lat="38.9248299" lon="-77.0297110">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4049795767" lat="38.9235514" lon="-77.0321239">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959195" lat="38.9134357" lon="-77.0296231">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959198" lat="38.9132976" lon="-77.0296219">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959214" lat="38.9147666" lon="-77.0319524">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959223" lat="38.9141709" lon="-77.0296242">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959227" lat="38.9140312" lon="-77.0296222">
+    <tag k="crossing" v="zebra" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959231" lat="38.9156761" lon="-77.0319551">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959235" lat="38.9154863" lon="-77.0319533">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="4089959239" lat="38.9156470" lon="-77.0296229">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959243" lat="38.9155136" lon="-77.0296235">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959245" lat="38.9162942" lon="-77.0297338">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959246" lat="38.9163597" lon="-77.0296240">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959249" lat="38.9162231" lon="-77.0296242">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959251" lat="38.9156496" lon="-77.0280847">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959259" lat="38.9154872" lon="-77.0318477">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959260" lat="38.9156766" lon="-77.0318751">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959262" lat="38.9162192" lon="-77.0318721">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959265" lat="38.9168873" lon="-77.0318727">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959266" lat="38.9168914" lon="-77.0320378">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959271" lat="38.9154856" lon="-77.0320351">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959274" lat="38.9147665" lon="-77.0320369">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959607" lat="38.9192000" lon="-77.0342782">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959609" lat="38.9191160" lon="-77.0346937">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="yes" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959611" lat="38.9191961" lon="-77.0348363">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959613" lat="38.9192574" lon="-77.0347168">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959616" lat="38.9188996" lon="-77.0347700">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959618" lat="38.9189153" lon="-77.0346185">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959623" lat="38.9181164" lon="-77.0346704">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959627" lat="38.9181163" lon="-77.0344056">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959629" lat="38.9180565" lon="-77.0345171">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959630" lat="38.9180556" lon="-77.0346061">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959632" lat="38.9181142" lon="-77.0353608">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4089959655" lat="38.9205917" lon="-77.0347786" />
+  <node id="4089959667" lat="38.9214556" lon="-77.0351940" />
+  <node id="4155621412" lat="38.9258244" lon="-77.0297107">
+    <tag k="crossing:markings" v="yes" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="4155621416" lat="38.9256946" lon="-77.0297110">
+    <tag k="crossing:markings" v="yes" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="4155621420" lat="38.9266850" lon="-77.0297072">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4155621424" lat="38.9268168" lon="-77.0297070">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4155621428" lat="38.9277119" lon="-77.0297070">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4155621432" lat="38.9275711" lon="-77.0297073">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4155621440" lat="38.9285748" lon="-77.0297080">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4155621585" lat="38.9207668" lon="-77.0271491">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4155621718" lat="38.9224291" lon="-77.0271608">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4618716073" lat="38.9155872" lon="-77.0332369" />
+  <node id="4664921097" lat="38.9191068" lon="-77.0319528">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921098" lat="38.9192811" lon="-77.0319528">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921099" lat="38.9191988" lon="-77.0317974">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921100" lat="38.9191987" lon="-77.0320968">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921101" lat="38.9182048" lon="-77.0319526">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921102" lat="38.9181152" lon="-77.0318093">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921103" lat="38.9180299" lon="-77.0319540">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921104" lat="38.9181151" lon="-77.0321007">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921107" lat="38.9168893" lon="-77.0319529">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921108" lat="38.9171560" lon="-77.0319528">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921109" lat="38.9170074" lon="-77.0317811">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921110" lat="38.9170074" lon="-77.0321254">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921112" lat="38.9162200" lon="-77.0319521">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4664921113" lat="38.9162929" lon="-77.0318061">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="4778392474" lat="38.9100629" lon="-77.0346416" />
+  <node id="4805707921" lat="38.9207374" lon="-77.0275878" />
+  <node id="4805709078" lat="38.9202694" lon="-77.0309422" />
+  <node id="4805709079" lat="38.9199012" lon="-77.0309341" />
+  <node id="4805715014" lat="38.9201800" lon="-77.0314132" />
+  <node id="4805715015" lat="38.9197126" lon="-77.0314059" />
+  <node id="4805778258" lat="38.9175543" lon="-77.0280835" />
+  <node id="4805778263" lat="38.9176570" lon="-77.0280836" />
+  <node id="4805779972" lat="38.9181132" lon="-77.0291331" />
+  <node id="4805779973" lat="38.9175594" lon="-77.0291331" />
+  <node id="4805779974" lat="38.9181135" lon="-77.0290006" />
+  <node id="4805785271" lat="38.9185589" lon="-77.0350884" />
+  <node id="4805799072" lat="38.9170113" lon="-77.0350353" />
+  <node id="4807043678" lat="38.9159541" lon="-77.0319539" />
+  <node id="4807048917" lat="38.9166226" lon="-77.0345232" />
+  <node id="4807048919" lat="38.9170106" lon="-77.0339909" />
+  <node id="4807048920" lat="38.9168225" lon="-77.0345213" />
+  <node id="4807049322" lat="38.9170103" lon="-77.0342919" />
+  <node id="4807068562" lat="38.9162960" lon="-77.0350357" />
+  <node id="4807068565" lat="38.9162965" lon="-77.0359261" />
+  <node id="4807362836" lat="38.9191961" lon="-77.0257867" />
+  <node id="4807373035" lat="38.9170071" lon="-77.0286323" />
+  <node id="4807373036" lat="38.9176628" lon="-77.0286358" />
+  <node id="4807612101" lat="38.9199296" lon="-77.0325945" />
+  <node id="4807612102" lat="38.9192011" lon="-77.0325887" />
+  <node id="4807613243" lat="38.9230433" lon="-77.0352897" />
+  <node id="4807613627" lat="38.9226327" lon="-77.0352624" />
+  <node id="4813435155" lat="38.9170068" lon="-77.0291357" />
+  <node id="4887612787" lat="38.9181129" lon="-77.0302936" />
+  <node id="4887873919" lat="38.9203992" lon="-77.0302505" />
+  <node id="4887873920" lat="38.9191992" lon="-77.0302235" />
+  <node id="4889141681" lat="38.9172940" lon="-77.0280833" />
+  <node id="5006199540" lat="38.9181778" lon="-77.0302936" />
+  <node id="5006199541" lat="38.9191156" lon="-77.0302936">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5006201910" lat="38.9166058" lon="-77.0297390" />
+  <node id="5445877035" lat="38.9224279" lon="-77.0292006" />
+  <node id="5445877039" lat="38.9216368" lon="-77.0297026" />
+  <node id="5445877045" lat="38.9219206" lon="-77.0297035" />
+  <node id="5445878422" lat="38.9210835" lon="-77.0301032" />
+  <node id="5445878427" lat="38.9210831" lon="-77.0303205" />
+  <node id="5445888393" lat="38.9181134" lon="-77.0335533" />
+  <node id="5445888395" lat="38.9185622" lon="-77.0345124" />
+  <node id="5445901210" lat="38.9224294" lon="-77.0314658" />
+  <node id="5445901216" lat="38.9227649" lon="-77.0320462" />
+  <node id="5445901218" lat="38.9231017" lon="-77.0311169" />
+  <node id="5445901220" lat="38.9229639" lon="-77.0313963" />
+  <node id="5445907581" lat="38.9221453" lon="-77.0326822" />
+  <node id="5445907583" lat="38.9221335" lon="-77.0328705" />
+  <node id="5446812441" lat="38.9165885" lon="-77.0283659" />
+  <node id="5446812445" lat="38.9175654" lon="-77.0310406" />
+  <node id="5446812446" lat="38.9174459" lon="-77.0301184" />
+  <node id="5446812447" lat="38.9175636" lon="-77.0303550" />
+  <node id="5446812448" lat="38.9177594" lon="-77.0301300" />
+  <node id="5446812449" lat="38.9177657" lon="-77.0299275" />
+  <node id="5446812450" lat="38.9177876" lon="-77.0298725" />
+  <node id="5446812451" lat="38.9148429" lon="-77.0296252" />
+  <node id="5446842801" lat="38.9170113" lon="-77.0355228" />
+  <node id="5446842804" lat="38.9181151" lon="-77.0350523" />
+  <node id="5446842809" lat="38.9181135" lon="-77.0337291" />
+  <node id="5446842821" lat="38.9170105" lon="-77.0335341" />
+  <node id="5446842822" lat="38.9162871" lon="-77.0338192" />
+  <node id="5446842823" lat="38.9165615" lon="-77.0338154" />
+  <node id="5446842824" lat="38.9160106" lon="-77.0338234" />
+  <node id="5446842833" lat="38.9170072" lon="-77.0310396" />
+  <node id="5580387033" lat="38.9215367" lon="-77.0351998">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5580387034" lat="38.9231895" lon="-77.0353370" />
+  <node id="5580387035" lat="38.9230807" lon="-77.0353330">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5580387036" lat="38.9229349" lon="-77.0353511" />
+  <node id="5580387037" lat="38.9225896" lon="-77.0353329" />
+  <node id="5580387039" lat="38.9218165" lon="-77.0352832" />
+  <node id="5580387040" lat="38.9215510" lon="-77.0352706">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5580387042" lat="38.9210115" lon="-77.0352346" />
+  <node id="5580387043" lat="38.9209233" lon="-77.0351967" />
+  <node id="5580387044" lat="38.9208139" lon="-77.0350690" />
+  <node id="5580387045" lat="38.9207732" lon="-77.0349793" />
+  <node id="5580387046" lat="38.9206664" lon="-77.0348713" />
+  <node id="5580387047" lat="38.9206339" lon="-77.0348648" />
+  <node id="5580387050" lat="38.9195199" lon="-77.0347990" />
+  <node id="5580387051" lat="38.9192588" lon="-77.0347783">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5580387052" lat="38.9191964" lon="-77.0347711">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="5580387053" lat="38.9191138" lon="-77.0347585">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5580387054" lat="38.9190755" lon="-77.0347512" />
+  <node id="5580387055" lat="38.9186722" lon="-77.0346276" />
+  <node id="5580387056" lat="38.9185449" lon="-77.0346037" />
+  <node id="5580387057" lat="38.9183694" lon="-77.0345921" />
+  <node id="5703982219" lat="38.9207763" lon="-77.0297896">
+    <tag k="crossing" v="unmarked" />
+    <tag k="crossing:markings" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5704010774" lat="38.9210839" lon="-77.0297984">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5704010775" lat="38.9211599" lon="-77.0297011">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="zebra" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5704030853" lat="38.9205112" lon="-77.0348571">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5704037781" lat="38.9223605" lon="-77.0320037">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="5774919800" lat="38.9190817" lon="-77.0325943" />
+  <node id="5774919801" lat="38.9181140" lon="-77.0325958" />
+  <node id="5871319929" lat="38.9191999" lon="-77.0312524" />
+  <node id="5871319930" lat="38.9181134" lon="-77.0312679" />
+  <node id="5871319933" lat="38.9186551" lon="-77.0312661" />
+  <node id="6348198848" lat="38.9232232" lon="-77.0353007">
+    <tag k="cycleway" v="asl" />
+  </node>
+  <node id="6368912542" lat="38.9097468" lon="-77.0346420">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6368912543" lat="38.9095638" lon="-77.0346433">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6477500566" lat="38.9220153" lon="-77.0349250" />
+  <node id="6753254592" lat="38.9186675" lon="-77.0325943" />
+  <node id="6760336712" lat="38.9125447" lon="-77.0346247">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6760336713" lat="38.9126853" lon="-77.0346262">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6760336714" lat="38.9188561" lon="-77.0346861">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6760336715" lat="38.9189511" lon="-77.0347141">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="6760336716" lat="38.9181866" lon="-77.0345925">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6760336717" lat="38.9141705" lon="-77.0346183">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6760336718" lat="38.9140335" lon="-77.0346197">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="6760336736" lat="38.9137006" lon="-77.0346320" />
+  <node id="6798984658" lat="38.9191989" lon="-77.0301533" />
+  <node id="6798984660" lat="38.9197734" lon="-77.0296198" />
+  <node id="6799136039" lat="38.9272612" lon="-77.0297070" />
+  <node id="7066081241" lat="38.9170107" lon="-77.0331075" />
+  <node id="7153891568" lat="38.9181119" lon="-77.0252078" />
+  <node id="7153920020" lat="38.9170079" lon="-77.0265011" />
+  <node id="7168757402" lat="38.9188047" lon="-77.0348619" />
+  <node id="7738764945" lat="38.9224961" lon="-77.0313984">
+    <tag k="crossing" v="unmarked" />
+    <tag k="crossing:markings" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="no" />
+  </node>
+  <node id="8177378652" lat="38.9162979" lon="-77.0363823">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="8411860548" lat="38.9145673" lon="-77.0346307" />
+  <node id="8411953538" lat="38.9165907" lon="-77.0290628" />
+  <node id="8411953539" lat="38.9159937" lon="-77.0290613" />
+  <node id="8411953540" lat="38.9165898" lon="-77.0288305" />
+  <node id="8411953541" lat="38.9159928" lon="-77.0288352" />
+  <node id="8412019224" lat="38.9233558" lon="-77.0280444" />
+  <node id="8633944744" lat="38.9187231" lon="-77.0345445" />
+  <node id="8633944745" lat="38.9206947" lon="-77.0348833" />
+  <node id="8633944746" lat="38.9207228" lon="-77.0349043" />
+  <node id="8633944747" lat="38.9207503" lon="-77.0349363" />
+  <node id="8633944748" lat="38.9208835" lon="-77.0351656" />
+  <node id="8633944749" lat="38.9208454" lon="-77.0351228" />
+  <node id="8633944750" lat="38.9209634" lon="-77.0352204" />
+  <node id="8633944753" lat="38.9214531" lon="-77.0352645" />
+  <node id="8633944755" lat="38.9193033" lon="-77.0347802" />
+  <node id="8633944756" lat="38.9190223" lon="-77.0347357" />
+  <node id="8633944757" lat="38.9188140" lon="-77.0346723" />
+  <node id="8633944773" lat="38.9091256" lon="-77.0346456" />
+  <node id="8893769408" lat="38.9195556" lon="-77.0332879" />
+  <node id="8893769409" lat="38.9195571" lon="-77.0325866" />
+  <node id="8894106472" lat="38.9209945" lon="-77.0345635" />
+  <node id="8894106473" lat="38.9210088" lon="-77.0345798" />
+  <node id="8894106474" lat="38.9210215" lon="-77.0345911" />
+  <node id="8894106475" lat="38.9210406" lon="-77.0346013" />
+  <node id="8894106476" lat="38.9210684" lon="-77.0346064" />
+  <node id="8894106477" lat="38.9210835" lon="-77.0346166" />
+  <node id="8894106478" lat="38.9210962" lon="-77.0346339" />
+  <node id="8894106479" lat="38.9210580" lon="-77.0351725" />
+  <node id="8894106480" lat="38.9210993" lon="-77.0346522" />
+  <node id="8894454010" lat="38.9159939" lon="-77.0285697" />
+  <node id="9044153303" lat="38.9203307" lon="-77.0302342">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9044153304" lat="38.9201918" lon="-77.0309386">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9044153305" lat="38.9191116" lon="-77.0312525">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9044153306" lat="38.9200972" lon="-77.0314041">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9044153307" lat="38.9201202" lon="-77.0317434">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="9044153308" lat="38.9202043" lon="-77.0318966">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="9044153309" lat="38.9200387" lon="-77.0321059">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9044153310" lat="38.9168986" lon="-77.0313621">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9044153311" lat="38.9181844" lon="-77.0312677">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9044153312" lat="38.9217127" lon="-77.0319356">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="9044153313" lat="38.9171004" lon="-77.0310395">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9048503534" lat="38.9163534" lon="-77.0313611">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9048503537" lat="38.9211519" lon="-77.0312815">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773234" lat="38.9127030" lon="-77.0320655">
+    <tag k="button_operated" v="yes" />
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+    <tag k="traffic_signals:sound" v="no" />
+    <tag k="traffic_signals:vibration" v="no" />
+    <tag k="wheelchair" v="yes" />
+  </node>
+  <node id="9136773235" lat="38.9129309" lon="-77.0320679" />
+  <node id="9136773236" lat="38.9130029" lon="-77.0320367" />
+  <node id="9136773237" lat="38.9139535" lon="-77.0320372" />
+  <node id="9136773238" lat="38.9141000" lon="-77.0320365">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="9136773239" lat="38.9148422" lon="-77.0320362" />
+  <node id="9136773240" lat="38.9151388" lon="-77.0320371" />
+  <node id="9136773241" lat="38.9155873" lon="-77.0320548" />
+  <node id="9136773244" lat="38.9127541" lon="-77.0320649" />
+  <node id="9136773263" lat="38.9122023" lon="-77.0319535" />
+  <node id="9136773264" lat="38.9123187" lon="-77.0318417" />
+  <node id="9136773265" lat="38.9124753" lon="-77.0318437" />
+  <node id="9136773266" lat="38.9125112" lon="-77.0318424">
+    <tag k="button_operated" v="yes" />
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+    <tag k="traffic_signals:sound" v="no" />
+    <tag k="traffic_signals:vibration" v="no" />
+    <tag k="wheelchair" v="yes" />
+  </node>
+  <node id="9136773267" lat="38.9126101" lon="-77.0318559">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="9136773268" lat="38.9127052" lon="-77.0318762">
+    <tag k="button_operated" v="yes" />
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+    <tag k="traffic_signals:sound" v="no" />
+    <tag k="traffic_signals:vibration" v="no" />
+    <tag k="wheelchair" v="yes" />
+  </node>
+  <node id="9136773269" lat="38.9141012" lon="-77.0318737">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="9136773270" lat="38.9147666" lon="-77.0318740">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773271" lat="38.9152447" lon="-77.0318696" />
+  <node id="9136773272" lat="38.9153074" lon="-77.0318465" />
+  <node id="9136773273" lat="38.9155879" lon="-77.0318574" />
+  <node id="9136773275" lat="38.9154722" lon="-77.0318474" />
+  <node id="9136773277" lat="38.9134524" lon="-77.0318741">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773279" lat="38.9134523" lon="-77.0320370">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773291" lat="38.9133539" lon="-77.0320369" />
+  <node id="9136773292" lat="38.9148423" lon="-77.0318740" />
+  <node id="9136773293" lat="38.9170078" lon="-77.0318593">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="9136773294" lat="38.9171581" lon="-77.0318437">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773295" lat="38.9173547" lon="-77.0318448" />
+  <node id="9136773296" lat="38.9174277" lon="-77.0318688" />
+  <node id="9136773297" lat="38.9180309" lon="-77.0318680">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773298" lat="38.9181150" lon="-77.0318676">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="9136773299" lat="38.9156754" lon="-77.0320654">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773300" lat="38.9159111" lon="-77.0320658" />
+  <node id="9136773301" lat="38.9160124" lon="-77.0320360" />
+  <node id="9136773302" lat="38.9170086" lon="-77.0320510">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="9136773303" lat="38.9171539" lon="-77.0320638">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773304" lat="38.9173559" lon="-77.0320666" />
+  <node id="9136773305" lat="38.9174270" lon="-77.0320356" />
+  <node id="9136773306" lat="38.9180290" lon="-77.0320370">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773307" lat="38.9181152" lon="-77.0320366">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="9136773310" lat="38.9171882" lon="-77.0320657" />
+  <node id="9136773312" lat="38.9171740" lon="-77.0318441" />
+  <node id="9136773314" lat="38.9162919" lon="-77.0320377" />
+  <node id="9136773315" lat="38.9159548" lon="-77.0320531" />
+  <node id="9136773317" lat="38.9158615" lon="-77.0320679" />
+  <node id="9136773318" lat="38.9156868" lon="-77.0320665" />
+  <node id="9136773320" lat="38.9156348" lon="-77.0320652" />
+  <node id="9136773321" lat="38.9182036" lon="-77.0318686">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9136773322" lat="38.9183849" lon="-77.0319528" />
+  <node id="9136773323" lat="38.9182060" lon="-77.0320356">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9403935906" lat="38.9170075" lon="-77.0258921">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9403935908" lat="38.9170075" lon="-77.0260816">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9403949775" lat="38.9191963" lon="-77.0259057">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9403949778" lat="38.9191966" lon="-77.0260807">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9403954600" lat="38.9191972" lon="-77.0250299">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9403974403" lat="38.9191974" lon="-77.0269360">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="9403974406" lat="38.9191968" lon="-77.0271391">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="9403978231" lat="38.9181148" lon="-77.0259028">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9403978234" lat="38.9181143" lon="-77.0260852">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9403980749" lat="38.9170055" lon="-77.0255205">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9611815310" lat="38.9162975" lon="-77.0363418">
+    <tag k="direction" v="forward" />
+    <tag k="highway" v="stop" />
+  </node>
+  <node id="9631592521" lat="38.9179171" lon="-77.0346220" />
+  <node id="9631592522" lat="38.9179834" lon="-77.0346084" />
+  <node id="9631592523" lat="38.9184232" lon="-77.0345933" />
+  <node id="9631592524" lat="38.9184859" lon="-77.0345972" />
+  <node id="9631592525" lat="38.9186030" lon="-77.0346131" />
+  <node id="9631592526" lat="38.9187376" lon="-77.0346444" />
+  <node id="9631592527" lat="38.9184880" lon="-77.0345065" />
+  <node id="9631592528" lat="38.9186153" lon="-77.0345203" />
+  <node id="9631592529" lat="38.9188058" lon="-77.0345732" />
+  <node id="9631592530" lat="38.9170106" lon="-77.0346741">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592531" lat="38.9170105" lon="-77.0343963">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592532" lat="38.9171143" lon="-77.0345216">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592533" lat="38.9171151" lon="-77.0346141">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592534" lat="38.9169039" lon="-77.0346133">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592535" lat="38.9171810" lon="-77.0346236" />
+  <node id="9631592536" lat="38.9167727" lon="-77.0346253" />
+  <node id="9631592537" lat="38.9168690" lon="-77.0346144" />
+  <node id="9631592538" lat="38.9169059" lon="-77.0345219">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592539" lat="38.9164417" lon="-77.0346262" />
+  <node id="9631592540" lat="38.9160929" lon="-77.0346267" />
+  <node id="9631592541" lat="38.9161663" lon="-77.0346144" />
+  <node id="9631592542" lat="38.9163737" lon="-77.0346142" />
+  <node id="9631592543" lat="38.9163575" lon="-77.0346141">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592544" lat="38.9162951" lon="-77.0346630">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592545" lat="38.9163584" lon="-77.0345224">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592547" lat="38.9156516" lon="-77.0345274">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592548" lat="38.9156515" lon="-77.0346278">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592549" lat="38.9149008" lon="-77.0346247">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592550" lat="38.9147811" lon="-77.0346287">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9631592555" lat="38.9139466" lon="-77.0346213" />
+  <node id="9631592556" lat="38.9138846" lon="-77.0346320" />
+  <node id="9631592557" lat="38.9142693" lon="-77.0346328" />
+  <node id="9632466552" lat="38.9127939" lon="-77.0346344" />
+  <node id="9632466553" lat="38.9123833" lon="-77.0346359" />
+  <node id="9632466554" lat="38.9124604" lon="-77.0346255" />
+  <node id="9632466555" lat="38.9127142" lon="-77.0346250" />
+  <node id="9632466559" lat="38.9120084" lon="-77.0346344" />
+  <node id="9632466560" lat="38.9116885" lon="-77.0346356" />
+  <node id="9632466561" lat="38.9117456" lon="-77.0346277" />
+  <node id="9632466562" lat="38.9119472" lon="-77.0346280" />
+  <node id="9632466566" lat="38.9119320" lon="-77.0346280">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9632466567" lat="38.9118248" lon="-77.0346279">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9632466573" lat="38.9112762" lon="-77.0346394" />
+  <node id="9632466574" lat="38.9112439" lon="-77.0346263" />
+  <node id="9632466575" lat="38.9112049" lon="-77.0346260">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9632466576" lat="38.9109358" lon="-77.0346404" />
+  <node id="9632466577" lat="38.9110336" lon="-77.0346294" />
+  <node id="9632466578" lat="38.9110679" lon="-77.0346285">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9632466582" lat="38.9105214" lon="-77.0346395" />
+  <node id="9632466583" lat="38.9101952" lon="-77.0346403" />
+  <node id="9632466584" lat="38.9102776" lon="-77.0346327" />
+  <node id="9632466585" lat="38.9103390" lon="-77.0346326">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9632466586" lat="38.9104507" lon="-77.0346296">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9644431462" lat="38.9193834" lon="-77.0347184" />
+  <node id="9644431463" lat="38.9194292" lon="-77.0347201" />
+  <node id="9644431464" lat="38.9194038" lon="-77.0347899" />
+  <node id="9644431465" lat="38.9194609" lon="-77.0347943" />
+  <node id="9644431466" lat="38.9191962" lon="-77.0350393" />
+  <node id="9644431467" lat="38.9192898" lon="-77.0343255">
+    <tag k="cycleway" v="asl" />
+  </node>
+  <node id="9644431469" lat="38.9190714" lon="-77.0346796" />
+  <node id="9644431471" lat="38.9191506" lon="-77.0347008" />
+  <node id="9644431472" lat="38.9188655" lon="-77.0348030">
+    <tag k="cycleway" v="asl" />
+  </node>
+  <node id="9644431473" lat="38.9195957" lon="-77.0340010" />
+  <node id="9644431474" lat="38.9196336" lon="-77.0339191" />
+  <node id="9644431475" lat="38.9196508" lon="-77.0338495" />
+  <node id="9644431489" lat="38.9202769" lon="-77.0302243" />
+  <node id="9644431490" lat="38.9199652" lon="-77.0319521" />
+  <node id="9644431493" lat="38.9199955" lon="-77.0319481" />
+  <node id="9644431494" lat="38.9200251" lon="-77.0319429" />
+  <node id="9644431495" lat="38.9196619" lon="-77.0319539" />
+  <node id="9644621257" lat="38.9171091" lon="-77.0318443" />
+  <node id="9644621259" lat="38.9171064" lon="-77.0320631" />
+  <node id="9644621260" lat="38.9168541" lon="-77.0319526">
+    <tag k="cycleway" v="asl" />
+  </node>
+  <node id="9644621261" lat="38.9162932" lon="-77.0317653">
+    <tag k="direction" v="forward" />
+    <tag k="highway" v="stop" />
+    <tag k="stop" v="minor" />
+  </node>
+  <node id="9644621265" lat="38.9125575" lon="-77.0318451" />
+  <node id="9644621266" lat="38.9126720" lon="-77.0318724" />
+  <node id="9644621272" lat="38.9126863" lon="-77.0320650" />
+  <node id="9647428762" lat="38.9206736" lon="-77.0287376" />
+  <node id="9647428763" lat="38.9206701" lon="-77.0287836" />
+  <node id="9647428764" lat="38.9206577" lon="-77.0288758" />
+  <node id="9647428765" lat="38.9205047" lon="-77.0291518" />
+  <node id="9647428767" lat="38.9192554" lon="-77.0288310">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428768" lat="38.9202424" lon="-77.0296306" />
+  <node id="9647428769" lat="38.9203262" lon="-77.0296382" />
+  <node id="9647428770" lat="38.9205337" lon="-77.0295352">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="9647428772" lat="38.9205895" lon="-77.0288285">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428773" lat="38.9205616" lon="-77.0288284">
+    <tag k="direction" v="forward" />
+    <tag k="highway" v="stop" />
+  </node>
+  <node id="9647428774" lat="38.9206398" lon="-77.0280847">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428775" lat="38.9206118" lon="-77.0280847">
+    <tag k="direction" v="forward" />
+    <tag k="highway" v="stop" />
+  </node>
+  <node id="9647428776" lat="38.9200729" lon="-77.0296233" />
+  <node id="9647428777" lat="38.9192559" lon="-77.0280868">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428778" lat="38.9191976" lon="-77.0279945">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428779" lat="38.9191974" lon="-77.0281785">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428780" lat="38.9191233" lon="-77.0280866">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428781" lat="38.9181846" lon="-77.0280831">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428782" lat="38.9181130" lon="-77.0281711">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428783" lat="38.9180523" lon="-77.0280833">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428784" lat="38.9181132" lon="-77.0280030">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428785" lat="38.9178081" lon="-77.0296213" />
+  <node id="9647428786" lat="38.9175209" lon="-77.0296211" />
+  <node id="9647428788" lat="38.9170072" lon="-77.0281778">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428789" lat="38.9171134" lon="-77.0280840">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428790" lat="38.9168966" lon="-77.0280846">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428791" lat="38.9170074" lon="-77.0279897">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428792" lat="38.9170071" lon="-77.0271367">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9647428793" lat="38.9165913" lon="-77.0294970" />
+  <node id="9655223653" lat="38.9181139" lon="-77.0271311">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9655223654" lat="38.9181141" lon="-77.0269448">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="9655223657" lat="38.9170068" lon="-77.0269345">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+    <tag k="tactile_paving" v="yes" />
+  </node>
+  <node id="9668193796" lat="38.9156479" lon="-77.0332375" />
+  <node id="9670005304" lat="38.9170113" lon="-77.0351048" />
+  <node id="9771027041" lat="38.9220404" lon="-77.0344294" />
+  <node id="9771027043" lat="38.9210678" lon="-77.0328910" />
+  <node id="9771027045" lat="38.9210483" lon="-77.0332113" />
+  <node id="9771027047" lat="38.9210401" lon="-77.0333469" />
+  <node id="10096094570" lat="38.9216510" lon="-77.0320572" />
+  <node id="10096094580" lat="38.9210628" lon="-77.0351117" />
+  <node id="10096094591" lat="38.9206208" lon="-77.0324926" />
+  <node id="10096094595" lat="38.9216826" lon="-77.0325398" />
+  <node id="10175701338" lat="38.9174403" lon="-77.0319533" />
+  <node id="10246460361" lat="38.9191970" lon="-77.0265301" />
+  <node id="10758019370" lat="38.9191966" lon="-77.0249520">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="dashes" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="10758019372" lat="38.9181116" lon="-77.0249088" />
+  <node id="11038073150" lat="38.9181891" lon="-77.0325956">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11038113914" lat="38.9198596" lon="-77.0325928" />
+  <node id="11038113952" lat="38.9155102" lon="-77.0346271">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11038113953" lat="38.9186576" lon="-77.0344121" />
+  <node id="11038113957" lat="38.9191215" lon="-77.0325924">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11038113958" lat="38.9192601" lon="-77.0325884">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11038169200" lat="38.9156472" lon="-77.0313599">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11038179108" lat="38.9141954" lon="-77.0320363">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11038179109" lat="38.9140162" lon="-77.0320375">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11038179123" lat="38.9141910" lon="-77.0318733">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11038179124" lat="38.9140099" lon="-77.0318746">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11151327464" lat="38.9192631" lon="-77.0302236">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11151327465" lat="38.9195011" lon="-77.0302237" />
+  <node id="11151390692" lat="38.9165504" lon="-77.0326932" />
+  <node id="11151411122" lat="38.9188389" lon="-77.0312529" />
+  <node id="11151411123" lat="38.9188384" lon="-77.0302936" />
+  <node id="11151411124" lat="38.9184474" lon="-77.0312670" />
+  <node id="11151411125" lat="38.9184463" lon="-77.0302936" />
+  <node id="11151411126" lat="38.9187801" lon="-77.0312654" />
+  <node id="11198897519" lat="38.9197011" lon="-77.0332912" />
+  <node id="11198897520" lat="38.9197740" lon="-77.0332949" />
+  <node id="11227525634" lat="38.9213000" lon="-77.0318943">
+    <tag k="bus" v="yes" />
+    <tag k="name" v="14th St NW at Chapin St NW" />
+    <tag k="network" v="WMATA Metrobus" />
+    <tag k="network:wikidata" v="Q6824810" />
+    <tag k="operator" v="Washington Metropolitan Area Transit Authority" />
+    <tag k="operator:short" v="WMATA" />
+    <tag k="operator:wikidata" v="Q7972051" />
+    <tag k="public_transport" v="stop_position" />
+    <tag k="ref" v="1001787" />
+  </node>
+  <node id="11227525635" lat="38.9172007" lon="-77.0319530">
+    <tag k="bus" v="yes" />
+    <tag k="name" v="14th St NW and U St NW" />
+    <tag k="network" v="WMATA Metrobus" />
+    <tag k="network:wikidata" v="Q6824810" />
+    <tag k="operator" v="Washington Metropolitan Area Transit Authority" />
+    <tag k="operator:short" v="WMATA" />
+    <tag k="operator:wikidata" v="Q7972051" />
+    <tag k="public_transport" v="stop_position" />
+    <tag k="ref" v="1001696" />
+  </node>
+  <node id="11227525658" lat="38.9141346" lon="-77.0320365" />
+  <node id="11234143710" lat="38.9173707" lon="-77.0319532">
+    <tag k="bus" v="yes" />
+    <tag k="name" v="14th St NW &amp; U St NW" />
+    <tag k="network" v="WMATA Metrobus" />
+    <tag k="operator" v="WMATA" />
+    <tag k="public_transport" v="stop_position" />
+    <tag k="ref" v="1001702" />
+  </node>
+  <node id="11263106435" lat="38.9206168" lon="-77.0285166">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11263106436" lat="38.9205360" lon="-77.0291568">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11263137938" lat="38.9201523" lon="-77.0319577" />
+  <node id="11263137939" lat="38.9200589" lon="-77.0320208">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11263137940" lat="38.9199562" lon="-77.0320597" />
+  <node id="11263137941" lat="38.9199227" lon="-77.0320693">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11263137942" lat="38.9197633" lon="-77.0320650" />
+  <node id="11263137943" lat="38.9196932" lon="-77.0320543" />
+  <node id="11263137944" lat="38.9195822" lon="-77.0319537" />
+  <node id="11263137945" lat="38.9196723" lon="-77.0318708" />
+  <node id="11263137946" lat="38.9198278" lon="-77.0318460" />
+  <node id="11263137947" lat="38.9199495" lon="-77.0318515" />
+  <node id="11263137948" lat="38.9199635" lon="-77.0318516">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder:skewed" />
+    <tag k="crossing:signals" v="yes" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11263137949" lat="38.9200974" lon="-77.0318501">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11265214727" lat="38.9169110" lon="-77.0332494">
+    <tag k="crossing" v="unmarked" />
+    <tag k="crossing:island" v="no" />
+    <tag k="crossing:markings" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="11274721882" lat="38.9126771" lon="-77.0320631" />
+  <node id="11332977605" lat="38.9200804" lon="-77.0319292">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="11332977609" lat="38.9191968" lon="-77.0347083">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="11332977611" lat="38.9190029" lon="-77.0346544">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="11332977614" lat="38.9191002" lon="-77.0345417">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+    <tag k="traffic_signals:direction" v="backward" />
+  </node>
+  <node id="11332977616" lat="38.9191995" lon="-77.0344319">
+    <tag k="highway" v="traffic_signals" />
+    <tag k="traffic_signals" v="signal" />
+  </node>
+  <node id="11350250590" lat="38.9188823" lon="-77.0346049" />
+  <node id="11350250591" lat="38.9188826" lon="-77.0347865" />
+  <node id="11350250592" lat="38.9190448" lon="-77.0346038" />
+  <node id="11350250593" lat="38.9190939" lon="-77.0346870" />
+  <node id="11350250594" lat="38.9191961" lon="-77.0348710" />
+  <node id="11350250595" lat="38.9191982" lon="-77.0345701" />
+  <node id="11350250597" lat="38.9202252" lon="-77.0318911" />
+  <node id="11350250598" lat="38.9201267" lon="-77.0317081" />
+  <node id="11350250599" lat="38.9199191" lon="-77.0319533" />
+  <node id="11350250600" lat="38.9200304" lon="-77.0321433" />
+  <node id="11597385029" lat="38.9192221" lon="-77.0288312" />
+  <node id="11597389883" lat="38.9171093" lon="-77.0291358" />
+  <node id="11597389885" lat="38.9171007" lon="-77.0286328" />
+  <node id="11597389889" lat="38.9171116" lon="-77.0288263" />
+  <node id="11597395578" lat="38.9165893" lon="-77.0281697" />
+  <node id="11617202968" lat="38.9162366" lon="-77.0313612" />
+  <node id="12014748826" lat="38.9219250" lon="-77.0319580" />
+  <node id="12068322790" lat="38.9237143" lon="-77.0280388">
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068575125" lat="38.9214600" lon="-77.0351248">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068583930" lat="38.9224336" lon="-77.0298039">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068583934" lat="38.9224272" lon="-77.0296062">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068583935" lat="38.9223700" lon="-77.0297048">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068583936" lat="38.9224980" lon="-77.0297052">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068583942" lat="38.9224988" lon="-77.0280427">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068583944" lat="38.9224330" lon="-77.0279644">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068583946" lat="38.9224330" lon="-77.0281266">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068589410" lat="38.9215580" lon="-77.0326077" />
+  <node id="12068589413" lat="38.9210868" lon="-77.0317426">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068589416" lat="38.9228015" lon="-77.0320500">
+    <tag k="crossing" v="traffic_signals" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068595253" lat="38.9195162" lon="-77.0294997">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068595256" lat="38.9195177" lon="-77.0288939">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068595258" lat="38.9195181" lon="-77.0287805">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068595261" lat="38.9195180" lon="-77.0281737">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068698130" lat="38.9180511" lon="-77.0288322">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068698132" lat="38.9180489" lon="-77.0291331">
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068736009" lat="38.9205921" lon="-77.0319747">
+    <tag k="crossing" v="marked" />
+    <tag k="crossing:markings" v="ladder" />
+    <tag k="highway" v="crossing" />
+  </node>
+  <node id="12068736011" lat="38.9205139" lon="-77.0324796" />
+  <node id="12068736012" lat="38.9200435" lon="-77.0324431" />
+  <node id="12270948442" lat="38.9197061" lon="-77.0318500" />
+  <node id="12270948491" lat="38.9122605" lon="-77.0318626" />
+  <node id="12309764707" lat="38.9230370" lon="-77.0353560" />
+  <node id="12309764729" lat="38.9230555" lon="-77.0353316" />
+  <node id="12543186481" lat="38.9172464" lon="-77.0319531">
+    <tag k="direction" v="170" />
+    <tag k="enforcement" v="red_light_camera" />
+    <tag k="highway" v="speed_camera" />
+  </node>
+  <node id="12782419215" lat="38.9186269" lon="-77.0350231" />
+  <node id="13176002775" lat="38.9171806" lon="-77.0313751" />
+  <node id="13176002776" lat="38.9176583" lon="-77.0313751" />
+  <node id="13176002777" lat="38.9175693" lon="-77.0313751" />
+  <node id="13176002778" lat="38.9175689" lon="-77.0313405" />
+  <node id="13176002779" lat="38.9173143" lon="-77.0301102" />
+  <node id="13176002780" lat="38.9171010" lon="-77.0313687" />
+  <node id="13259914873" lat="38.9230983" lon="-77.0305160" />
+  <node id="13259914875" lat="38.9231016" lon="-77.0310902" />
+  <node id="13261232829" lat="38.9162946" lon="-77.0303115">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13261232830" lat="38.9162951" lon="-77.0310719">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13264105163" lat="38.9224291" lon="-77.0285824">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13264105164" lat="38.9224277" lon="-77.0293254">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13264105166" lat="38.9215402" lon="-77.0337952">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13264105167" lat="38.9215030" lon="-77.0343763">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13264138359" lat="38.9162962" lon="-77.0354730">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13543026299" lat="38.9209011" lon="-77.0296956">
+    <tag k="direction" v="backward" />
+    <tag k="traffic_calming" v="rumble_strip" />
+  </node>
+  <node id="13543026300" lat="38.9224305" lon="-77.0276852">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13543085601" lat="38.9204584" lon="-77.0342530">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13543085602" lat="38.9204987" lon="-77.0335664">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="13543085603" lat="38.9205893" lon="-77.0320198">
+    <tag k="direction" v="backward" />
+    <tag k="highway" v="stop" />
+  </node>
+  <node id="13543085604" lat="38.9216479" lon="-77.0321018">
+    <tag k="direction" v="forward" />
+    <tag k="highway" v="stop" />
+  </node>
+  <node id="13568259127" lat="38.9210870" lon="-77.0312523" />
+  <node id="13568259128" lat="38.9210319" lon="-77.0312510" />
+  <node id="13955897604" lat="38.9159193" lon="-77.0345252" />
+  <node id="13955897605" lat="38.9159203" lon="-77.0346271" />
+  <node id="14073556434" lat="38.9205825" lon="-77.0292736" />
+  <node id="14073953788" lat="38.9181132" lon="-77.0308647">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="14073953789" lat="38.9181131" lon="-77.0301523">
+    <tag k="traffic_calming" v="hump" />
+  </node>
+  <node id="14073953798" lat="38.9189794" lon="-77.0280861" />
+  <way id="6053918">
+    <nd ref="11227525634" />
+    <nd ref="49745284" />
+    <nd ref="9044153312" />
+    <nd ref="12014748826" />
+    <nd ref="5704037781" />
+    <nd ref="49745287" />
+    <nd ref="49745289" />
+    <nd ref="5445901216" />
+    <nd ref="12068589416" />
+    <nd ref="49745291" />
+    <nd ref="4049795767" />
+    <nd ref="49745292" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway:left" v="shared_lane" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="yes" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="4" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="concrete" />
+  </way>
+  <way id="6057177">
+    <nd ref="4089959667" />
+    <nd ref="12068575125" />
+    <nd ref="49793323" />
+    <nd ref="49793320" />
+    <nd ref="13264105167" />
+    <nd ref="49793319" />
+    <nd ref="13264105166" />
+    <nd ref="49793316" />
+    <nd ref="1796371546" />
+    <tag k="highway" v="residential" />
+    <tag k="lanes" v="1" />
+    <tag k="name" v="Chapin Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="6057607">
+    <nd ref="49800720" />
+    <nd ref="4089959245" />
+    <nd ref="13261232829" />
+    <nd ref="13261232830" />
+    <nd ref="49800725" />
+    <nd ref="9644621261" />
+    <nd ref="4664921113" />
+    <nd ref="3301501339" />
+    <nd ref="49745235" />
+    <nd ref="9136773314" />
+    <tag k="highway" v="residential" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="Wallach Place Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="6061296">
+    <nd ref="49745287" />
+    <nd ref="49850558" />
+    <nd ref="5445901210" />
+    <nd ref="3954008876" />
+    <nd ref="12068583930" />
+    <nd ref="49813480" />
+    <tag k="highway" v="residential" />
+    <tag k="lane_markings" v="no" />
+    <tag k="lit" v="yes" />
+    <tag k="name" v="Clifton Street Northwest" />
+    <tag k="oneway" v="no" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="6061365">
+    <nd ref="49813472" />
+    <nd ref="5704010774" />
+    <nd ref="49852072" />
+    <nd ref="5445878422" />
+    <nd ref="5445878427" />
+    <nd ref="49852074" />
+    <nd ref="49852076" />
+    <nd ref="13568259127" />
+    <nd ref="3954008867" />
+    <nd ref="49852078" />
+    <nd ref="12068589413" />
+    <nd ref="49745282" />
+    <tag k="highway" v="residential" />
+    <tag k="name" v="Belmont Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+  </way>
+  <way id="6061366">
+    <nd ref="49745273" />
+    <nd ref="12068736009" />
+    <nd ref="49852080" />
+    <nd ref="13543085603" />
+    <nd ref="1796371544" />
+    <nd ref="13543085602" />
+    <nd ref="13543085601" />
+    <nd ref="49852081" />
+    <nd ref="49852083" />
+    <nd ref="49852085" />
+    <nd ref="49852087" />
+    <nd ref="49852089" />
+    <nd ref="49852091" />
+    <nd ref="49852092" />
+    <nd ref="49852094" />
+    <nd ref="4089959655" />
+    <nd ref="49764397" />
+    <tag k="highway" v="residential" />
+    <tag k="lane_markings" v="no" />
+    <tag k="name" v="Belmont Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="6061441">
+    <nd ref="49791702" />
+    <nd ref="4089959251" />
+    <nd ref="3894578121" />
+    <nd ref="3894578124" />
+    <nd ref="9647428790" />
+    <nd ref="49809715" />
+    <nd ref="9647428789" />
+    <nd ref="4889141681" />
+    <nd ref="4805778258" />
+    <nd ref="4805778263" />
+    <nd ref="9647428783" />
+    <nd ref="49853696" />
+    <nd ref="9647428781" />
+    <nd ref="14073953798" />
+    <nd ref="9647428780" />
+    <nd ref="49853703" />
+    <nd ref="9647428777" />
+    <nd ref="1594013524" />
+    <nd ref="49853705" />
+    <nd ref="9647428775" />
+    <nd ref="9647428774" />
+    <nd ref="49853710" />
+    <tag k="highway" v="residential" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="12th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="6061445">
+    <nd ref="49850541" />
+    <nd ref="12068583942" />
+    <nd ref="49853951" />
+    <nd ref="49853954" />
+    <nd ref="2956274808" />
+    <nd ref="49853957" />
+    <nd ref="49853959" />
+    <nd ref="8412019224" />
+    <nd ref="12068322790" />
+    <nd ref="49769213" />
+    <tag k="highway" v="residential" />
+    <tag k="lane_markings" v="no" />
+    <tag k="name" v="12th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="6063140">
+    <nd ref="49764371" />
+    <nd ref="626083404" />
+    <nd ref="9631592544" />
+    <nd ref="4807068562" />
+    <nd ref="13264138359" />
+    <nd ref="4807068565" />
+    <nd ref="9611815310" />
+    <nd ref="8177378652" />
+    <nd ref="49842979" />
+    <tag k="highway" v="residential" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="Caroline Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="29235002">
+    <nd ref="49813458" />
+    <nd ref="4001192141" />
+    <nd ref="4887873919" />
+    <nd ref="4805709078" />
+    <nd ref="2967361485" />
+    <nd ref="4805715014" />
+    <nd ref="11350250598" />
+    <nd ref="9044153307" />
+    <nd ref="11263137949" />
+    <nd ref="11332977605" />
+    <nd ref="11263137939" />
+    <nd ref="9044153309" />
+    <nd ref="11350250600" />
+    <nd ref="1796371548" />
+    <nd ref="4807612101" />
+    <nd ref="11198897520" />
+    <nd ref="9644431475" />
+    <nd ref="49877921" />
+    <nd ref="9644431474" />
+    <nd ref="49877923" />
+    <nd ref="49877924" />
+    <nd ref="9644431473" />
+    <nd ref="49877927" />
+    <nd ref="49877930" />
+    <nd ref="49877931" />
+    <nd ref="49877934" />
+    <nd ref="9644431467" />
+    <nd ref="49877936" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="Florida Avenue Northwest" />
+    <tag k="name:etymology:wikidata" v="Q812" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+    <tag k="tiger:cfcc" v="A41" />
+    <tag k="tiger:county" v="District of Columbia, DC" />
+    <tag k="tiger:name_base" v="Florida" />
+    <tag k="tiger:name_direction_suffix" v="NW" />
+    <tag k="tiger:name_type" v="Ave" />
+    <tag k="tiger:zip_left" v="20009" />
+    <tag k="tiger:zip_right" v="20009" />
+  </way>
+  <way id="40852967">
+    <nd ref="11332977611" />
+    <nd ref="9644431469" />
+    <nd ref="11350250593" />
+    <nd ref="4089959609" />
+    <nd ref="9644431471" />
+    <nd ref="11332977609" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="15th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+    <tag k="tiger:cfcc" v="A41" />
+    <tag k="tiger:county" v="District of Columbia, DC" />
+    <tag k="tiger:name_base" v="15th" />
+    <tag k="tiger:name_direction_suffix" v="NW" />
+    <tag k="tiger:name_type" v="St" />
+    <tag k="tiger:reviewed" v="no" />
+    <tag k="tiger:zip_left" v="20009" />
+  </way>
+  <way id="49298978">
+    <nd ref="8633944757" />
+    <nd ref="9631592526" />
+    <nd ref="5580387055" />
+    <nd ref="9631592525" />
+    <nd ref="5580387056" />
+    <nd ref="9631592524" />
+    <nd ref="9631592523" />
+    <nd ref="5580387057" />
+    <nd ref="6760336716" />
+    <nd ref="1252835206" />
+    <nd ref="4089959630" />
+    <nd ref="9631592522" />
+    <nd ref="9631592521" />
+    <nd ref="9631592535" />
+    <nd ref="9631592533" />
+    <nd ref="626083347" />
+    <nd ref="9631592534" />
+    <nd ref="9631592537" />
+    <nd ref="9631592536" />
+    <nd ref="9631592539" />
+    <nd ref="9631592542" />
+    <nd ref="9631592543" />
+    <nd ref="626083404" />
+    <nd ref="9631592541" />
+    <nd ref="9631592540" />
+    <nd ref="13955897605" />
+    <nd ref="9631592548" />
+    <nd ref="626083285" />
+    <nd ref="11038113952" />
+    <nd ref="9631592549" />
+    <nd ref="626083527" />
+    <nd ref="9631592550" />
+    <nd ref="8411860548" />
+    <nd ref="9631592557" />
+    <nd ref="6760336717" />
+    <nd ref="626083476" />
+    <nd ref="6760336718" />
+    <nd ref="9631592555" />
+    <nd ref="9631592556" />
+    <nd ref="6760336736" />
+    <nd ref="1934650639" />
+    <nd ref="9632466552" />
+    <nd ref="9632466555" />
+    <nd ref="6760336713" />
+    <nd ref="626083513" />
+    <nd ref="6760336712" />
+    <nd ref="9632466554" />
+    <nd ref="9632466553" />
+    <nd ref="2563393644" />
+    <nd ref="9632466559" />
+    <nd ref="9632466562" />
+    <nd ref="9632466566" />
+    <nd ref="626083459" />
+    <nd ref="9632466567" />
+    <nd ref="9632466561" />
+    <nd ref="9632466560" />
+    <nd ref="2563393645" />
+    <nd ref="9632466573" />
+    <nd ref="9632466574" />
+    <nd ref="9632466575" />
+    <nd ref="626083439" />
+    <nd ref="9632466578" />
+    <nd ref="9632466577" />
+    <nd ref="9632466576" />
+    <nd ref="2424866911" />
+    <nd ref="9632466582" />
+    <nd ref="9632466586" />
+    <nd ref="626083587" />
+    <nd ref="9632466585" />
+    <nd ref="9632466584" />
+    <nd ref="9632466583" />
+    <nd ref="4778392474" />
+    <nd ref="6368912542" />
+    <nd ref="626083551" />
+    <nd ref="6368912543" />
+    <nd ref="8633944773" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="name" v="15th Street Northwest Cycle Track" />
+    <tag k="oneway" v="no" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="51449910">
+    <nd ref="11332977616" />
+    <nd ref="49729847" />
+    <nd ref="11332977614" />
+    <nd ref="11350250592" />
+    <nd ref="11332977611" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway:left" v="lane" />
+    <tag k="cycleway:left:buffer" v="no" />
+    <tag k="cycleway:right" v="shared_lane" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="Florida Avenue Northwest" />
+    <tag k="name:etymology:wikidata" v="Q812" />
+    <tag k="oneway" v="no" />
+    <tag k="sidewalk:left" v="separate" />
+    <tag k="sidewalk:right" v="no" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="51449912">
+    <nd ref="11332977616" />
+    <nd ref="4089959607" />
+    <nd ref="4807612102" />
+    <nd ref="4664921100" />
+    <nd ref="49745247" />
+    <nd ref="4664921099" />
+    <nd ref="5871319929" />
+    <nd ref="49893790" />
+    <nd ref="4887873920" />
+    <nd ref="6798984658" />
+    <nd ref="4001192135" />
+    <nd ref="49813443" />
+    <nd ref="4001192136" />
+    <nd ref="49780323" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:left" v="no" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="no" />
+    <tag k="cycleway:right:oneway" v="yes" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="W Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="57902238">
+    <nd ref="4618716073" />
+    <nd ref="9668193796" />
+    <nd ref="718564056" />
+    <nd ref="3659231215" />
+    <nd ref="11265214727" />
+    <nd ref="1379443774" />
+    <tag k="highway" v="residential" />
+    <tag k="name" v="Waverly Terrace Northwest" />
+    <tag k="sidewalk" v="no" />
+  </way>
+  <way id="130908280">
+    <nd ref="49764380" />
+    <nd ref="656725922" />
+    <nd ref="1440867154" />
+    <nd ref="9631592527" />
+    <nd ref="5445888395" />
+    <nd ref="9631592528" />
+    <nd ref="49764383" />
+    <nd ref="8633944744" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="30 mph" />
+    <tag k="name" v="15th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="146132459">
+    <nd ref="1594013522" />
+    <nd ref="11263106435" />
+    <nd ref="1594013526" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+    <tag k="surface" v="brick" />
+  </way>
+  <way id="146132460">
+    <nd ref="2073919735" />
+    <nd ref="12068595253" />
+    <nd ref="2073919734" />
+    <nd ref="12068595256" />
+    <nd ref="49780326" />
+    <nd ref="12068595258" />
+    <nd ref="1594013522" />
+    <nd ref="12068595261" />
+    <nd ref="1594013524" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+    <tag k="surface" v="brick" />
+  </way>
+  <way id="146132654">
+    <nd ref="1594017954" />
+    <nd ref="11597389889" />
+    <nd ref="12068698130" />
+    <nd ref="49866362" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="168355902">
+    <nd ref="1796371546" />
+    <nd ref="12068589410" />
+    <nd ref="1796371528" />
+    <nd ref="10096094591" />
+    <nd ref="1796371544" />
+    <nd ref="12068736011" />
+    <nd ref="1796371523" />
+    <nd ref="12068736012" />
+    <nd ref="1796371548" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="168355903">
+    <nd ref="1796371530" />
+    <nd ref="9771027047" />
+    <nd ref="9771027045" />
+    <nd ref="9771027043" />
+    <nd ref="1796371528" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="170279262">
+    <nd ref="1017391844" />
+    <nd ref="1814318319" />
+    <nd ref="10758019372" />
+    <nd ref="7153891568" />
+    <nd ref="9403978231" />
+    <nd ref="49846731" />
+    <nd ref="9403978234" />
+    <nd ref="49866354" />
+    <nd ref="9655223654" />
+    <nd ref="49773590" />
+    <nd ref="9655223653" />
+    <nd ref="49866359" />
+    <nd ref="9647428784" />
+    <nd ref="49853696" />
+    <nd ref="9647428782" />
+    <nd ref="49866362" />
+    <nd ref="4805779974" />
+    <nd ref="4805779972" />
+    <nd ref="4001192131" />
+    <nd ref="49813441" />
+    <nd ref="4001192132" />
+    <nd ref="14073953789" />
+    <nd ref="4887612787" />
+    <nd ref="14073953788" />
+    <nd ref="5871319930" />
+    <nd ref="4664921102" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:left" v="no" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="no" />
+    <tag k="cycleway:right:oneway" v="yes" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="V Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="170279263">
+    <nd ref="11332977609" />
+    <nd ref="4089959613" />
+    <nd ref="49764389" />
+    <nd ref="9644431462" />
+    <nd ref="9644431463" />
+    <nd ref="49764395" />
+    <nd ref="49764397" />
+    <nd ref="49764399" />
+    <nd ref="49764401" />
+    <nd ref="49764402" />
+    <nd ref="49764404" />
+    <nd ref="49764406" />
+    <nd ref="49764408" />
+    <nd ref="49764410" />
+    <nd ref="49764411" />
+    <nd ref="49764413" />
+    <nd ref="49764416" />
+    <nd ref="49764418" />
+    <nd ref="49764420" />
+    <nd ref="49764422" />
+    <nd ref="49764423" />
+    <nd ref="49764426" />
+    <nd ref="49764428" />
+    <nd ref="8894106479" />
+    <nd ref="49764430" />
+    <nd ref="4089959667" />
+    <nd ref="5580387033" />
+    <nd ref="3734945335" />
+    <nd ref="4807613627" />
+    <nd ref="4807613243" />
+    <nd ref="1816555610" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="15th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:left" v="no" />
+    <tag k="sidewalk:right" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+    <tag k="tiger:cfcc" v="A41" />
+    <tag k="tiger:county" v="District of Columbia, DC" />
+    <tag k="tiger:name_base" v="15th" />
+    <tag k="tiger:name_direction_suffix" v="NW" />
+    <tag k="tiger:name_type" v="St" />
+    <tag k="tiger:zip_left" v="20009" />
+  </way>
+  <way id="197098391">
+    <nd ref="2073919734" />
+    <nd ref="2073919736" />
+    <nd ref="9647428765" />
+    <nd ref="11263106436" />
+    <nd ref="2073919737" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+    <tag k="surface" v="brick" />
+  </way>
+  <way id="197098397">
+    <nd ref="49780323" />
+    <nd ref="11597385029" />
+    <nd ref="9647428767" />
+    <nd ref="49780326" />
+    <nd ref="9647428773" />
+    <nd ref="9647428772" />
+    <nd ref="49780329" />
+    <tag k="highway" v="residential" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="12th Place Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="218165188">
+    <nd ref="49764374" />
+    <nd ref="9631592532" />
+    <nd ref="3995211767" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="3" />
+    <tag k="maxspeed" v="30 mph" />
+    <tag k="name" v="15th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="293163169">
+    <nd ref="2967361487" />
+    <nd ref="5703982219" />
+    <nd ref="2967361486" />
+    <nd ref="3954008756" />
+    <nd ref="2967361485" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="356617391">
+    <nd ref="49813480" />
+    <nd ref="12068583934" />
+    <nd ref="13264105164" />
+    <nd ref="5445877035" />
+    <nd ref="49850546" />
+    <nd ref="13264105163" />
+    <nd ref="49850543" />
+    <nd ref="12068583946" />
+    <nd ref="49850541" />
+    <nd ref="12068583944" />
+    <nd ref="49850539" />
+    <nd ref="13543026300" />
+    <nd ref="49850538" />
+    <nd ref="4155621718" />
+    <nd ref="49850535" />
+    <nd ref="49773599" />
+    <tag k="highway" v="residential" />
+    <tag k="lane_markings" v="no" />
+    <tag k="name" v="Clifton Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="361449162">
+    <nd ref="3659231216" />
+    <nd ref="3659231214" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="369725094">
+    <nd ref="684999537" />
+    <nd ref="3734945332" />
+    <nd ref="9771027041" />
+    <nd ref="5445907583" />
+    <nd ref="5445907581" />
+    <nd ref="3734945333" />
+    <nd ref="10096094595" />
+    <nd ref="3734945334" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="369725096">
+    <nd ref="3734945332" />
+    <nd ref="6477500566" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="382852370">
+    <nd ref="49813404" />
+    <nd ref="49813406" />
+    <nd ref="1635884057" />
+    <nd ref="4089959198" />
+    <nd ref="49800146" />
+    <nd ref="4089959195" />
+    <nd ref="3877481646" />
+    <nd ref="1635884086" />
+    <nd ref="4089959227" />
+    <nd ref="49775998" />
+    <nd ref="4089959223" />
+    <nd ref="2670838657" />
+    <nd ref="5446812451" />
+    <nd ref="4089959243" />
+    <nd ref="49791711" />
+    <nd ref="4089959239" />
+    <nd ref="3894578117" />
+    <nd ref="4089959249" />
+    <nd ref="49800720" />
+    <nd ref="4089959246" />
+    <nd ref="3894578119" />
+    <nd ref="4001192126" />
+    <nd ref="49809721" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="2" />
+    <tag k="lcn" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="386119799">
+    <nd ref="3894578115" />
+    <nd ref="9044153310" />
+    <nd ref="3894578120" />
+    <nd ref="9048503534" />
+    <nd ref="49800725" />
+    <nd ref="11617202968" />
+    <nd ref="3894578118" />
+    <nd ref="11038169200" />
+    <nd ref="3894578116" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="386119801">
+    <nd ref="3894578122" />
+    <nd ref="8411953540" />
+    <nd ref="8411953538" />
+    <nd ref="9647428793" />
+    <nd ref="3894578119" />
+    <nd ref="5006201910" />
+    <nd ref="3894578120" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+    <tag k="surface" v="brick" />
+  </way>
+  <way id="392135137">
+    <nd ref="3954008865" />
+    <nd ref="3954008872" />
+    <nd ref="3954008866" />
+    <nd ref="9048503537" />
+    <nd ref="3954008867" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="392135139">
+    <nd ref="3954008873" />
+    <nd ref="3954008874" />
+    <nd ref="13259914873" />
+    <nd ref="13259914875" />
+    <nd ref="5445901218" />
+    <nd ref="3954008875" />
+    <nd ref="5445901220" />
+    <nd ref="7738764945" />
+    <nd ref="3954008876" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+    <tag k="surface" v="concrete" />
+  </way>
+  <way id="392354723">
+    <nd ref="1796371546" />
+    <nd ref="3734945334" />
+    <nd ref="49793314" />
+    <nd ref="13543085604" />
+    <nd ref="10096094570" />
+    <nd ref="49745284" />
+    <tag k="highway" v="residential" />
+    <tag k="lane_markings" v="no" />
+    <tag k="name" v="Chapin Street Northwest" />
+    <tag k="oneway" v="no" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="396693481">
+    <nd ref="3995211767" />
+    <nd ref="4089959629" />
+    <nd ref="49764380" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="3" />
+    <tag k="maxspeed" v="30 mph" />
+    <tag k="name" v="15th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes" v="left|through|" />
+  </way>
+  <way id="397038600">
+    <nd ref="4807048917" />
+    <nd ref="4807048920" />
+    <nd ref="9631592538" />
+    <nd ref="49764374" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="3" />
+    <tag k="maxspeed" v="30 mph" />
+    <tag k="name" v="15th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes" v="left|through|through;right" />
+  </way>
+  <way id="397319993">
+    <nd ref="49813454" />
+    <nd ref="9647428768" />
+    <nd ref="9647428769" />
+    <nd ref="4001192139" />
+    <nd ref="49813458" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="3" />
+    <tag k="lanes:backward" v="1" />
+    <tag k="lanes:forward" v="2" />
+    <tag k="lcn" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes:forward" v="left|" />
+  </way>
+  <way id="397319994">
+    <nd ref="49813458" />
+    <nd ref="4001192145" />
+    <nd ref="2967361487" />
+    <nd ref="13543026299" />
+    <nd ref="49813472" />
+    <nd ref="5704010775" />
+    <nd ref="3954008865" />
+    <nd ref="5445877039" />
+    <nd ref="5445877045" />
+    <nd ref="12068583935" />
+    <nd ref="49813480" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway:both" v="no" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="2" />
+    <tag k="lcn" v="yes" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="397319997">
+    <nd ref="9644431466" />
+    <nd ref="11350250594" />
+    <nd ref="4089959611" />
+    <nd ref="5580387052" />
+    <nd ref="11332977609" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:left" v="no" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="no" />
+    <tag k="cycleway:right:oneway" v="yes" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="W Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes" v="left|" />
+  </way>
+  <way id="397320006">
+    <nd ref="49813454" />
+    <nd ref="4001192138" />
+    <nd ref="4001192140" />
+    <nd ref="9647428770" />
+    <tag k="highway" v="secondary_link" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="oneway" v="yes" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes" v="right" />
+  </way>
+  <way id="478650154">
+    <nd ref="49813441" />
+    <nd ref="4001192133" />
+    <nd ref="4001192134" />
+    <nd ref="49813443" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="2" />
+    <tag k="lcn" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="488242060">
+    <nd ref="4805709078" />
+    <nd ref="9044153304" />
+    <nd ref="4805709079" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="488243102">
+    <nd ref="4805715014" />
+    <nd ref="9044153306" />
+    <nd ref="4805715015" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="488251964">
+    <nd ref="4805779972" />
+    <nd ref="12068698132" />
+    <nd ref="4805779973" />
+    <nd ref="11597389883" />
+    <nd ref="4813435155" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="488437923">
+    <nd ref="4807373035" />
+    <nd ref="11597389885" />
+    <nd ref="4807373036" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="488466967">
+    <nd ref="4807612101" />
+    <nd ref="11038113914" />
+    <nd ref="8893769409" />
+    <nd ref="11038113958" />
+    <nd ref="4807612102" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="497153842">
+    <nd ref="49893790" />
+    <nd ref="5006199541" />
+    <nd ref="11151411123" />
+    <nd ref="11151411125" />
+    <nd ref="5006199540" />
+    <nd ref="4887612787" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="497189164">
+    <nd ref="4887873919" />
+    <nd ref="9044153303" />
+    <nd ref="9644431489" />
+    <nd ref="11151327465" />
+    <nd ref="11151327464" />
+    <nd ref="4887873920" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="508226098">
+    <nd ref="49773597" />
+    <nd ref="4155621585" />
+    <nd ref="4805707921" />
+    <nd ref="49853710" />
+    <nd ref="1594013526" />
+    <nd ref="9647428762" />
+    <nd ref="9647428763" />
+    <nd ref="49780329" />
+    <nd ref="9647428764" />
+    <nd ref="2073919737" />
+    <nd ref="14073556434" />
+    <nd ref="4001192143" />
+    <nd ref="9647428770" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="Florida Avenue Northwest" />
+    <tag k="name:etymology:wikidata" v="Q812" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="535475500">
+    <nd ref="49809702" />
+    <nd ref="9403980749" />
+    <nd ref="9403935906" />
+    <nd ref="1017379708" />
+    <nd ref="9403935908" />
+    <nd ref="7153920020" />
+    <nd ref="9655223657" />
+    <nd ref="49773581" />
+    <nd ref="9647428792" />
+    <nd ref="3894578125" />
+    <nd ref="9647428791" />
+    <nd ref="49809715" />
+    <nd ref="9647428788" />
+    <nd ref="4807373035" />
+    <nd ref="1594017954" />
+    <nd ref="4813435155" />
+    <nd ref="4001192127" />
+    <nd ref="49809721" />
+    <nd ref="4001192128" />
+    <nd ref="5446842833" />
+    <nd ref="3894578115" />
+    <nd ref="4664921109" />
+    <nd ref="9136773293" />
+    <nd ref="49745240" />
+    <tag k="HFCS" v="Principal Arterial" />
+    <tag k="highway" v="primary" />
+    <tag k="lanes" v="4" />
+    <tag k="lit" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="U Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="565576711">
+    <nd ref="5446812447" />
+    <nd ref="5446812445" />
+    <nd ref="9044153313" />
+    <nd ref="5446842833" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="565576712">
+    <nd ref="5446812450" />
+    <nd ref="5446812449" />
+    <nd ref="5446812448" />
+    <nd ref="5446812447" />
+    <nd ref="5446812446" />
+    <nd ref="13176002779" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="565580410">
+    <nd ref="5446842822" />
+    <nd ref="3659231215" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="565580411">
+    <nd ref="5446842824" />
+    <nd ref="5446842822" />
+    <nd ref="5446842823" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="589551024">
+    <nd ref="49745240" />
+    <nd ref="9136773302" />
+    <nd ref="4664921110" />
+    <nd ref="7066081241" />
+    <nd ref="1379443774" />
+    <nd ref="5446842821" />
+    <nd ref="4807048919" />
+    <nd ref="4807049322" />
+    <nd ref="9631592531" />
+    <nd ref="49764374" />
+    <nd ref="626083347" />
+    <nd ref="9631592530" />
+    <nd ref="4805799072" />
+    <nd ref="9670005304" />
+    <nd ref="5446842801" />
+    <nd ref="3998695808" />
+    <tag k="HFCS" v="Principal Arterial" />
+    <tag k="highway" v="primary" />
+    <tag k="lanes" v="4" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="U Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="609721982">
+    <nd ref="4807612102" />
+    <nd ref="11038113957" />
+    <nd ref="5774919800" />
+    <nd ref="6753254592" />
+    <nd ref="11038073150" />
+    <nd ref="5774919801" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="621523621">
+    <nd ref="5871319929" />
+    <nd ref="9044153305" />
+    <nd ref="11151411122" />
+    <nd ref="11151411126" />
+    <nd ref="5871319933" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="621523623">
+    <nd ref="5871319933" />
+    <nd ref="11151411124" />
+    <nd ref="9044153311" />
+    <nd ref="5871319930" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="648005848">
+    <nd ref="49813480" />
+    <nd ref="12068583936" />
+    <nd ref="49813485" />
+    <nd ref="4001192146" />
+    <nd ref="49769215" />
+    <nd ref="4001192149" />
+    <nd ref="49813488" />
+    <nd ref="49813489" />
+    <nd ref="4001192150" />
+    <nd ref="49787504" />
+    <nd ref="4001192153" />
+    <nd ref="2956274806" />
+    <nd ref="4155621416" />
+    <nd ref="49813493" />
+    <nd ref="4155621412" />
+    <nd ref="4155621420" />
+    <nd ref="49813494" />
+    <nd ref="4155621424" />
+    <nd ref="6799136039" />
+    <nd ref="4155621432" />
+    <nd ref="49813496" />
+    <nd ref="4155621428" />
+    <nd ref="4155621440" />
+    <nd ref="49772589" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="2" />
+    <tag k="lcn" v="yes" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="682790610">
+    <nd ref="49780323" />
+    <nd ref="9647428779" />
+    <nd ref="49853703" />
+    <nd ref="9647428778" />
+    <nd ref="2967361472" />
+    <nd ref="9403974406" />
+    <nd ref="49773595" />
+    <nd ref="9403974403" />
+    <nd ref="10246460361" />
+    <nd ref="2967361471" />
+    <nd ref="9403949778" />
+    <nd ref="49846738" />
+    <nd ref="9403949775" />
+    <nd ref="4807362836" />
+    <nd ref="9403954600" />
+    <nd ref="10758019370" />
+    <nd ref="49877844" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:left" v="no" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="no" />
+    <tag k="cycleway:right:oneway" v="yes" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="W Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="689663921">
+    <nd ref="10175701338" />
+    <nd ref="4664921103" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="4" />
+    <tag k="lanes:backward" v="2" />
+    <tag k="lanes:forward" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="696063554">
+    <nd ref="49877936" />
+    <nd ref="11332977616" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway:left" v="lane" />
+    <tag k="cycleway:left:buffer" v="no" />
+    <tag k="cycleway:right" v="shared_lane" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="Florida Avenue Northwest" />
+    <tag k="name:etymology:wikidata" v="Q812" />
+    <tag k="oneway" v="no" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="719351616">
+    <nd ref="49764383" />
+    <nd ref="11038113953" />
+    <nd ref="6753254592" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="905821388">
+    <nd ref="8411953538" />
+    <nd ref="8411953539" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+    <tag k="surface" v="brick" />
+  </way>
+  <way id="905821389">
+    <nd ref="8411953540" />
+    <nd ref="8411953541" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+    <tag k="surface" v="brick" />
+  </way>
+  <way id="931247285">
+    <nd ref="6348198848" />
+    <nd ref="5580387034" />
+    <nd ref="5580387035" />
+    <nd ref="12309764729" />
+    <nd ref="12309764707" />
+    <nd ref="5580387036" />
+    <nd ref="5580387037" />
+    <nd ref="5580387039" />
+    <nd ref="5580387040" />
+    <nd ref="8633944753" />
+    <nd ref="5580387042" />
+    <nd ref="8633944750" />
+    <nd ref="5580387043" />
+    <nd ref="8633944748" />
+    <nd ref="8633944749" />
+    <nd ref="5580387044" />
+    <nd ref="5580387045" />
+    <nd ref="8633944747" />
+    <nd ref="8633944746" />
+    <nd ref="8633944745" />
+    <nd ref="5580387046" />
+    <nd ref="5580387047" />
+    <nd ref="5704030853" />
+    <nd ref="5580387050" />
+    <nd ref="9644431465" />
+    <nd ref="9644431464" />
+    <nd ref="8633944755" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="name" v="15th Street Northwest Cycle Track" />
+    <tag k="oneway" v="no" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="931247289">
+    <nd ref="8633944755" />
+    <nd ref="5580387051" />
+    <nd ref="5580387052" />
+    <nd ref="5580387053" />
+    <nd ref="5580387054" />
+    <tag k="cycleway" v="crossing" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="name" v="15th Street Northwest Cycle Track" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="931247290">
+    <nd ref="5580387054" />
+    <nd ref="8633944756" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="name" v="15th Street Northwest Cycle Track" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="931247291">
+    <nd ref="8633944756" />
+    <nd ref="6760336715" />
+    <nd ref="6760336714" />
+    <nd ref="8633944757" />
+    <tag k="cycleway" v="crossing" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="name" v="15th Street Northwest Cycle Track" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="961466617">
+    <nd ref="11198897520" />
+    <nd ref="11198897519" />
+    <nd ref="8893769408" />
+    <nd ref="8893769409" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="961494337">
+    <nd ref="1796371530" />
+    <nd ref="8894106472" />
+    <nd ref="8894106473" />
+    <nd ref="8894106474" />
+    <nd ref="8894106475" />
+    <nd ref="8894106476" />
+    <nd ref="8894106477" />
+    <nd ref="8894106478" />
+    <nd ref="8894106480" />
+    <nd ref="10096094580" />
+    <nd ref="8894106479" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="961538292">
+    <nd ref="8894454010" />
+    <nd ref="3894578122" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="988487211">
+    <nd ref="9136773322" />
+    <nd ref="9136773323" />
+    <nd ref="9136773307" />
+    <nd ref="9136773306" />
+    <nd ref="9136773305" />
+    <nd ref="9136773304" />
+    <nd ref="9136773310" />
+    <nd ref="9136773303" />
+    <nd ref="9644621259" />
+    <nd ref="9136773302" />
+    <nd ref="4089959266" />
+    <nd ref="9136773314" />
+    <nd ref="3954008709" />
+    <nd ref="9136773301" />
+    <nd ref="9136773315" />
+    <nd ref="9136773300" />
+    <nd ref="9136773317" />
+    <nd ref="9136773318" />
+    <nd ref="9136773299" />
+    <nd ref="9136773320" />
+    <nd ref="9136773241" />
+    <nd ref="4089959271" />
+    <nd ref="9136773240" />
+    <nd ref="9136773239" />
+    <nd ref="4089959274" />
+    <nd ref="11038179108" />
+    <nd ref="11227525658" />
+    <nd ref="9136773238" />
+    <nd ref="11038179109" />
+    <nd ref="9136773237" />
+    <nd ref="9136773279" />
+    <nd ref="9136773291" />
+    <nd ref="9136773236" />
+    <nd ref="9136773235" />
+    <nd ref="9136773244" />
+    <nd ref="9136773234" />
+    <nd ref="9644621272" />
+    <nd ref="11274721882" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="lit" v="yes" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="988487216">
+    <nd ref="9136773263" />
+    <nd ref="12270948491" />
+    <nd ref="9136773264" />
+    <nd ref="9136773265" />
+    <nd ref="9136773266" />
+    <nd ref="9644621265" />
+    <nd ref="9136773267" />
+    <nd ref="9644621266" />
+    <nd ref="9136773268" />
+    <nd ref="3301501333" />
+    <nd ref="9136773277" />
+    <nd ref="11038179124" />
+    <nd ref="9136773269" />
+    <nd ref="11038179123" />
+    <nd ref="9136773270" />
+    <nd ref="9136773292" />
+    <nd ref="9136773271" />
+    <nd ref="9136773272" />
+    <nd ref="9136773275" />
+    <nd ref="4089959259" />
+    <nd ref="9136773273" />
+    <nd ref="4089959260" />
+    <nd ref="4089959262" />
+    <nd ref="3301501339" />
+    <nd ref="4089959265" />
+    <nd ref="9136773293" />
+    <nd ref="9644621257" />
+    <nd ref="9136773294" />
+    <nd ref="9136773312" />
+    <nd ref="9136773295" />
+    <nd ref="9136773296" />
+    <nd ref="9136773297" />
+    <nd ref="9136773298" />
+    <nd ref="9136773321" />
+    <nd ref="9136773322" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="lit" v="yes" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="1047444436">
+    <nd ref="8633944744" />
+    <nd ref="9631592529" />
+    <nd ref="11350250590" />
+    <nd ref="4089959618" />
+    <nd ref="11332977611" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="30 mph" />
+    <tag k="name" v="15th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes" v="through|right" />
+  </way>
+  <way id="1049463099">
+    <nd ref="9644431495" />
+    <nd ref="11350250599" />
+    <nd ref="49745256" />
+    <nd ref="9644431490" />
+    <nd ref="9644431493" />
+    <nd ref="9644431494" />
+    <nd ref="11332977605" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway:both" v="lane" />
+    <tag k="cycleway:both:buffer" v="no" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="4" />
+    <tag k="lanes:backward" v="2" />
+    <tag k="lanes:forward" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="concrete" />
+    <tag k="turn:lanes:forward" v="left|" />
+  </way>
+  <way id="1049486586">
+    <nd ref="9136773322" />
+    <nd ref="4664921097" />
+    <nd ref="49745247" />
+    <nd ref="4664921098" />
+    <nd ref="11263137944" />
+    <nd ref="9644431495" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway:both" v="lane" />
+    <tag k="cycleway:both:buffer" v="no" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="4" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="concrete" />
+  </way>
+  <way id="1049486587">
+    <nd ref="4664921103" />
+    <nd ref="49745243" />
+    <nd ref="4664921101" />
+    <nd ref="9136773322" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="4" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="concrete" />
+  </way>
+  <way id="1049486588">
+    <nd ref="4664921104" />
+    <nd ref="5774919801" />
+    <nd ref="5445888393" />
+    <nd ref="5446842809" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:left" v="no" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="no" />
+    <tag k="cycleway:right:oneway" v="yes" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="V Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="1049486590">
+    <nd ref="4664921102" />
+    <nd ref="9136773298" />
+    <nd ref="49745243" />
+    <nd ref="9136773307" />
+    <nd ref="4664921104" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:left" v="no" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="no" />
+    <tag k="cycleway:right:oneway" v="yes" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="V Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk" v="both" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="1049799173">
+    <nd ref="9647428770" />
+    <nd ref="49813458" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="Florida Avenue Northwest" />
+    <tag k="name:etymology:wikidata" v="Q812" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="1049799174">
+    <nd ref="2073919735" />
+    <nd ref="6798984660" />
+    <nd ref="9647428776" />
+    <nd ref="49813454" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="2" />
+    <tag k="lcn" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="1049799175">
+    <nd ref="49813443" />
+    <nd ref="4001192137" />
+    <nd ref="2073919735" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="3" />
+    <tag k="lanes:backward" v="2" />
+    <tag k="lanes:forward" v="1" />
+    <tag k="lcn" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes:backward" v="left|" />
+  </way>
+  <way id="1049799176">
+    <nd ref="9647428785" />
+    <nd ref="4001192130" />
+    <nd ref="49813441" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="3" />
+    <tag k="lanes:backward" v="1" />
+    <tag k="lanes:forward" v="2" />
+    <tag k="lcn" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes:forward" v="left|" />
+  </way>
+  <way id="1049799177">
+    <nd ref="9647428786" />
+    <nd ref="9647428785" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="3" />
+    <tag k="lanes:backward" v="1" />
+    <tag k="lanes:both_ways" v="1" />
+    <tag k="lanes:forward" v="1" />
+    <tag k="lcn" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes:both_ways" v="left" />
+  </way>
+  <way id="1049799178">
+    <nd ref="49809721" />
+    <nd ref="4001192129" />
+    <nd ref="9647428786" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="3" />
+    <tag k="lanes:backward" v="2" />
+    <tag k="lanes:forward" v="1" />
+    <tag k="lcn" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="13th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes:backward" v="left|" />
+  </way>
+  <way id="1049799180">
+    <nd ref="3894578124" />
+    <nd ref="11597395578" />
+    <nd ref="5446812441" />
+    <nd ref="3894578122" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="1065432808">
+    <nd ref="49764380" />
+    <nd ref="1252835206" />
+    <nd ref="4089959623" />
+    <nd ref="5446842804" />
+    <nd ref="4089959632" />
+    <nd ref="49765120" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:left" v="no" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="no" />
+    <tag k="cycleway:right:oneway" v="yes" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="V Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="1065432809">
+    <nd ref="5446842809" />
+    <nd ref="4089959627" />
+    <nd ref="49764380" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:left" v="no" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="no" />
+    <tag k="cycleway:right:oneway" v="yes" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="V Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes" v="through;right" />
+  </way>
+  <way id="1112266196">
+    <nd ref="49745240" />
+    <nd ref="4664921108" />
+    <nd ref="11227525635" />
+    <nd ref="12543186481" />
+    <nd ref="11234143710" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="4" />
+    <tag k="lanes:backward" v="2" />
+    <tag k="lanes:forward" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes:backward" v="through|" />
+  </way>
+  <way id="1163801649">
+    <nd ref="49745214" />
+    <nd ref="49745217" />
+    <nd ref="4089959214" />
+    <nd ref="49745225" />
+    <nd ref="4089959235" />
+    <nd ref="49745232" />
+    <nd ref="4089959231" />
+    <nd ref="4807043678" />
+    <nd ref="4664921112" />
+    <nd ref="49745235" />
+    <nd ref="9644621260" />
+    <nd ref="4664921107" />
+    <nd ref="49745240" />
+    <tag k="HFCS" v="Principal Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="primary" />
+    <tag k="lanes" v="4" />
+    <tag k="lanes:backward" v="2" />
+    <tag k="lanes:forward" v="2" />
+    <tag k="lit" v="yes" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+    <tag k="tiger:cfcc" v="A41" />
+    <tag k="tiger:county" v="District of Columbia, DC" />
+    <tag k="tiger:name_base" v="14th" />
+    <tag k="tiger:name_type" v="St" />
+    <tag k="tiger:zip_left" v="20010" />
+    <tag k="tiger:zip_right" v="20010" />
+  </way>
+  <way id="1202918584">
+    <nd ref="3659231216" />
+    <nd ref="11151390692" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="1202922918">
+    <nd ref="11151411122" />
+    <nd ref="11151411123" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="1202922919">
+    <nd ref="11151411124" />
+    <nd ref="11151411125" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="1212569769">
+    <nd ref="11234143710" />
+    <nd ref="10175701338" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="4" />
+    <tag k="lanes:backward" v="2" />
+    <tag k="lanes:forward" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes:backward" v="through|" />
+  </way>
+  <way id="1215620870">
+    <nd ref="9044153308" />
+    <nd ref="11263137938" />
+    <nd ref="11263137939" />
+    <nd ref="11263137940" />
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="cycleway" v="crossing" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="oneway" v="yes" />
+  </way>
+  <way id="1215620871">
+    <nd ref="11263137940" />
+    <nd ref="11263137941" />
+    <nd ref="11263137942" />
+    <nd ref="11263137943" />
+    <nd ref="11263137944" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="oneway" v="yes" />
+  </way>
+  <way id="1215620872">
+    <nd ref="11263137944" />
+    <nd ref="11263137945" />
+    <nd ref="12270948442" />
+    <nd ref="11263137946" />
+    <nd ref="11263137947" />
+    <nd ref="11263137948" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="oneway" v="yes" />
+  </way>
+  <way id="1215620873">
+    <nd ref="11263137948" />
+    <nd ref="11263137949" />
+    <nd ref="9044153308" />
+    <tag k="crossing" v="uncontrolled" />
+    <tag k="crossing:markings" v="yes" />
+    <tag k="crossing:signals" v="no" />
+    <tag k="cycleway" v="crossing" />
+    <tag k="foot" v="no" />
+    <tag k="highway" v="cycleway" />
+    <tag k="oneway" v="yes" />
+  </way>
+  <way id="1247993159">
+    <nd ref="49764365" />
+    <nd ref="9631592547" />
+    <nd ref="13955897604" />
+    <nd ref="49764371" />
+    <nd ref="9631592545" />
+    <nd ref="4807048917" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway" v="separate" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="3" />
+    <tag k="maxspeed" v="30 mph" />
+    <tag k="name" v="15th Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+  </way>
+  <way id="1319842951">
+    <nd ref="11332977609" />
+    <nd ref="11350250595" />
+    <nd ref="11332977616" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:left" v="no" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="no" />
+    <tag k="cycleway:right:oneway" v="yes" />
+    <tag k="highway" v="tertiary" />
+    <tag k="lanes" v="2" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="W Street Northwest" />
+    <tag k="oneway" v="yes" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes" v="left|" />
+  </way>
+  <way id="1378027109">
+    <nd ref="11332977605" />
+    <nd ref="9044153308" />
+    <nd ref="11350250597" />
+    <nd ref="49745264" />
+    <nd ref="49745266" />
+    <nd ref="49745268" />
+    <nd ref="49745271" />
+    <nd ref="49745273" />
+    <nd ref="49745275" />
+    <nd ref="49745277" />
+    <nd ref="49745279" />
+    <nd ref="49745280" />
+    <nd ref="49745282" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway:left" v="shared_lane" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="yes" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="4" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="concrete" />
+  </way>
+  <way id="1378027110">
+    <nd ref="49745282" />
+    <nd ref="11227525634" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="cycleway:left" v="shared_lane" />
+    <tag k="cycleway:right" v="lane" />
+    <tag k="cycleway:right:buffer" v="yes" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="3" />
+    <tag k="lanes:backward" v="2" />
+    <tag k="lanes:forward" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="14th Street Northwest" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="surface" v="concrete" />
+    <tag k="turn:lanes:backward" v="left|" />
+  </way>
+  <way id="1380635936">
+    <nd ref="11332977611" />
+    <nd ref="6760336715" />
+    <nd ref="4089959616" />
+    <nd ref="11350250591" />
+    <nd ref="9644431472" />
+    <nd ref="7168757402" />
+    <nd ref="12782419215" />
+    <nd ref="4805785271" />
+    <tag k="HFCS" v="Minor Arterial" />
+    <tag k="bicycle" v="designated" />
+    <tag k="cycleway:both" v="lane" />
+    <tag k="cycleway:both:buffer" v="no" />
+    <tag k="highway" v="secondary" />
+    <tag k="lanes" v="2" />
+    <tag k="lanes:backward" v="1" />
+    <tag k="lanes:forward" v="1" />
+    <tag k="maxspeed" v="25 mph" />
+    <tag k="name" v="New Hampshire Avenue Northwest" />
+    <tag k="name:etymology:wikidata" v="Q759" />
+    <tag k="oneway" v="no" />
+    <tag k="parking:both" v="lane" />
+    <tag k="parking:both:orientation" v="parallel" />
+    <tag k="sidewalk:both" v="separate" />
+    <tag k="source:HFCS" v="District of Columbia (DC GIS)" />
+    <tag k="surface" v="asphalt" />
+    <tag k="turn:lanes:backward" v="left;through" />
+  </way>
+  <way id="1433652618">
+    <nd ref="3894578115" />
+    <nd ref="13176002780" />
+    <nd ref="13176002775" />
+    <nd ref="13176002777" />
+    <nd ref="13176002776" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="1433652619">
+    <nd ref="13176002777" />
+    <nd ref="13176002778" />
+    <nd ref="5446812445" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+  <way id="1479044538">
+    <nd ref="13568259127" />
+    <nd ref="13568259128" />
+    <nd ref="2967361486" />
+    <tag k="highway" v="service" />
+    <tag k="service" v="alley" />
+  </way>
+</osm>

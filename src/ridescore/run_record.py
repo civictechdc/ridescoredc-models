@@ -89,6 +89,9 @@ def record(built: Built, snapshot: Snapshot, run_date: dt.date) -> dict:
         # whatever this is. It is here so that a future run that *does* depend
         # on it can be told apart from one that does not.
         "python_hash_seed": os.environ.get("PYTHONHASHSEED"),
+        # Which street network the run was built on. A package built on OSM is
+        # not comparable with one built on DDOT blocks, so this names it.
+        "network_source": built.source,
         "sources": {
             "snapshot": snapshot.path.name,
             "files": snapshot.record(),

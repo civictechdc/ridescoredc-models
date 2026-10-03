@@ -20,12 +20,23 @@ class FetchError(RuntimeError):
     """A source could not be downloaded. Never a partial or placeholder file."""
 
 
-def get(url: str, params: dict | None = None) -> bytes:
+def get(
+    url: str,
+    params: dict | None = None,
+    *,
+    headers: dict | None = None,
+    timeout_s: float | None = None,
+) -> bytes:
     """Download one URL, waiting out an ArcGIS 202 and failing loudly otherwise."""
     last = ""
     for attempt in range(config.FETCH_ATTEMPTS):
         try:
-            response = requests.get(url, params=params, timeout=config.FETCH_TIMEOUT_S)
+            response = requests.get(
+                url,
+                params=params,
+                headers=headers,
+                timeout=timeout_s or config.FETCH_TIMEOUT_S,
+            )
         except requests.RequestException as error:  # network, DNS, timeout
             last = f"{type(error).__name__}: {error}"
         else:
